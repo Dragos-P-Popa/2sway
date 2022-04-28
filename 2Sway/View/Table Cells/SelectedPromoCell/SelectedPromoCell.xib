@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Jost-VariableFont_wght.ttf">
+            <string>Jost-Regular</string>
+            <string>JostRoman-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectedPromoCell" rowHeight="420" id="KGk-i7-Jjw" customClass="SelectedPromoCell" customModule="_Sway" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="499"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="361" height="499"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8W-f3-uvz">
+                        <rect key="frame" x="0.0" y="0.0" width="361" height="499"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Promo Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXG-P9-xBh">
+                                <rect key="frame" x="16" y="11" width="345" height="29"/>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB0-pQ-eVN">
+                                <rect key="frame" x="16" y="44" width="329" height="20.5"/>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="2rq-QT-DzU">
+                                <rect key="frame" x="16" y="87" width="329" height="396"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6li-Tt-ObS" customClass="RoundedUIView" customModule="_Sway" customModuleProvider="target">
+                                        <rect key="frame" x="36" y="0.0" width="257" height="257"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvl-We-u6h">
+                                                <rect key="frame" x="87.5" y="114" width="82" height="29"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
+                                                <color key="textColor" name="black"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3p-wd-lxD">
+                                                <rect key="frame" x="0.0" y="0.0" width="257" height="257"/>
+                                                <color key="backgroundColor" name="2SwayYellow"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
+                                                <state key="normal" title="I've Posted">
+                                                    <color key="titleColor" name="black"/>
+                                                    <color key="titleShadowColor" name="white"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="ivePostedPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pzf-Ef-bRl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="white"/>
+                                        <constraints>
+                                            <constraint firstItem="z3p-wd-lxD" firstAttribute="leading" secondItem="6li-Tt-ObS" secondAttribute="leading" id="Iip-NS-DJh"/>
+                                            <constraint firstItem="z3p-wd-lxD" firstAttribute="top" secondItem="6li-Tt-ObS" secondAttribute="top" id="K8T-1U-FFO"/>
+                                            <constraint firstAttribute="trailing" secondItem="z3p-wd-lxD" secondAttribute="trailing" id="Rp2-mD-gtD"/>
+                                            <constraint firstItem="Xvl-We-u6h" firstAttribute="centerY" secondItem="6li-Tt-ObS" secondAttribute="centerY" id="by6-pr-4p8"/>
+                                            <constraint firstItem="Xvl-We-u6h" firstAttribute="centerX" secondItem="6li-Tt-ObS" secondAttribute="centerX" id="dWV-FX-6qm"/>
+                                            <constraint firstAttribute="bottom" secondItem="z3p-wd-lxD" secondAttribute="bottom" id="gzx-tT-LYS"/>
+                                            <constraint firstAttribute="width" secondItem="6li-Tt-ObS" secondAttribute="height" id="x02-zC-s1h"/>
+                                        </constraints>
+                                    </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY8-6b-THf">
+                                        <rect key="frame" x="0.0" y="269" width="329" height="53"/>
+                                        <color key="backgroundColor" name="white"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="alZ-vc-7OW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
+                                        <state key="normal" title="Claim Now">
+                                            <color key="titleColor" name="black"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="claimNowPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rA3-QB-fFc"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njn-pS-YmF">
+                                        <rect key="frame" x="1.5" y="281" width="326.5" height="115"/>
+                                        <string key="text">Once you have posted an Instagram story at the venue you want a discount at, click ‘I’ve posted’. Make sure you have included the location tag of the venue. If you have any issues, DM @2swayUK on Instagram.</string>
+                                        <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6li-Tt-ObS" firstAttribute="leading" secondItem="2rq-QT-DzU" secondAttribute="leading" constant="36" id="WAD-qL-dfj"/>
+                                    <constraint firstItem="gY8-6b-THf" firstAttribute="leading" secondItem="2rq-QT-DzU" secondAttribute="leading" id="hJx-LT-jAp"/>
+                                    <constraint firstAttribute="trailing" secondItem="gY8-6b-THf" secondAttribute="trailing" id="ied-N3-gXz"/>
+                                    <constraint firstAttribute="trailing" secondItem="6li-Tt-ObS" secondAttribute="trailing" constant="36" id="nyV-5T-eI9"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAO-K1-MD5">
+                                <rect key="frame" x="286" y="0.0" width="75" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iuQ-zr-E03"/>
+                                    <constraint firstAttribute="width" constant="75" id="xan-Ll-JLD"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Increase Views">
+                                            <attributes>
+                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" metaFont="system"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="increaseViews:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BKU-OQ-DfI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hAO-K1-MD5" firstAttribute="top" secondItem="s8W-f3-uvz" secondAttribute="top" id="2Eq-QU-6fx"/>
+                            <constraint firstAttribute="trailing" secondItem="TXG-P9-xBh" secondAttribute="trailing" id="3i4-fM-1i3"/>
+                            <constraint firstAttribute="trailing" secondItem="2rq-QT-DzU" secondAttribute="trailing" constant="16" id="7fU-AW-ucA"/>
+                            <constraint firstItem="TXG-P9-xBh" firstAttribute="leading" secondItem="s8W-f3-uvz" secondAttribute="leading" constant="16" id="7jQ-YB-LYk"/>
+                            <constraint firstAttribute="trailing" secondItem="bB0-pQ-eVN" secondAttribute="trailing" constant="16" id="KXh-ie-0ET"/>
+                            <constraint firstAttribute="trailing" secondItem="hAO-K1-MD5" secondAttribute="trailing" id="LJV-dF-cln"/>
+                            <constraint firstItem="bB0-pQ-eVN" firstAttribute="leading" secondItem="s8W-f3-uvz" secondAttribute="leading" constant="16" id="Q1U-TC-ndF"/>
+                            <constraint firstItem="2rq-QT-DzU" firstAttribute="leading" secondItem="s8W-f3-uvz" secondAttribute="leading" constant="16" id="Vmv-YF-YXL"/>
+                            <constraint firstItem="2rq-QT-DzU" firstAttribute="top" secondItem="bB0-pQ-eVN" secondAttribute="bottom" constant="22.5" id="d0n-39-QKR"/>
+                            <constraint firstItem="bB0-pQ-eVN" firstAttribute="top" secondItem="TXG-P9-xBh" secondAttribute="bottom" constant="4" id="qdh-kP-k5V"/>
+                            <constraint firstAttribute="bottom" secondItem="2rq-QT-DzU" secondAttribute="bottom" constant="16" id="v6B-It-Qz5"/>
+                            <constraint firstItem="TXG-P9-xBh" firstAttribute="top" secondItem="s8W-f3-uvz" secondAttribute="top" constant="11" id="zer-Ol-6Q0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="s8W-f3-uvz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7M5-Nc-TI2"/>
+                    <constraint firstItem="s8W-f3-uvz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jpb-Ln-7yd"/>
+                    <constraint firstAttribute="bottom" secondItem="s8W-f3-uvz" secondAttribute="bottom" id="nbw-Ym-6vb"/>
+                    <constraint firstAttribute="trailing" secondItem="s8W-f3-uvz" secondAttribute="trailing" id="viK-HW-7ti"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="cellBackground" destination="s8W-f3-uvz" id="VW8-1k-Mb6"/>
+                <outlet property="claimNowButton" destination="gY8-6b-THf" id="JVT-wY-fYU"/>
+                <outlet property="informationText" destination="Njn-pS-YmF" id="s2a-bL-T3S"/>
+                <outlet property="ivePostedBackground" destination="6li-Tt-ObS" id="JWS-uC-uV5"/>
+                <outlet property="ivePostedButton" destination="z3p-wd-lxD" id="nN4-cI-gCM"/>
+                <outlet property="promoTitle" destination="TXG-P9-xBh" id="6h6-V5-Bpj"/>
+                <outlet property="statusText" destination="bB0-pQ-eVN" id="GLh-Rc-wj0"/>
+                <outlet property="verifyingLabel" destination="Xvl-We-u6h" id="M6z-mK-zvs"/>
+            </connections>
+            <point key="canvasLocation" x="155.79710144927537" y="114.17410714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="2SwayYellow">
+            <color red="0.41568627450980394" green="0.043137254901960784" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

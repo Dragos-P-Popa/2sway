@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Jost-VariableFont_wght.ttf">
+            <string>Jost-Regular</string>
+            <string>JostRoman-Bold</string>
+            <string>JostRoman-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RedeemablePromoCell" rowHeight="155" id="KGk-i7-Jjw" customClass="RedeemablePromoCell" customModule="_Sway" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="305"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="305"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKe-Ol-LTo" userLabel="roundedView">
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="305"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iandooleyTLD6iCOlyb0unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="qyP-dm-3jB">
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="n13-Ik-d4a"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BrandName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8L-NC-CQE">
+                                <rect key="frame" x="8" y="150" width="367" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="PBe-wd-6i1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="JostRoman-Bold" family="Jost" pointSize="18"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoP-Qy-nQ7">
+                                <rect key="frame" x="8" y="176" width="367" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="I03-H6-1BS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i8-0w-97L">
+                                <rect key="frame" x="8" y="210" width="367" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="lmu-VP-NKI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coF-m2-4OB" userLabel="Show Code Button">
+                                <rect key="frame" x="8" y="240" width="367" height="50"/>
+                                <color key="backgroundColor" name="white"/>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="16"/>
+                                <state key="normal" title="Show Code">
+                                    <color key="titleColor" name="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="showCodeButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tUq-5x-BMI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe5-qs-bfv">
+                                <rect key="frame" x="8" y="240" width="367" height="50"/>
+                                <color key="backgroundColor" name="white"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sae-Mm-toB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="16"/>
+                                <state key="normal" title="Redeem now">
+                                    <color key="titleColor" name="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="redeemButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uwm-ZP-lB7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="black"/>
+                        <constraints>
+                            <constraint firstItem="q8L-NC-CQE" firstAttribute="leading" secondItem="EKe-Ol-LTo" secondAttribute="leading" constant="8" id="31S-RW-4gN"/>
+                            <constraint firstAttribute="trailing" secondItem="qyP-dm-3jB" secondAttribute="trailing" id="4Ez-lm-MeM"/>
+                            <constraint firstItem="PoP-Qy-nQ7" firstAttribute="leading" secondItem="EKe-Ol-LTo" secondAttribute="leading" constant="8" id="9CT-jY-tfc"/>
+                            <constraint firstAttribute="trailing" secondItem="PoP-Qy-nQ7" secondAttribute="trailing" constant="8" id="IA1-hT-OXn"/>
+                            <constraint firstItem="PoP-Qy-nQ7" firstAttribute="top" secondItem="q8L-NC-CQE" secondAttribute="bottom" id="Im1-uR-z8K"/>
+                            <constraint firstItem="fe5-qs-bfv" firstAttribute="leading" secondItem="EKe-Ol-LTo" secondAttribute="leading" constant="8" id="KaF-54-Lif"/>
+                            <constraint firstAttribute="trailing" secondItem="9i8-0w-97L" secondAttribute="trailing" constant="8" id="Ky8-en-wsJ"/>
+                            <constraint firstItem="coF-m2-4OB" firstAttribute="trailing" secondItem="fe5-qs-bfv" secondAttribute="trailing" id="LSL-mc-ROH"/>
+                            <constraint firstAttribute="trailing" secondItem="fe5-qs-bfv" secondAttribute="trailing" constant="8" id="NKM-dr-8NJ"/>
+                            <constraint firstItem="coF-m2-4OB" firstAttribute="bottom" secondItem="fe5-qs-bfv" secondAttribute="bottom" id="d0s-z5-1th"/>
+                            <constraint firstItem="qyP-dm-3jB" firstAttribute="top" secondItem="EKe-Ol-LTo" secondAttribute="top" id="emW-OZ-VED"/>
+                            <constraint firstItem="fe5-qs-bfv" firstAttribute="top" secondItem="9i8-0w-97L" secondAttribute="bottom" constant="10" id="gcg-u7-QvR"/>
+                            <constraint firstItem="9i8-0w-97L" firstAttribute="leading" secondItem="EKe-Ol-LTo" secondAttribute="leading" constant="8" id="kEM-Bu-Myc"/>
+                            <constraint firstAttribute="bottom" secondItem="fe5-qs-bfv" secondAttribute="bottom" constant="15" id="mAK-uz-2ga"/>
+                            <constraint firstItem="9i8-0w-97L" firstAttribute="top" secondItem="PoP-Qy-nQ7" secondAttribute="bottom" constant="16" id="ofC-ar-KEl"/>
+                            <constraint firstItem="q8L-NC-CQE" firstAttribute="top" secondItem="qyP-dm-3jB" secondAttribute="bottom" constant="6" id="rpt-vF-UI1"/>
+                            <constraint firstItem="coF-m2-4OB" firstAttribute="top" secondItem="fe5-qs-bfv" secondAttribute="top" id="sBP-3D-Qq7"/>
+                            <constraint firstItem="coF-m2-4OB" firstAttribute="leading" secondItem="fe5-qs-bfv" secondAttribute="leading" id="wWV-Ua-Sdo"/>
+                            <constraint firstAttribute="trailing" secondItem="q8L-NC-CQE" secondAttribute="trailing" constant="8" id="wli-vf-3PC"/>
+                            <constraint firstItem="qyP-dm-3jB" firstAttribute="leading" secondItem="EKe-Ol-LTo" secondAttribute="leading" id="x8e-Ht-33y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="EKe-Ol-LTo" secondAttribute="bottom" id="5cq-Ap-aB1"/>
+                    <constraint firstItem="EKe-Ol-LTo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QSp-v2-PpE"/>
+                    <constraint firstAttribute="trailing" secondItem="EKe-Ol-LTo" secondAttribute="trailing" id="a78-hr-tMe"/>
+                    <constraint firstItem="EKe-Ol-LTo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mAd-Hx-hAO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="brandImage" destination="qyP-dm-3jB" id="Lnq-wE-GSD"/>
+                <outlet property="brandName" destination="q8L-NC-CQE" id="2va-oy-1v9"/>
+                <outlet property="promoDetails" destination="PoP-Qy-nQ7" id="TFu-dd-Kka"/>
+                <outlet property="redeemButton" destination="fe5-qs-bfv" id="NVe-cI-bZm"/>
+                <outlet property="roundedView" destination="EKe-Ol-LTo" id="enA-7j-OOm"/>
+                <outlet property="showCodeButton" destination="coF-m2-4OB" id="Or1-Nd-W0j"/>
+                <outlet property="statusLabel" destination="9i8-0w-97L" id="IxX-jz-W5T"/>
+            </connections>
+            <point key="canvasLocation" x="299.27536231884062" y="229.35267857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iandooleyTLD6iCOlyb0unsplash" width="375" height="267"/>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

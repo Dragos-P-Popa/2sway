@@ -1,0 +1,6 @@
+framework module Pods_2Sway_2SwayUITests {
+  umbrella header "Pods-2Sway-2SwayUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Jost-VariableFont_wght.ttf">
+            <string>Jost-Regular</string>
+            <string>JostRoman-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FurtherInfoDetailCell" rowHeight="371" id="KGk-i7-Jjw" customClass="FurtherInfoDetailCell" customModule="progressBar2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFg-XJ-vSj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wJb-nG-kxd">
+                                <rect key="frame" x="16" y="0.0" width="288" height="355"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-1b-Qte">
+                                        <rect key="frame" x="0.0" y="0.0" width="286" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="Je1-ph-90Y"/>
+                                        </constraints>
+                                        <string key="text">We have these rules so that our partners are happy to give you discounts for your posts. You must follow them to get your discount.</string>
+                                        <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="10"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W1X-pV-W9f" userLabel="Stack 1">
+                                        <rect key="frame" x="0.0" y="56" width="284.5" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rule 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDx-jK-2h4">
+                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIg-a4-pfp">
+                                                <rect key="frame" x="0.0" y="17.5" width="284.5" height="52.5"/>
+                                                <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-6d-flo" userLabel="Stack 2">
+                                        <rect key="frame" x="0.0" y="136" width="284.5" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rule 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0Y-2K-ufJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epJ-HU-DqS">
+                                                <rect key="frame" x="0.0" y="17.5" width="284.5" height="52.5"/>
+                                                <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-Ua-nxw" userLabel="Stack 3">
+                                        <rect key="frame" x="0.0" y="216" width="284.5" height="139"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rule 3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLC-b1-sH4">
+                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6d-dt-Ssr">
+                                                <rect key="frame" x="0.0" y="17.5" width="284.5" height="121.5"/>
+                                                <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</string>
+                                                <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wJb-nG-kxd" firstAttribute="top" secondItem="SFg-XJ-vSj" secondAttribute="top" id="8Y6-hc-36a"/>
+                            <constraint firstItem="wJb-nG-kxd" firstAttribute="leading" secondItem="SFg-XJ-vSj" secondAttribute="leading" constant="16" id="BMz-Yn-AVc"/>
+                            <constraint firstAttribute="trailing" secondItem="wJb-nG-kxd" secondAttribute="trailing" constant="16" id="fPk-3h-WA8"/>
+                            <constraint firstAttribute="bottom" secondItem="wJb-nG-kxd" secondAttribute="bottom" constant="16" id="ie8-Iq-qJ0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="SFg-XJ-vSj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2Z8-fk-xQM"/>
+                    <constraint firstAttribute="trailing" secondItem="SFg-XJ-vSj" secondAttribute="trailing" id="dXZ-04-0Hn"/>
+                    <constraint firstAttribute="bottom" secondItem="SFg-XJ-vSj" secondAttribute="bottom" id="oBA-MC-cwj"/>
+                    <constraint firstItem="SFg-XJ-vSj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qzQ-uE-oxV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="cellBackground" destination="SFg-XJ-vSj" id="p7X-kb-6ej"/>
+                <outlet property="desc0" destination="O0X-1b-Qte" id="cqH-g1-HeJ"/>
+                <outlet property="desc1" destination="WIg-a4-pfp" id="7Qc-km-ik6"/>
+                <outlet property="desc2" destination="epJ-HU-DqS" id="yGN-xY-qhs"/>
+                <outlet property="desc3" destination="f6d-dt-Ssr" id="cay-RC-0ef"/>
+                <outlet property="subtitle1" destination="qDx-jK-2h4" id="x8i-2Y-Kvc"/>
+                <outlet property="subtitle2" destination="t0Y-2K-ufJ" id="fMg-j5-hbD"/>
+                <outlet property="subtitle3" destination="PLC-b1-sH4" id="Fdq-QH-Msc"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="113.50446428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Jost-VariableFont_wght.ttf">
+            <string>JostRoman-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FurtherInfoCell" rowHeight="46" id="KGk-i7-Jjw" customClass="FurtherInfoCell" customModule="progressBar2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAZ-EG-o0f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Rules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAo-GN-wYe">
+                                <rect key="frame" x="16" y="13.5" width="71.5" height="19"/>
+                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="16"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrowWhite" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-2M-8c2">
+                                <rect key="frame" x="281" y="12" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="NrB-18-9iE"/>
+                                    <constraint firstAttribute="height" constant="22" id="W3X-pa-3ps"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="black"/>
+                        <constraints>
+                            <constraint firstItem="DjF-2M-8c2" firstAttribute="centerY" secondItem="nAZ-EG-o0f" secondAttribute="centerY" id="3aU-wZ-z8T"/>
+                            <constraint firstItem="eAo-GN-wYe" firstAttribute="leading" secondItem="nAZ-EG-o0f" secondAttribute="leading" constant="16" id="QqS-0Z-N1I"/>
+                            <constraint firstItem="eAo-GN-wYe" firstAttribute="centerY" secondItem="nAZ-EG-o0f" secondAttribute="centerY" id="Tdg-sb-nMk"/>
+                            <constraint firstAttribute="height" constant="46" id="qBD-9z-6ZR"/>
+                            <constraint firstAttribute="trailing" secondItem="DjF-2M-8c2" secondAttribute="trailing" constant="17" id="u55-3Y-TdF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nAZ-EG-o0f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1SA-HF-4HH"/>
+                    <constraint firstItem="nAZ-EG-o0f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dkw-rU-9rp"/>
+                    <constraint firstAttribute="trailing" secondItem="nAZ-EG-o0f" secondAttribute="trailing" id="p5X-JG-gEV"/>
+                    <constraint firstAttribute="bottom" secondItem="nAZ-EG-o0f" secondAttribute="bottom" id="vyo-Gh-V9k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="arrowView" destination="DjF-2M-8c2" id="Wx4-7T-x6R"/>
+                <outlet property="cellBackground" destination="nAZ-EG-o0f" id="g5e-yY-X9p"/>
+                <outlet property="cellLabel" destination="eAo-GN-wYe" id="Vqp-D8-kz8"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="99.107142857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="downArrowWhite" width="21" height="11"/>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
