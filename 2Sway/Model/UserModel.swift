@@ -11,6 +11,7 @@ import Firebase
 
 struct UserModel {
     
+    var accountStatus: Int
     var email: String?
     var name: String?
     var isExpire : String?
@@ -23,6 +24,7 @@ struct UserModel {
     var storyIds: [String]
     
     enum CodingKeys: String, CodingKey {
+        case accountStatus = "accountStatus"
         case email = "email"
         case urlString = "urlString"
         case name = "name"
@@ -95,6 +97,7 @@ struct UserModel {
 extension UserModel: Encodable, Decodable {
     func encode(to encoder: Encoder) throws {
         var val = encoder.container(keyedBy: CodingKeys.self)
+        try val.encode(accountStatus, forKey: .accountStatus)
         try val.encode(name, forKey: .name)
         try val.encode(urlString, forKey: .urlString)
         try val.encode(email, forKey: .email)
@@ -108,6 +111,7 @@ extension UserModel: Encodable, Decodable {
     
     init(from decoder: Decoder) throws {
         var value = try decoder.container(keyedBy: CodingKeys.self)
+        accountStatus = try value.decode(Int.self, forKey: .accountStatus)
         name = try value.decode(String.self, forKey: .name)
         isExpire = try value.decode(String.self, forKey: .isExpire)
         urlString = try value.decode(String.self, forKey: .urlString)

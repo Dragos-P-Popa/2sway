@@ -11,6 +11,7 @@ import Firebase
 
 struct User {
     
+    var accountStatus: Int
     var email: String?
     var password: String?
     var name: String?
@@ -23,6 +24,7 @@ struct User {
     var promos: [StudentPromos]
     
     init() {
+        self.accountStatus = 0
         self.myPromos = []
         self.totalPromosDone = 0
         self.totalEngagements = 0
@@ -31,6 +33,7 @@ struct User {
     }
     
     enum CodingKeys: String, CodingKey {
+        case accountStatus = "accountStatus"
         case email = "email"
         case urlString = "urlString"
         case name = "name"
@@ -198,6 +201,7 @@ extension StudentPromos: Encodable, Decodable {
 extension User: Encodable, Decodable {
     func encode(to encoder: Encoder) throws {
         var val = encoder.container(keyedBy: CodingKeys.self)
+        try val.encode(accountStatus, forKey: .accountStatus)
         try val.encode(name, forKey: .name)
         try val.encode(urlString, forKey: .urlString)
         try val.encode(email, forKey: .email)
@@ -207,6 +211,7 @@ extension User: Encodable, Decodable {
     
     init(from decoder: Decoder) throws {
         var value = try decoder.container(keyedBy: CodingKeys.self)
+        accountStatus = try value.decode(Int.self, forKey: .accountStatus)
         name = try value.decode(String.self, forKey: .name)
         urlString = try value.decode(String.self, forKey: .urlString)
         email = try value.decode(String.self, forKey: .email)

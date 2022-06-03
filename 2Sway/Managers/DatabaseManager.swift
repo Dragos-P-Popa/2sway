@@ -67,6 +67,7 @@ final class DatabaseManager {
                             let user = try JSONDecoder().decode(UserModel.self, from: data)
                             let dataDescription = document.data()
                             var strProfileUrl = ""
+                            var accountStatus = 0
                             var strname = ""
                             var strEmail = ""
                             var strInsta = ""
@@ -76,6 +77,9 @@ final class DatabaseManager {
                             var aryStoryIds1 = [String]()
                             var aryPromoMain = [StudentPromos]()
                             if let dictMain = dataDescription as? NSDictionary {
+                                if let status = dictMain.object(forKey:"accountStatus") as? Int {
+                                    accountStatus = status
+                                }
                                 if let proPic = dictMain.object(forKey:"urlString") {
                                     strProfileUrl = "\(proPic)"
                                 }
@@ -123,7 +127,7 @@ final class DatabaseManager {
                                             }
                                         }
                                     print(aryPromoMain)
-                                AppData.shared.user = UserModel(email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
+                                    AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
                             }
                             AppData.shared.user = user
                             completion(true)

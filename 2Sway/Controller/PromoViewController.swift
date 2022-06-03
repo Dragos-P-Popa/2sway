@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import WaveAnimationView
+import FirebaseAnalytics
 
 class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDelegate ,NetworkSpeedProviderDelegate {
    
@@ -86,6 +87,10 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
     override func viewDidLoad() {
         super.viewDidLoad()
         wave = WaveAnimationView(frame: CGRect(origin: .zero, size: ivePostedButton.bounds.size), color: UIColor(named: "2SwayYellow")!.withAlphaComponent(0.5))
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                AnalyticsParameterScreenName: "promo"
+            ])
         
        // self.viewAni.backgroundColor = UIColor.green
         self.ivePostedButton.addSubview(wave)
@@ -382,9 +387,14 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
                             
                           //  self.storyID = instaId
                             self.storyCount = Int(sCount)
+                            
 
 //                            } else {
                                 if Int(sCount)! < self.progressBar.lowViews {
+                                    Analytics.logEvent("ivePostedPressed", parameters: [
+                                        "CurrentStoryCount": Int(sCount)! as NSObject,
+                                        "DiscountTier": 0 as NSObject
+                                    ])
                                     self.lblCount.text = "\(sCount) views, Current discount: 0%"
                                     if isExpire == true {
                                         let alert = UIAlertController(title: "Error", message: "Your story has either expired or been deleted. This means that your story views will no longer increase. Claim or cancel this promotion.", preferredStyle: UIAlertController.Style.alert)
@@ -397,7 +407,10 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
                                     self.business?.totalEngagements = Int(sCount)!
                                     //  self.lblDiscout.text = "discount: 0%"
                                 } else if Int(sCount)! < self.progressBar.midViews {
-                                   
+                                    Analytics.logEvent("ivePostedPressed", parameters: [
+                                        "CurrentStoryCount": Int(sCount)! as NSObject,
+                                        "DiscountTier": 1 as NSObject
+                                    ])
                                     self.lblCount.text = "\(sCount) views, Current discount: \(self.progressBar.lowDiscount)%"
                                     if isExpire == true {
                                         let alert = UIAlertController(title: "Error", message: "Your story has either expired or been deleted. This means that your story views will no longer increase. Claim or cancel this promotion.", preferredStyle: UIAlertController.Style.alert)
@@ -411,6 +424,10 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
                                     self.business?.totalEngagements = Int(sCount)!
                                     //  self.lblDiscout.text = "discount: \(self.progressBar.lowDiscount)%"
                                 } else if Int(sCount)! < self.progressBar.highViews {
+                                    Analytics.logEvent("ivePostedPressed", parameters: [
+                                        "CurrentStoryCount": Int(sCount)! as NSObject,
+                                        "DiscountTier": 2 as NSObject
+                                    ])
                                     self.lblCount.text = "\(sCount) views, Current discount: \(self.progressBar.midDiscount)%"
                                     if isExpire == true {
                                         let alert = UIAlertController(title: "Error", message: "Your story has either expired or been deleted. This means that your story views will no longer increase. Claim or cancel this promotion.", preferredStyle: UIAlertController.Style.alert)
@@ -424,6 +441,10 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
                                     self.business?.totalEngagements = Int(sCount)!
                                     //self.lblDiscout.text = "discount: \(self.progressBar.midDiscount)%"
                                 } else {
+                                    Analytics.logEvent("ivePostedPressed", parameters: [
+                                        "CurrentStoryCount": Int(sCount)! as NSObject,
+                                      "DiscountTier": 3 as NSObject
+                                    ])
                                     self.lblCount.text = "\(sCount) views, Current discount: \(self.progressBar.highDiscount)%"
                                     if isExpire == true {
                                         let alert = UIAlertController(title: "Error", message: "Your story has either expired or been deleted. This means that your story views will no longer increase. Claim or cancel this promotion.", preferredStyle: UIAlertController.Style.alert)
