@@ -153,7 +153,8 @@ extension MyClaimedPromosViewController: RedeemablePromoCellDelegate {
             for business in AppData.shared.business {
                 aryBuines.append(business.name)
             }
-            Analytics.logEvent("discount_redeemed", parameters: ["business": business!.name as NSObject])
+            //parameters: ["business": AppData.shared.business as NSObject]
+            Analytics.logEvent("discount_redeemed", parameters: ["Description" : "WIP"])
             print(selectedPromo)
                 for i in 0..<AppData.shared.business.count {
                     if selectedPromo == nil  {
