@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 @IBDesignable class MyClaimedPromosViewController: UIViewController {
     
@@ -133,6 +134,7 @@ extension MyClaimedPromosViewController: UITableViewDataSource, UITableViewDeleg
 
 extension MyClaimedPromosViewController: RedeemablePromoCellDelegate {
     
+    
     func redeemButtonPressed(claimedPromo: StudentPromos) {
         
         // Match up the local instance of the claimed promo to the promo stored in the ActiveUser class, then assign attributes
@@ -151,6 +153,7 @@ extension MyClaimedPromosViewController: RedeemablePromoCellDelegate {
             for business in AppData.shared.business {
                 aryBuines.append(business.name)
             }
+            Analytics.logEvent("discount_redeemed", parameters: ["business": business!.name as NSObject])
             print(selectedPromo)
                 for i in 0..<AppData.shared.business.count {
                     if selectedPromo == nil  {

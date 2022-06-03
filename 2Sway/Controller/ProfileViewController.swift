@@ -179,6 +179,9 @@ class ProfileViewController: UIViewController {
                     MBProgressHUD.hide(for:self.view, animated:true)
                     GlobalAlert.showAlertMessage1(vc:self, titleStr:K.appName, messageStr:K.someWrong)
                 } else {
+                    Analytics.logEvent("deleteAccount", parameters: [
+                        "Description": "User has deleted their account manually. Excludes forced removal." as NSObject
+                    ])
                     MBProgressHUD.showAdded(to:self.view, animated:true)
                     self.DeletePassword(email:emailMain, pass:(self.textFieldAlert?.text!)!)
                 }

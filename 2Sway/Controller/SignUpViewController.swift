@@ -122,6 +122,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if isTerms == false {
             GlobalAlert.showAlertMessage(vc:self, titleStr:K.appName, messageStr:"Please agree to the Terms and Conditions")
         } else if nameCheck(), passwordCheck() , emailCheck() { //, emailCheck() { ,  emailCheck() 
+            Analytics.logEvent("signup", parameters: [
+                "description": "New user has signed up." as NSObject
+            ])
             saveSignUpInfo()
         }
     }

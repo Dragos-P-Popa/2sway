@@ -7,6 +7,7 @@
 
 import UIKit
 import MBProgressHUD
+import FirebaseAnalytics
 
 class BusinessDetailsViewController: UIViewController {
     
@@ -193,6 +194,9 @@ class BusinessDetailsViewController: UIViewController {
      //   addViews()
      //   addConstraints()
         configureViews()
+        Analytics.logEvent("business_viewed", parameters: [
+            "business" : business?.name ?? ""
+            ])
 //        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
 //           swipeRight.direction = .right
 //           self.view.addGestureRecognizer(swipeRight)
@@ -317,6 +321,9 @@ class BusinessDetailsViewController: UIViewController {
     @IBAction func btnActionBack(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "promoSelectionVC") as! PromoSelectionViewController
         vc.brand = business
+        Analytics.logEvent("get_discount_pressed", parameters: [
+            "business" : business?.name ?? ""
+            ])
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func btnActionBak(_ sender: Any) {
