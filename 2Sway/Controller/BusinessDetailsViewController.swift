@@ -195,7 +195,7 @@ class BusinessDetailsViewController: UIViewController {
      //   addConstraints()
         configureViews()
         Analytics.logEvent("business_viewed", parameters: [
-            "business" : business?.name ?? ""
+            "business" : business?.name ?? "?"
             ])
 //        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
 //           swipeRight.direction = .right
@@ -322,7 +322,7 @@ class BusinessDetailsViewController: UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "promoSelectionVC") as! PromoSelectionViewController
         vc.brand = business
         Analytics.logEvent("get_discount_pressed", parameters: [
-            "business" : business?.name ?? ""
+            "business" : business?.name ?? "?"
             ])
         self.navigationController?.pushViewController(vc, animated: true)
     }

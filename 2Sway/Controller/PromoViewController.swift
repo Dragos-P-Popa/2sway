@@ -897,7 +897,7 @@ class PromoViewController: UIViewController, ProgressBarDelegate, ConfirmClaimDe
             }
             if shouldAdd {
                 if isAgain == true {
-                    Analytics.logEvent("save_promo", parameters: ["business": business!.name as NSObject])
+                    Analytics.logEvent("save_promo", parameters: ["business" : business?.name ?? "?"])
                     print(self.IntIndex)
                     print(AppData.shared.user?.promos)
                     AppData.shared.user?.promos.remove(at:IntIndex)
