@@ -79,6 +79,9 @@ class HomeViewController: UIViewController {
                 UIApplication.shared.endBackgroundTask(bgTask)
             })
         
+        //refreshing user
+        DatabaseManager.shared.getUser(completion: { success in })
+        
         var emailMain = String()
         if let emailGet = UserDefaults.standard.object(forKey:K.udefalt.EmailCurrent) {
             if "\(emailGet)" == "" {
@@ -88,8 +91,6 @@ class HomeViewController: UIViewController {
             }
         }
         
-        //refreshing user 
-        DatabaseManager.shared.getUser(completion: { success in })
     
         let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
 
