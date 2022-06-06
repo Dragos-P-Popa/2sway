@@ -87,6 +87,9 @@ class HomeViewController: UIViewController {
                 emailMain = "\(emailGet)"
             }
         }
+        
+        //refreshing user 
+        DatabaseManager.shared.getUser(completion: { success in })
     
         let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
 
@@ -125,6 +128,45 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        /*
+        let profCheck = Firestore.firestore()
+            .collection("Students").whereField("email", isEqualTo:emailMain)
+        
+        // Get data
+        profCheck.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print(err.localizedDescription)
+            }  else {
+                let document = querySnapshot!.documents.first
+                let dataDescription = document?.data()
+                if let dictMain = dataDescription as? NSDictionary {
+                    if let proPic = dictMain.object(forKey:"urlString") {
+                        if self.proPic == "" {
+                            guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "isPhoto") as? TakePhotoViewController else {
+                                return
+                            }
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            let navigationController = UINavigationController(rootViewController: rootVC)
+                            navigationController.navigationBar.isHidden = true
+                            UserDefaults.standard.set(false, forKey:K.udefalt.IsPhoto)
+                            UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
+                            UIApplication.shared.windows.first?.rootViewController = navigationController
+                            UIApplication.shared.windows.first?.makeKeyAndVisible()
+                        } else {
+                            UserDefaults.standard.set(true, forKey:K.udefalt.isLogin)
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            self.performSegue(withIdentifier: K.Segues.logInToHome, sender: self)
+                        }
+                        AppData.shared.user = UserModel(accountStatus:self.accountStatus, email:self.strEmail, name:self.strname, isExpire:self.isExpire, urlString:self.strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:self.IntTotleng, promos:self.aryPromoMain, instagram:self.strInsta, storyIds:self.aryStoryIds)
+                        DatabaseManager.shared.uploadUser(user: AppData.shared.user!)
+                        DatabaseManager.shared.getUser(completion: { success in
+                            
+                        })
+                    }
+                }
+            }
+        }
+         */
         
         
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
