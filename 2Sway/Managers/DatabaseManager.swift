@@ -64,7 +64,7 @@ final class DatabaseManager {
                             print("Firebase data ", document.data())
                             let data = try JSONSerialization.data(withJSONObject: document.data(), options: .prettyPrinted)
                             print("Hello user ", document.data())
-                            let user = try JSONDecoder().decode(UserModel.self, from: data)
+                            //let user = try? JSONDecoder().decode(UserModel.self, from: data)
                             let dataDescription = document.data()
                             var strProfileUrl = ""
                             var accountStatus = 0
@@ -129,13 +129,13 @@ final class DatabaseManager {
                                     print(aryPromoMain)
                                     AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
                             }
-                            AppData.shared.user = user
+                            //AppData.shared.user = user
                             completion(true)
                             }
                         }
                     }
                 }catch{
-                    print("User error ", error.localizedDescription)
+                    print("User error ", error)
                     completion(false)
                 }
             }

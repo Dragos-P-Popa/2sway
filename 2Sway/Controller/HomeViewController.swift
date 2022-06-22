@@ -91,7 +91,6 @@ class HomeViewController: UIViewController {
             }
         }
         
-    
         let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
 
         docRef.getDocument { (document, error) in
@@ -107,7 +106,7 @@ class HomeViewController: UIViewController {
                     if document.get("accountStatus") as! Int == 1 {
                         docRef.setData(["accountStatus" : 0], merge: true)
                         
-                        let alert = UIAlertController(title: "Account management", message: "There has been an error with your account. You will be signed out, please try to signin again.", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Account management", message: "There has been an error with your account. You will be signed out, please try to sign in again.", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                             self.signout()
                         }))
@@ -116,7 +115,7 @@ class HomeViewController: UIViewController {
                     if document.get("accountStatus") as! Int == 2 {
                         docRef.setData(["accountStatus" : 0], merge: true)
                         
-                        let alert = UIAlertController(title: "Account management", message: "There has been an undefined error with your account. Your account will be deleted, please try to register again.\n \nIf you have any questions please contact example@2sway.com", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Account management", message: "There has been an undefined error with your account. Your account will be deleted, please try to register again.", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                             self.deleteUser()
                             docRef.delete()
@@ -129,45 +128,6 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        /*
-        let profCheck = Firestore.firestore()
-            .collection("Students").whereField("email", isEqualTo:emailMain)
-        
-        // Get data
-        profCheck.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print(err.localizedDescription)
-            }  else {
-                let document = querySnapshot!.documents.first
-                let dataDescription = document?.data()
-                if let dictMain = dataDescription as? NSDictionary {
-                    if let proPic = dictMain.object(forKey:"urlString") {
-                        if self.proPic == "" {
-                            guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "isPhoto") as? TakePhotoViewController else {
-                                return
-                            }
-                            MBProgressHUD.hide(for: self.view, animated: true)
-                            let navigationController = UINavigationController(rootViewController: rootVC)
-                            navigationController.navigationBar.isHidden = true
-                            UserDefaults.standard.set(false, forKey:K.udefalt.IsPhoto)
-                            UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
-                            UIApplication.shared.windows.first?.rootViewController = navigationController
-                            UIApplication.shared.windows.first?.makeKeyAndVisible()
-                        } else {
-                            UserDefaults.standard.set(true, forKey:K.udefalt.isLogin)
-                            MBProgressHUD.hide(for: self.view, animated: true)
-                            self.performSegue(withIdentifier: K.Segues.logInToHome, sender: self)
-                        }
-                        AppData.shared.user = UserModel(accountStatus:self.accountStatus, email:self.strEmail, name:self.strname, isExpire:self.isExpire, urlString:self.strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:self.IntTotleng, promos:self.aryPromoMain, instagram:self.strInsta, storyIds:self.aryStoryIds)
-                        DatabaseManager.shared.uploadUser(user: AppData.shared.user!)
-                        DatabaseManager.shared.getUser(completion: { success in
-                            
-                        })
-                    }
-                }
-            }
-        }
-         */
         
         
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
@@ -209,7 +169,7 @@ class HomeViewController: UIViewController {
                     }
                     AppData.shared.business = self.businesses
                 } catch {
-                    print(error.localizedDescription)
+                    print("Business error    \(AppData.shared.business)     \(error)")
                 }
             }
         }
