@@ -49,7 +49,7 @@ struct UserModel {
          DatabaseManager.shared.removeClaimedPromo(with: id)
     }
     
-    // Sign out from firebase
+    ///Signs user out of Firebase Auth
     func signOut() {
         do {
             try Auth.auth().signOut()

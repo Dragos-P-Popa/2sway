@@ -11,6 +11,7 @@ import Firebase
 
 struct User {
     
+    //All user needed data structures
     var accountStatus: Int
     var email: String?
     var password: String?
@@ -43,28 +44,39 @@ struct User {
         case totalPromosDone
     }
         
+    /**
+     Calls onto DatabaseManager to remove user promo from Firebase Firestore.
+     
+     - parameter id: Promo ID as String.
+     */
     func removeClaimedPromo(id: String) {
         var promoIndex: Int = 0
+        //Loops through every claimed promo
         for promo in ActiveUser.activeUser.myPromos {
+            //Once the promo which needs to be removed is found
             if promo?.promoID == id {
+                //It is removed from the active users promo list
                 ActiveUser.activeUser.myPromos.remove(at: promoIndex)
                 break
             }
             promoIndex += 1
         }
-         DatabaseManager.shared.removeClaimedPromo(with: id)
+        //Then it is also removed form Firebase
+        DatabaseManager.shared.removeClaimedPromo(with: id)
     }
     
+    ///Keeps count of the number of claimed promos
     mutating func promoClaimed() {
         self.totalPromosDone += 1
        // DatabaseManager.shared.uploadUser(user: self)
     }
     
+    ///Clears locally stored promos
     mutating func clearLocalPromos() {
         self.myPromos = []
         }
     
-    // Sign out from firebase
+    /// Signs user out of Firebase Auth
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -74,6 +86,7 @@ struct User {
         }
     }
     
+    ///Delete user data in Firebase Firestore
     mutating func deleteData() {
         guard let email = Auth.auth().currentUser?.email else {
             print("User ID could not be found")
@@ -100,6 +113,7 @@ struct User {
             db.collection(email).document("details").delete()
         }
         
+        //Deleting users profile picture from Firebase Storage
         let photoRef = storage.child("ProfilePics/\(userID).jpeg")
         photoRef.delete { error in
             if let error = error {

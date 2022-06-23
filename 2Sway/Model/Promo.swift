@@ -52,20 +52,6 @@ class Promo: Brand {
             self.specificDiscount = highDiscountPerc
         }
     }
-//    var claimedViews: Int = 0
-//    var specificDiscount: Int {
-//        get {
-//            if claimedViews < lowViews {
-//                return 0
-//            } else if claimedViews < midViews {
-//                return lowDiscountPerc
-//            } else if claimedViews < highViews {
-//                return midDiscountPerc
-//            } else {
-//                return highDiscountPerc
-//            }
-//        }
-//    }
     
     func createVerifyingPromo() -> VerifyingPromo {
         return VerifyingPromo(brandID: self.brandID, promoID: promoID)
