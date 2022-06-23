@@ -14,28 +14,6 @@ class AMSleepTimerUtil: NSObject {
     fileprivate var sleepTimer: Timer?
     weak var timer: Timer?
     
-    /// Initialize the timer to trigger a function to execute after a duration of time
-    /// - Parameter seconds: the time delay until the selector function executes
-    /// - Returns: true if sleep timer were successfully initialized
-//    func createTimerToStopMusic(at seconds: TimeInterval) -> Bool {
-//        let fireAtDate = Date(timeIntervalSinceNow: seconds)
-//        stopSleepTimer()
-//
-//        self.sleepTimer = Timer(fireAt: fireAtDate,
-//                                interval: 0,
-//                                target: self,
-//                                selector: #selector(pauseMusic),
-//                                userInfo: nil,
-//                                repeats: false)
-//        guard let sleepTimer = sleepTimer else { return false }
-//        RunLoop.main.add(sleepTimer, forMode: .common)
-//        return true
-//    }
-//
-//    @objc func pauseMusic() {
-//
-//    }
-    
     /// Used to reset the sleep timer before initializing a new timer if the user clicks the "Set Timer" multiple times
     func stopSleepTimer() {
         if sleepTimer != nil {
@@ -79,56 +57,7 @@ class HomeViewController: UIViewController {
                 UIApplication.shared.endBackgroundTask(bgTask)
             })
         
-        //refreshing user
-        DatabaseManager.shared.getUser(completion: { success in })
-        
-        var emailMain = String()
-        if let emailGet = UserDefaults.standard.object(forKey:K.udefalt.EmailCurrent) {
-            if "\(emailGet)" == "" {
-                emailMain = ""
-            } else {
-                emailMain = "\(emailGet)"
-            }
-        }
-        
-        let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                /*if document.get("accountStatus") as! Int == 0 {
-                    
-                    let alert = UIAlertController(title: "Account found", message: "Continue", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
-                    self.present(alert, animated: true, completion: nil)
-                      
-                }*/
-                if document.get("accountStatus") != nil {
-                    if document.get("accountStatus") as! Int == 1 {
-                        docRef.setData(["accountStatus" : 0], merge: true)
-                        
-                        let alert = UIAlertController(title: "Account management", message: "There has been an error with your account. You will be signed out, please try to sign in again.", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                            self.signout()
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    if document.get("accountStatus") as! Int == 2 {
-                        docRef.setData(["accountStatus" : 0], merge: true)
-                        
-                        let alert = UIAlertController(title: "Account management", message: "There has been an undefined error with your account. Your account will be deleted, please try to register again.", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                            self.deleteUser()
-                            docRef.delete()
-                            self.signout()
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                         
-                        
-                    }
-                }
-            }
-        }
-        
+        checkAccountStatus()
         
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
                 AnalyticsParameterScreenName: "home"
@@ -210,8 +139,51 @@ class HomeViewController: UIViewController {
            timer1?.invalidate()
        }
     
+    
+    ///Checks account status and decides wether the user account needs to be deleted or forcefully signed out
+    func checkAccountStatus(){
+        var emailMain = String()
+        if let emailGet = UserDefaults.standard.object(forKey:K.udefalt.EmailCurrent) {
+            if "\(emailGet)" == "" {
+                emailMain = ""
+            } else {
+                emailMain = "\(emailGet)"
+            }
+        }
+        
+        let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if document.get("accountStatus") != nil {
+                    if document.get("accountStatus") as! Int == 1 {
+                        docRef.setData(["accountStatus" : 0], merge: true)
+                        
+                        let alert = UIAlertController(title: "Account management", message: "There has been an error with your account. You will be signed out, please try to sign in again.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                            self.signout()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    if document.get("accountStatus") as! Int == 2 {
+                        docRef.setData(["accountStatus" : 0], merge: true)
+                        
+                        let alert = UIAlertController(title: "Account management", message: "There has been an undefined error with your account. Your account will be deleted, please try to register again.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                            self.deleteUser()
+                            docRef.delete()
+                            self.signout()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                         
+                        
+                    }
+                }
+            }
+        }
+    }
+    
     func deleteUser() {
-            
             let user = Auth.auth().currentUser
             ActiveUser.activeUser.deleteData()
 
