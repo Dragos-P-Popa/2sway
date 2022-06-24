@@ -47,20 +47,27 @@ class BrandCell: UITableViewCell, CLLocationManagerDelegate {
         descLabel.text = "Max discount: \(Int(brand.highestDiscount))%"
         tagLabel.text = brand.keywords
         
-        locations = brand.locations
-        
-        print("LAT: ", location.latitude)
-        print("LON: ", location.longitude)
-        print(locations[0].latitude)
-        print(locations[0].longitude)
-        
-        let coordinate₀ = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        let coordinate₁ = CLLocation(latitude: locations[0].latitude, longitude: locations[0].longitude)
+        let locationManager = CLLocationManager()
 
-        let distanceInMeters = coordinate₀.distance(from: coordinate₁)
-        
-        
-        self.mapLabel.text = "\(String(format:"%.2f", distanceInMeters / 1609)) miles away"
+        if CLLocationManager.locationServicesEnabled() {
+            switch locationManager.authorizationStatus {
+                case .notDetermined, .restricted, .denied:
+                    self.mapLabel.text = "\(brand.locations[0].address)"
+                case .authorizedAlways, .authorizedWhenInUse:
+                    locations = brand.locations
+                    
+                    let coordinate₀ = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                    let coordinate₁ = CLLocation(latitude: locations[0].latitude, longitude: locations[0].longitude)
+
+                    let distanceInMeters = coordinate₀.distance(from: coordinate₁)
+                    
+                    self.mapLabel.text = "\(String(format:"%.2f", distanceInMeters / 1609)) miles away"
+                @unknown default:
+                    break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
         
     }
     

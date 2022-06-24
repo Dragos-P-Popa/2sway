@@ -97,10 +97,12 @@ extension Business: Decodable, Encodable {
 struct Locations {
     var latitude: Double
     var longitude: Double
+    var address: String
     
     enum CodingKeys: String, CodingKey {
         case latitude
         case longitude
+        case address
     }
 }
 
@@ -109,6 +111,7 @@ extension Locations: Decodable, Encodable {
         var val = encoder.container(keyedBy: CodingKeys.self)
         try val.encode(latitude, forKey: .latitude)
         try val.encode(longitude, forKey: .longitude)
+        try val.encode(address, forKey: .address)
     }
 }
 
