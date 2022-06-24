@@ -8,33 +8,12 @@
 import UIKit
 import Firebase
 import MBProgressHUD
+import CoreLocation
 
 class AMSleepTimerUtil: NSObject {
     static let shared = AMSleepTimerUtil()
     fileprivate var sleepTimer: Timer?
     weak var timer: Timer?
-    
-    /// Initialize the timer to trigger a function to execute after a duration of time
-    /// - Parameter seconds: the time delay until the selector function executes
-    /// - Returns: true if sleep timer were successfully initialized
-//    func createTimerToStopMusic(at seconds: TimeInterval) -> Bool {
-//        let fireAtDate = Date(timeIntervalSinceNow: seconds)
-//        stopSleepTimer()
-//
-//        self.sleepTimer = Timer(fireAt: fireAtDate,
-//                                interval: 0,
-//                                target: self,
-//                                selector: #selector(pauseMusic),
-//                                userInfo: nil,
-//                                repeats: false)
-//        guard let sleepTimer = sleepTimer else { return false }
-//        RunLoop.main.add(sleepTimer, forMode: .common)
-//        return true
-//    }
-//
-//    @objc func pauseMusic() {
-//
-//    }
     
     /// Used to reset the sleep timer before initializing a new timer if the user clicks the "Set Timer" multiple times
     func stopSleepTimer() {
@@ -48,7 +27,7 @@ class AMSleepTimerUtil: NSObject {
         return self.sleepTimer != nil
     }
 }
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     let brandBrain = BrandBrain()
     var brandSelected: Business?
@@ -60,6 +39,10 @@ class HomeViewController: UIViewController {
     var isAnyActive = Bool()
     var appVersionCurent = String()
     var appOldVersion = String()
+    var userLat = Double()
+    var userLon = Double()
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var brandTableView: UITableView!
@@ -78,7 +61,30 @@ class HomeViewController: UIViewController {
             bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
                 UIApplication.shared.endBackgroundTask(bgTask)
             })
-     
+    
+        checkAccountStatus()
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                AnalyticsParameterScreenName: "home"
+            ])
+        
+        let currentUser = Auth.auth().currentUser;
+        if (currentUser == nil) {
+            signout()
+        }
+        
        // print(AMSleepTimerUtil.shared.createTimerToStopMusic(at:1))
         brandTableView.dataSource = self
         brandTableView.delegate = self
@@ -109,11 +115,19 @@ class HomeViewController: UIViewController {
                     }
                     AppData.shared.business = self.businesses
                 } catch {
-                    print(error.localizedDescription)
+                    print("Business error  \(error)")
                 }
             }
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        userLat = locValue.latitude
+        userLon = locValue.longitude
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
     func checkForAppVersionUpdate(CurentVersion:String,LiveVersion:String) {
         
         if CurentVersion > LiveVersion {
@@ -149,6 +163,108 @@ class HomeViewController: UIViewController {
        func stopTimer() {
            timer1?.invalidate()
        }
+    
+    
+    ///Checks account status and decides wether the user account needs to be deleted or forcefully signed out
+    func checkAccountStatus(){
+        var emailMain = String()
+        if let emailGet = UserDefaults.standard.object(forKey:K.udefalt.EmailCurrent) {
+            if "\(emailGet)" == "" {
+                emailMain = ""
+            } else {
+                emailMain = "\(emailGet)"
+            }
+        }
+        
+        let docRef = DatabaseManager.shared.db.collection("Students").document(emailMain)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if document.get("accountStatus") != nil {
+                    if document.get("accountStatus") as! Int == 1 {
+                        docRef.setData(["accountStatus" : 0], merge: true)
+                        
+                        let alert = UIAlertController(title: "Account management", message: "There has been an error with your account. You will be signed out, please try to sign in again.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                            self.signout()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    if document.get("accountStatus") as! Int == 2 {
+                        docRef.setData(["accountStatus" : 0], merge: true)
+                        
+                        let alert = UIAlertController(title: "Account management", message: "There has been an undefined error with your account. Your account will be deleted, please try to register again.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                            self.deleteUser()
+                            docRef.delete()
+                            self.signout()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                         
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteUser() {
+            let user = Auth.auth().currentUser
+            ActiveUser.activeUser.deleteData()
+
+            user?.delete { error in
+                if let error = error {
+                print("Error occurred in deleting account: \(error)")
+              } else {
+                print("Account deleted")
+                
+                guard let navVC = self.presentingViewController?.presentingViewController?.presentingViewController as? UINavigationController else { return }
+                
+                navVC.dismiss(animated: true, completion: nil)
+                            
+                let firstVC = navVC.viewControllers.first
+                if firstVC is SignUpViewController {
+                    navVC.popToRootViewController(animated: true)
+
+                } else {
+                    firstVC?.performSegue(withIdentifier: K.Segues.signOut, sender: self)
+                }
+              }
+            }
+        }
+    
+    func signout() {
+        do {
+        try Auth.auth().signOut()
+        print("User signed out")
+        UserDefaults.standard.set(false, forKey:K.udefalt.isLogin)
+        UserDefaults.standard.set(false, forKey:K.udefalt.IsRegister)
+        UserDefaults.standard.set(false, forKey:K.udefalt.isStart)
+        UserDefaults.standard.removeObject(forKey:K.udefalt.EmailCurrent)
+        UserDefaults.standard.removeObject(forKey:K.udefalt.Business)
+        UserDefaults.standard.removeObject(forKey:K.udefalt.UserIdMain)
+        UserDefaults.standard.set(false, forKey:"isTimeStart")
+        
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        K.storyCount = 0
+        K.userID = ""
+        K.cookieString = ""
+        AppData.shared.user = nil
+        HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login") as? LoginViewController else {
+            return
+        }
+        let navigationController = UINavigationController(rootViewController: rootVC)
+        navigationController.navigationBar.isHidden = true
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    
+    } catch let signOutError as NSError {
+        print("Error signing out: \(signOutError)")
+    }
+    }
 //    private func getWiFiRSSI() -> Int? {
 //        let app = UIApplication.shared
 //        var rssi: Int?
@@ -277,7 +393,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BrandCell", for: indexPath)
             as! BrandCell
         
-        cell.configure(with: businesses[indexPath.row])
+            
+        let location: CLLocationCoordinate2D  = CLLocationCoordinate2D(latitude: userLat, longitude: userLon)
+        
+        cell.configure(with: businesses[indexPath.row], location: location)
         cell.delegate = self
         return cell
     }
@@ -289,12 +408,49 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: BrandCellDelegate {
     func brandPressed(brand: Business) {
-        guard let currentUser = Auth.auth().currentUser else {
-            fatalError("Can't get current user")
-        }
+        
+        let currentUser = Auth.auth().currentUser;
+        if (currentUser == nil) {
+            let alert = UIAlertController(title: "Account exception", message: "There has been an error with your account. You will be signed out, please try to login or register again.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in
+                    do {
+                    try Auth.auth().signOut()
+                    print("User signed out")
+                    UserDefaults.standard.set(false, forKey:K.udefalt.isLogin)
+                    UserDefaults.standard.set(false, forKey:K.udefalt.IsRegister)
+                    UserDefaults.standard.set(false, forKey:K.udefalt.isStart)
+                    UserDefaults.standard.removeObject(forKey:K.udefalt.EmailCurrent)
+                    UserDefaults.standard.removeObject(forKey:K.udefalt.Business)
+                    UserDefaults.standard.removeObject(forKey:K.udefalt.UserIdMain)
+                    UserDefaults.standard.set(false, forKey:"isTimeStart")
+                  //  UserDefaults.standard.set(false, forKey:K.udefalt.IsPhoto)
+                 //   guard let navVC = presentingViewController as? UINavigationController else { return }
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    K.storyCount = 0
+                    K.userID = ""
+                    K.cookieString = ""
+                    AppData.shared.user = nil
+                    HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+                    guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login") as? LoginViewController else {
+                        return
+                    }
+                    let navigationController = UINavigationController(rootViewController: rootVC)
+                    navigationController.navigationBar.isHidden = true
+                    UIApplication.shared.windows.first?.rootViewController = navigationController
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                                
+                } catch let signOutError as NSError {
+                    print("Error signing out: \(signOutError)")
+                }
+                }))
+            self.present(alert, animated: true, completion: nil)
+    }
+    
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
-        currentUser.reload { error in
-            if !currentUser.isEmailVerified {
+        currentUser?.reload { error in
+            if !currentUser!.isEmailVerified {
                 self.performSegue(withIdentifier: K.Segues.toVerifiedPopUp, sender: self)
                 return
             }  else {
@@ -315,6 +471,9 @@ extension HomeViewController: BrandCellDelegate {
                             }
                         }
                         if AppData.shared.user?.promos.count ?? 0 > 0 && self.isAnyActive == false {
+                            Analytics.logEvent("duplicatePromotions", parameters: [
+                                "Description": "You already have one active promotions.You must cancel that promotion before you can do another one." as NSObject
+                            ])
                             GlobalAlert.showAlertMessage(vc:self, titleStr:K.appName, messageStr:"You already have one active promotions.You must cancel that promotion before you can do another one.")
                         } else {
                           //  MBProgressHUD.showAdded(to: self.view, animated: true)

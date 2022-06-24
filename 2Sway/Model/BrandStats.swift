@@ -19,6 +19,7 @@ class BrandStats: Codable {
         self.totalPromos = totalPromos
     }
     
+    ///Uploads brand data to Firebase Firestore
     func uploadBrandData() {
         
         print("Uploading Brand details")

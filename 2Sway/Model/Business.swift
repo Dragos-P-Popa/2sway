@@ -19,6 +19,7 @@ struct Business {
     var totalNumberOfPromotions: Int
     var totalEngagements: Int
     var promos: [Promos]
+    var locations: [Locations]
     var description: String
     var pricePoint: String
     var keywords: String
@@ -32,6 +33,7 @@ struct Business {
         case middleDiscount
         case lowestDiscount
         case promos
+        case locations
         case numberOfDiscountsClaimedAtLowestLevel
         case numberOfDiscountsClaimedAtMidLevel
         case numberOfDiscountsClaimedAtHighestLevel
@@ -53,6 +55,7 @@ extension Business: Decodable, Encodable {
         try val.encode(highestDiscount, forKey: .highestDiscount)
         try val.encode(middleDiscount, forKey: .middleDiscount)
         try val.encode(lowestDiscount, forKey: .lowestDiscount)
+        try val.encode(locations, forKey: .locations)
         try val.encode(promos, forKey: .promos)
         try val.encode(numberOfDiscountsClaimedAtLowestLevel, forKey: .numberOfDiscountsClaimedAtLowestLevel)
         try val.encode(numberOfDiscountsClaimedAtMidLevel, forKey: .numberOfDiscountsClaimedAtMidLevel)
@@ -75,6 +78,7 @@ extension Business: Decodable, Encodable {
         middleDiscount = try values.decode(Int.self, forKey: .middleDiscount)
         lowestDiscount = try values.decode(Int.self, forKey: .lowestDiscount)
         promos = try values.decode([Promos].self, forKey: .promos)
+        locations = try values.decode([Locations].self, forKey: .locations)
         numberOfDiscountsClaimedAtLowestLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtLowestLevel)
         numberOfDiscountsClaimedAtMidLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtMidLevel)
         numberOfDiscountsClaimedAtHighestLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtHighestLevel)
@@ -87,6 +91,30 @@ extension Business: Decodable, Encodable {
         pricePoint = try values.decode(String.self, forKey: .pricePoint)
     }
 }
+
+//Locations Model
+
+struct Locations {
+    var latitude: Double
+    var longitude: Double
+    var address: String
+    
+    enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
+        case address
+    }
+}
+
+extension Locations: Decodable, Encodable {
+    func encode(to encoder: Encoder) throws {
+        var val = encoder.container(keyedBy: CodingKeys.self)
+        try val.encode(latitude, forKey: .latitude)
+        try val.encode(longitude, forKey: .longitude)
+        try val.encode(address, forKey: .address)
+    }
+}
+
 
 // Promos Model
 

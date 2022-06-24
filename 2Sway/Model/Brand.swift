@@ -23,6 +23,7 @@ class Brand {
         self.brandImage = brandImage
     }
     
+    ///Updates brand analytics in Firebase Firestore
     func brandPromoClaimed() {
         print("Brand promo claimed called")
         getBrandPromosCount { oldCount in
@@ -32,6 +33,7 @@ class Brand {
         }
     }
     
+    ///Retrieves number of promos for a certain brand
     func getBrandPromosCount(completion: @escaping (Int) -> Void) {
         
         DatabaseManager.shared.db.collection(self.brandID).document("details").getDocument { document, error in

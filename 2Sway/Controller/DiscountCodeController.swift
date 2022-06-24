@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class DiscountCodeController: UIViewController {
 
@@ -35,6 +36,11 @@ class DiscountCodeController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                AnalyticsParameterScreenName: "discount"
+            ])
+        
         navigationItem.hidesBackButton = true
         let ProfilePic = AppData.shared.user?.urlString ?? ""
         if ProfilePic == "" || ProfilePic == nil {

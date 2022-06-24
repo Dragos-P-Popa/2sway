@@ -11,6 +11,8 @@ import Firebase
 
 struct User {
     
+    //All user needed data structures
+    var accountStatus: Int
     var email: String?
     var password: String?
     var name: String?
@@ -23,6 +25,7 @@ struct User {
     var promos: [StudentPromos]
     
     init() {
+        self.accountStatus = 0
         self.myPromos = []
         self.totalPromosDone = 0
         self.totalEngagements = 0
@@ -31,6 +34,7 @@ struct User {
     }
     
     enum CodingKeys: String, CodingKey {
+        case accountStatus = "accountStatus"
         case email = "email"
         case urlString = "urlString"
         case name = "name"
@@ -40,28 +44,39 @@ struct User {
         case totalPromosDone
     }
         
+    /**
+     Calls onto DatabaseManager to remove user promo from Firebase Firestore.
+     
+     - parameter id: Promo ID as String.
+     */
     func removeClaimedPromo(id: String) {
         var promoIndex: Int = 0
+        //Loops through every claimed promo
         for promo in ActiveUser.activeUser.myPromos {
+            //Once the promo which needs to be removed is found
             if promo?.promoID == id {
+                //It is removed from the active users promo list
                 ActiveUser.activeUser.myPromos.remove(at: promoIndex)
                 break
             }
             promoIndex += 1
         }
-         DatabaseManager.shared.removeClaimedPromo(with: id)
+        //Then it is also removed form Firebase
+        DatabaseManager.shared.removeClaimedPromo(with: id)
     }
     
+    ///Keeps count of the number of claimed promos
     mutating func promoClaimed() {
         self.totalPromosDone += 1
        // DatabaseManager.shared.uploadUser(user: self)
     }
     
+    ///Clears locally stored promos
     mutating func clearLocalPromos() {
         self.myPromos = []
         }
     
-    // Sign out from firebase
+    /// Signs user out of Firebase Auth
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -71,6 +86,7 @@ struct User {
         }
     }
     
+    ///Delete user data in Firebase Firestore
     mutating func deleteData() {
         guard let email = Auth.auth().currentUser?.email else {
             print("User ID could not be found")
@@ -97,6 +113,7 @@ struct User {
             db.collection(email).document("details").delete()
         }
         
+        //Deleting users profile picture from Firebase Storage
         let photoRef = storage.child("ProfilePics/\(userID).jpeg")
         photoRef.delete { error in
             if let error = error {
@@ -198,6 +215,7 @@ extension StudentPromos: Encodable, Decodable {
 extension User: Encodable, Decodable {
     func encode(to encoder: Encoder) throws {
         var val = encoder.container(keyedBy: CodingKeys.self)
+        try val.encode(accountStatus, forKey: .accountStatus)
         try val.encode(name, forKey: .name)
         try val.encode(urlString, forKey: .urlString)
         try val.encode(email, forKey: .email)
@@ -207,6 +225,7 @@ extension User: Encodable, Decodable {
     
     init(from decoder: Decoder) throws {
         var value = try decoder.container(keyedBy: CodingKeys.self)
+        accountStatus = try value.decode(Int.self, forKey: .accountStatus)
         name = try value.decode(String.self, forKey: .name)
         urlString = try value.decode(String.self, forKey: .urlString)
         email = try value.decode(String.self, forKey: .email)

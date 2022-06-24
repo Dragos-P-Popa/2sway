@@ -122,6 +122,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if isTerms == false {
             GlobalAlert.showAlertMessage(vc:self, titleStr:K.appName, messageStr:"Please agree to the Terms and Conditions")
         } else if nameCheck(), passwordCheck() , emailCheck() { //, emailCheck() { ,  emailCheck() 
+            Analytics.logEvent("signup", parameters: [
+                "description": "New user has signed up." as NSObject
+            ])
             saveSignUpInfo()
         }
     }
@@ -157,8 +160,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         UserDefaults.standard.set(email, forKey:K.udefalt.EmailCurrent)
                         self.sendVerification()
                         print(DataThisMonth())
-                        AppData.shared.user = UserModel(email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: [])
-                        DatabaseManager.shared.uploadUser(user:UserModel(email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: []))
+                        AppData.shared.user = UserModel(accountStatus: 0, email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: [])
+                        DatabaseManager.shared.uploadUser(user:UserModel(accountStatus: 0, email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: []))
                         UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
                         self.performSegue(withIdentifier: K.Segues.toTakePhoto, sender: self)
 //                        let vc = WebViewViewController()

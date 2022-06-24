@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
+    var accountStatus = 0
     var strProfileUrl = ""
     var strname = ""
     var isExpire = ""
@@ -32,6 +33,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configureTextField()
         configureTapGesture()
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                AnalyticsParameterScreenName: "login"
+            ])
         
         logInButton.layer.cornerRadius = 27
         
@@ -155,6 +160,7 @@ class LoginViewController: UIViewController {
                         MBProgressHUD.hide(for: self.view, animated: true)
                     }
                 } else {
+                    Analytics.logEvent(AnalyticsEventSelectContent, parameters: nil)
                     print(self.emailField.text?.localizedLowercase)
                     self.getDocument()
                     DatabaseManager.shared.getUser { test in
@@ -187,7 +193,9 @@ class LoginViewController: UIViewController {
                     } else {
                         self.isExpire = ""
                     }
-                    
+                    if let status = dictMain.object(forKey: "accountStatus") as? Int {
+                        self.accountStatus = status
+                    }
                     if let email = dictMain.object(forKey:"email") {
                         self.strEmail = "\(email)"
                     }
@@ -244,7 +252,7 @@ class LoginViewController: UIViewController {
                         MBProgressHUD.hide(for: self.view, animated: true)
                         self.performSegue(withIdentifier: K.Segues.logInToHome, sender: self)
                     }
-                    AppData.shared.user = UserModel(email:self.strEmail, name:self.strname, isExpire:self.isExpire, urlString:self.strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:self.IntTotleng, promos:self.aryPromoMain, instagram:self.strInsta, storyIds:self.aryStoryIds)
+                    AppData.shared.user = UserModel(accountStatus:self.accountStatus, email:self.strEmail, name:self.strname, isExpire:self.isExpire, urlString:self.strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:self.IntTotleng, promos:self.aryPromoMain, instagram:self.strInsta, storyIds:self.aryStoryIds)
                     DatabaseManager.shared.uploadUser(user: AppData.shared.user!)
                     DatabaseManager.shared.getUser(completion: { success in
     //                    if let test = UserDefaults.standard.object(forKey:K.udefalt.ProPic) {
