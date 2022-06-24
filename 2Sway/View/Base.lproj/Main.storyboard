@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IGW-dt-H7D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IGW-dt-H7D">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1402,19 +1402,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introducing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vQ-YM-fZ1">
-                                <rect key="frame" x="20" y="260" width="172" height="41"/>
+                                <rect key="frame" x="20" y="260" width="172" height="40.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2E-CO-97A">
-                                <rect key="frame" x="20" y="315" width="9" height="20.5"/>
+                                <rect key="frame" x="20" y="314.5" width="9" height="20.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MvR-eo-eow">
-                                <rect key="frame" x="34" y="318" width="15" height="15"/>
+                                <rect key="frame" x="34" y="317.5" width="15" height="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Fue-YE-kfQ"/>
@@ -1422,25 +1422,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closes at" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-7x-Qbg">
-                                <rect key="frame" x="54" y="315" width="57.5" height="20.5"/>
+                                <rect key="frame" x="54" y="314.5" width="57.5" height="20.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar, Underground, Live DJs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-fa-a2v">
-                                <rect key="frame" x="20" y="345.5" width="290" height="23.5"/>
+                                <rect key="frame" x="20" y="345" width="290" height="23.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar, Underground, Live DJs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5K-1F-Shp">
-                                <rect key="frame" x="20" y="379" width="290" height="29"/>
+                                <rect key="frame" x="20" y="378.5" width="290" height="29"/>
                                 <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instaGlyph" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-fq-Rqm">
-                                <rect key="frame" x="20" y="423" width="20" height="20"/>
+                                <rect key="frame" x="20" y="422.5" width="20" height="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="4nU-tg-3ap"/>
@@ -1448,7 +1448,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3N-yT-GI5">
-                                <rect key="frame" x="48" y="413.5" width="200" height="39"/>
+                                <rect key="frame" x="48" y="413" width="200" height="39"/>
                                 <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="See Distrinct on instagram">
@@ -1938,7 +1938,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-Pa-jiE">
-                                <rect key="frame" x="0.0" y="-52" width="1220.5" height="620"/>
+                                <rect key="frame" x="0.0" y="-52" width="600" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-0Z-uTd">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1730"/>
@@ -3016,7 +3016,7 @@
         <image name="2SwayClear" width="283" height="323"/>
         <image name="2swayBlack" width="400" height="400"/>
         <image name="checkbox" width="170.5" height="170.5"/>
-        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="clock" catalog="system" width="128" height="123"/>
         <image name="downArrowBlack" width="21" height="11"/>
         <image name="iandooleyTLD6iCOlyb0unsplash" width="375" height="267"/>
         <image name="instaGlyph" width="1000" height="1000"/>

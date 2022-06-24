@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import MBProgressHUD
+import CoreLocation
 
 class AMSleepTimerUtil: NSObject {
     static let shared = AMSleepTimerUtil()
@@ -26,7 +27,7 @@ class AMSleepTimerUtil: NSObject {
         return self.sleepTimer != nil
     }
 }
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     let brandBrain = BrandBrain()
     var brandSelected: Business?
@@ -38,6 +39,10 @@ class HomeViewController: UIViewController {
     var isAnyActive = Bool()
     var appVersionCurent = String()
     var appOldVersion = String()
+    var userLat = Double()
+    var userLon = Double()
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var brandTableView: UITableView!
@@ -56,9 +61,21 @@ class HomeViewController: UIViewController {
             bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
                 UIApplication.shared.endBackgroundTask(bgTask)
             })
-        
+    
         checkAccountStatus()
         
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
                 AnalyticsParameterScreenName: "home"
             ])
@@ -98,11 +115,19 @@ class HomeViewController: UIViewController {
                     }
                     AppData.shared.business = self.businesses
                 } catch {
-                    print("Business error    \(AppData.shared.business)     \(error)")
+                    print("Business error  \(error)")
                 }
             }
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        userLat = locValue.latitude
+        userLon = locValue.longitude
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
     func checkForAppVersionUpdate(CurentVersion:String,LiveVersion:String) {
         
         if CurentVersion > LiveVersion {
@@ -368,7 +393,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BrandCell", for: indexPath)
             as! BrandCell
         
-        cell.configure(with: businesses[indexPath.row])
+            
+        let location: CLLocationCoordinate2D  = CLLocationCoordinate2D(latitude: userLat, longitude: userLon)
+        
+        cell.configure(with: businesses[indexPath.row], location: location)
         cell.delegate = self
         return cell
     }
