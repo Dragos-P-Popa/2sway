@@ -10,14 +10,16 @@ import Firebase
 import FirebaseStorage
 import MBProgressHUD
 
-class TakePhotoViewController: UIViewController {
+class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage().reference()
+    var imagePicker = UIImagePickerController()
     
     // User can only press continue after they have taken a profile picture
     var canContinue: Bool = false
@@ -32,7 +34,7 @@ class TakePhotoViewController: UIViewController {
         if canContinue {
             configureAfterPhoto(photo: imageToDisplay)
         }
-        takePhotoButton.layer.cornerRadius = takePhotoButton.frame.height/2
+        selectPhotoButton.layer.cornerRadius = selectPhotoButton.frame.height/2
         continueButton.layer.cornerRadius = continueButton.frame.height/2
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotificationNew(notification:)), name: Notification.Name("NotificationProgress"), object: nil)
     }
@@ -61,13 +63,32 @@ class TakePhotoViewController: UIViewController {
         }
     }
     
+    @IBAction func selectionButton() {
+            
+        ImagePickerManager().pickImage(self){ image in
+            //let flippedImage = UIImage(cgImage: image.cgImage!, scale: image.scale, orientation: .leftMirrored)
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            // How far down the original image to apply the crop to get a centred, square image
+            let xOffset = (imageHeight - imageWidth) / 2.0
+            let cropRect = CGRect(x: xOffset,
+                                  y: 0,
+                                  width: imageWidth,
+                                  height: imageWidth).integral
+            let croppedImage = image.cgImage!.cropping(to: cropRect)!
+            let finalImage = UIImage(cgImage: croppedImage, scale: image.imageRendererFormat.scale, orientation: image.imageOrientation)
+            self.imageToDisplay = finalImage
+            self.configureAfterPhoto(photo: finalImage)
+        }
+    }
+    
     func configureAfterPhoto(photo: UIImage) {
         canContinue = true
         continueButton.isEnabled = true
         profileImage.image = photo
         profileImage.alpha = 1
      //   takePhotoButton.setTitle("Take a photo", for: .normal)
-        self.takePhotoButton.setTitle("Retake photo", for:.normal)
+        self.selectPhotoButton.setTitle("Replace photo", for:.normal)
         continueButton.alpha = 1.0
     }
 }

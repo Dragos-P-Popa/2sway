@@ -157,11 +157,11 @@
                                             <constraint firstAttribute="height" constant="53" id="MFa-VV-p2n"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
-                                        <state key="normal" title="Take a photo">
+                                        <state key="normal" title="Pick a photo">
                                             <color key="titleColor" name="black"/>
                                         </state>
                                         <connections>
-                                            <action selector="takePhotoButton:" destination="48c-wl-ENe" eventType="touchUpInside" id="mzW-Pn-oFA"/>
+                                            <action selector="selectionButton" destination="48c-wl-ENe" eventType="touchUpInside" id="lNV-tz-Jql"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hh-jB-Gay">
@@ -244,7 +244,7 @@
                     <connections>
                         <outlet property="continueButton" destination="8Hh-jB-Gay" id="zv3-JV-IlZ"/>
                         <outlet property="profileImage" destination="zUD-8M-dSW" id="4pc-1b-2Yi"/>
-                        <outlet property="takePhotoButton" destination="1v0-Kv-fcp" id="GPA-hw-mGS"/>
+                        <outlet property="selectPhotoButton" destination="1v0-Kv-fcp" id="pPq-FA-I6K"/>
                         <segue destination="qTw-Ad-bmj" kind="show" identifier="toIntro" id="SuN-tf-L6K"/>
                         <segue destination="o17-zG-oGb" kind="show" identifier="toCustomCam" id="Qlc-ui-wt4"/>
                     </connections>
@@ -3008,9 +3008,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Qlc-ui-wt4"/>
         <segue reference="gJh-Uo-ysY"/>
         <segue reference="lUk-6p-oGH"/>
-        <segue reference="TAO-Vo-Yd3"/>
+        <segue reference="i0H-1V-biN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="2SwayClear" width="283" height="323"/>
