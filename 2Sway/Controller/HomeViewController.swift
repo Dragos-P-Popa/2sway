@@ -63,9 +63,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             })
     
         checkAccountStatus()
-        
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
 
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
