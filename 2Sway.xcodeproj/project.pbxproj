@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,6 +53,12 @@
 		40ABF6232796F62100335E96 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6222796F62100335E96 /* Business.swift */; };
 		40ABF6252797605C00335E96 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6242797605C00335E96 /* Feedback.swift */; };
 		4BE8C2E53113EF4340386F0E /* Pods_2SwayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */; };
+		5ABBD136286E58E900E814FF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD135286E58E900E814FF /* NotificationService.swift */; };
+		5ABBD13A286E58E900E814FF /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5ABBD141286E59A200E814FF /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD140286E59A200E814FF /* OneSignal */; };
+		5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD142286E59A200E814FF /* OneSignalExtension */; };
+		5ABBD14A28763AEC00E814FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD14928763AEC00E814FF /* MapViewController.swift */; };
+		5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41378286BA1DC000603DA /* ImagePickerManager.swift */; };
 		721171400666D0DDA224E392 /* Pods_2Sway_2SwayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36E30DF10F32B139ED0278F /* Pods_2Sway_2SwayUITests.framework */; };
 		A7713E6F28115EB4004E7614 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E6E28115EB4004E7614 /* RulesVC.swift */; };
 		A7713E72281162A2004E7614 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E71281162A2004E7614 /* CollectionViewCell.swift */; };
@@ -103,7 +109,28 @@
 			remoteGlobalIDString = 0EB7D41626A9D62600BE7518;
 			remoteInfo = progressBar2;
 		};
+		5ABBD138286E58E900E814FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EB7D40F26A9D62600BE7518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5ABBD132286E58E900E814FF;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5ABBD13E286E58E900E814FF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5ABBD13A286E58E900E814FF /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E07474726D533300084B704 /* RedeemPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemPopUpViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +185,13 @@
 		40ABF6242797605C00335E96 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2SwayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555F7F369C635C200936251F /* Pods-2Sway-2SwayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway-2SwayUITests.debug.xcconfig"; path = "Target Support Files/Pods-2Sway-2SwayUITests/Pods-2Sway-2SwayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABBD135286E58E900E814FF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5ABBD137286E58E900E814FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ABBD144286E5A0C00E814FF /* 2Sway.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2Sway.entitlements; sourceTree = "<group>"; };
+		5ABBD145286E5B0D00E814FF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		5ABBD14928763AEC00E814FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5AC41378286BA1DC000603DA /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		9B1561788107C45FB0631675 /* Pods-2Sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway.release.xcconfig"; path = "Target Support Files/Pods-2Sway/Pods-2Sway.release.xcconfig"; sourceTree = "<group>"; };
 		A7713E6E28115EB4004E7614 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
 		A7713E71281162A2004E7614 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE452658C8C3E531AE2EA86D /* Pods_2Sway.framework in Frameworks */,
+				5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */,
+				5ABBD141286E59A200E814FF /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +255,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				721171400666D0DDA224E392 /* Pods_2Sway_2SwayUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5ABBD130286E58E900E814FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,15 +300,18 @@
 				0EB7D41926A9D62600BE7518 /* 2Sway */,
 				B25B057626B9814F0090AE0E /* 2Sway.app */,
 				3050EDEF89509F196AC23C78 /* Pods */,
+				5ABBD134286E58E900E814FF /* OneSignalNotificationServiceExtension */,
 				719C1F1A2A7F7AE828EB1BDA /* Frameworks */,
 				0E87F49B26F8A35B0068DDA5 /* 2SwayTests.xctest */,
 				0E87F49C26F8A35B0068DDA5 /* 2SwayUITests.xctest */,
+				5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */,
 			);
 			sourceTree = "<group>";
 		};
 		0EB7D41926A9D62600BE7518 /* 2Sway */ = {
 			isa = PBXGroup;
 			children = (
+				5ABBD144286E5A0C00E814FF /* 2Sway.entitlements */,
 				4001E078279B42A400E58D6F /* Data */,
 				408B53182787624E0085882B /* Instagram */,
 				0E7638C026CA6B0B009C6BF2 /* Constants.swift */,
@@ -310,6 +356,7 @@
 				A7E2E66D280D65500000CC33 /* ChangePasswordVC.swift */,
 				A7E2E66F280D766D0000CC33 /* ResetPassword.swift */,
 				A7713E6E28115EB4004E7614 /* RulesVC.swift */,
+				5ABBD14928763AEC00E814FF /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,6 +421,16 @@
 			path = Instagram;
 			sourceTree = "<group>";
 		};
+		5ABBD134286E58E900E814FF /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5ABBD145286E5B0D00E814FF /* OneSignalNotificationServiceExtension.entitlements */,
+				5ABBD135286E58E900E814FF /* NotificationService.swift */,
+				5ABBD137286E58E900E814FF /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		719C1F1A2A7F7AE828EB1BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +457,7 @@
 				0E87F49D26F9DA840068DDA5 /* DatabaseManager.swift */,
 				B2932A5B26B8868D0038D85E /* BrandBrain.swift */,
 				B2CE9D6C26BF25AD00DF7A3B /* PromoBrain.swift */,
+				5AC41378286BA1DC000603DA /* ImagePickerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -485,12 +543,18 @@
 				0EB7D41526A9D62600BE7518 /* Resources */,
 				8CB62B26D5FE7A4F2B53D8EF /* [CP] Embed Pods Frameworks */,
 				40366FD327A810F700CB4340 /* ShellScript */,
+				5ABBD13E286E58E900E814FF /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5ABBD139286E58E900E814FF /* PBXTargetDependency */,
 			);
 			name = 2Sway;
+			packageProductDependencies = (
+				5ABBD140286E59A200E814FF /* OneSignal */,
+				5ABBD142286E59A200E814FF /* OneSignalExtension */,
+			);
 			productName = progressBar2;
 			productReference = B25B057626B9814F0090AE0E /* 2Sway.app */;
 			productType = "com.apple.product-type.application";
@@ -534,13 +598,30 @@
 			productReference = 0E87F49C26F8A35B0068DDA5 /* 2SwayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		5ABBD132286E58E900E814FF /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ABBD13B286E58E900E814FF /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				5ABBD12F286E58E900E814FF /* Sources */,
+				5ABBD130286E58E900E814FF /* Frameworks */,
+				5ABBD131286E58E900E814FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0EB7D40F26A9D62600BE7518 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					0EB7D41626A9D62600BE7518 = {
@@ -554,6 +635,9 @@
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 0EB7D41626A9D62600BE7518;
 					};
+					5ABBD132286E58E900E814FF = {
+						CreatedOnToolsVersion = 14.0;
+					};
 				};
 			};
 			buildConfigurationList = 0EB7D41226A9D62600BE7518 /* Build configuration list for PBXProject "2Sway" */;
@@ -565,6 +649,9 @@
 				Base,
 			);
 			mainGroup = 0EB7D40E26A9D62600BE7518;
+			packageReferences = (
+				5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			productRefGroup = 0EB7D40E26A9D62600BE7518;
 			projectDirPath = "";
 			projectRoot = "";
@@ -572,6 +659,7 @@
 				0EB7D41626A9D62600BE7518 /* 2Sway */,
 				0EB7D42C26A9D62A00BE7518 /* 2SwayTests */,
 				0EB7D43726A9D62B00BE7518 /* 2SwayUITests */,
+				5ABBD132286E58E900E814FF /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -605,6 +693,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0EB7D43626A9D62B00BE7518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5ABBD131286E58E900E814FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -776,6 +871,7 @@
 				0E2E1F7026F35C520054F1BE /* RetakeCamViewController.swift in Sources */,
 				4001E07E279F281F00E58D6F /* UserModel.swift in Sources */,
 				B2A86F3C26C1C69600E2BA69 /* RoundedUIView.swift in Sources */,
+				5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */,
 				B2932A5E26B895080038D85E /* ProfileViewController.swift in Sources */,
 				0E62D61726FC840500767DA9 /* VerifyingPromo.swift in Sources */,
 				A7713E72281162A2004E7614 /* CollectionViewCell.swift in Sources */,
@@ -797,6 +893,7 @@
 				B26B54FC26E1370B00E2B767 /* DeletePopUpViewController.swift in Sources */,
 				0E7638C126CA6B0B009C6BF2 /* Constants.swift in Sources */,
 				0E07474826D533300084B704 /* RedeemPopUpViewController.swift in Sources */,
+				5ABBD14A28763AEC00E814FF /* MapViewController.swift in Sources */,
 				B288E58A26E63F9D00BE0098 /* TimeManager.swift in Sources */,
 				A7E2E670280D766D0000CC33 /* ResetPassword.swift in Sources */,
 				A7E63B3927BF78DF0042F14B /* Reachbility.swift in Sources */,
@@ -820,6 +917,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5ABBD12F286E58E900E814FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5ABBD136286E58E900E814FF /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -832,6 +937,11 @@
 			isa = PBXTargetDependency;
 			target = 0EB7D41626A9D62600BE7518 /* 2Sway */;
 			targetProxy = 0EB7D43926A9D62B00BE7518 /* PBXContainerItemProxy */;
+		};
+		5ABBD139286E58E900E814FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5ABBD132286E58E900E814FF /* OneSignalNotificationServiceExtension */;
+			targetProxy = 5ABBD138286E58E900E814FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -967,11 +1077,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BCA8EA60B619301177E3E86 /* Pods-2Sway.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 2Sway/2Sway.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = 2Sway/Info.plist;
@@ -979,7 +1091,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -993,18 +1105,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B1561788107C45FB0631675 /* Pods-2Sway.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 2Sway/2Sway.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = 2Sway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1019,6 +1133,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = progressBar2Tests/Info.plist;
@@ -1030,6 +1145,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DJBP.progressBar2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/2Sway.app/2Sway";
@@ -1042,6 +1158,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = progressBar2Tests/Info.plist;
@@ -1053,6 +1170,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DJBP.progressBar2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/2Sway.app/2Sway";
@@ -1064,6 +1182,7 @@
 			baseConfigurationReference = 555F7F369C635C200936251F /* Pods-2Sway-2SwayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = progressBar2UITests/Info.plist;
@@ -1074,6 +1193,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DJBP.progressBar2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = progressBar2;
@@ -1085,6 +1205,7 @@
 			baseConfigurationReference = 2537B04112EC4C568FAAF2D2 /* Pods-2Sway-2SwayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = progressBar2UITests/Info.plist;
@@ -1095,9 +1216,68 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DJBP.progressBar2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = progressBar2;
+			};
+			name = Release;
+		};
+		5ABBD13C286E58E900E814FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L8726YDCU5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5ABBD13D286E58E900E814FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L8726YDCU5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1140,7 +1320,41 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5ABBD13B286E58E900E814FF /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ABBD13C286E58E900E814FF /* Debug */,
+				5ABBD13D286E58E900E814FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 4.0.0;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5ABBD140286E59A200E814FF /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+		5ABBD142286E59A200E814FF /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0EB7D40F26A9D62600BE7518 /* Project object */;
 }

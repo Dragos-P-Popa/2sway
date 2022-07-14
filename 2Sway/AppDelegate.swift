@@ -31,13 +31,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set your customer userId
         // OneSignal.setExternalUserId("userId")
         
+        let notificationOpenedBlock: OSNotificationOpenedBlock = { result in
+            // This block gets called when the user reacts to a notification received
+            let notification: OSNotification = result.notification
+            print("Message: ", notification.body ?? "empty body")
+            print("badge number: ", notification.badge)
+            print("notification sound: ", notification.sound ?? "No sound")
+                    
+            if let additionalData = notification.additionalData {
+                print("additionalData: ", additionalData)
+                let givePromo = additionalData["givePromo"] ?? ""
+                let promoLevel = additionalData["promoLevel"] ?? 0
+                //let email = Auth.auth().currentUser?.email ?? ""
+                
+                let claimedPromo = StudentPromos(businessID: givePromo as! String, promoName: "Your reward", discount: 40, isClaimed: true, storyID: ["00000"], storyCount: 0, totalEngagements: 0)
+                AppData.shared.user?.promos.append(claimedPromo)
+                DatabaseManager.shared.uploadLocalClaimedPromos()
+                
+                if let actionSelected = notification.actionButtons {
+                    print("actionSelected: ", actionSelected)
+                }
+                if let actionID = result.action.actionId {
+                    //handle the action
+                }
+            }
+        }
+
+        OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
+        
         FirebaseApp.configure()
         let db = Firestore.firestore()
         print(db)
         
-        DatabaseManager.shared.getUser() {
-            success in 
-        }
+        // Setting External User Id with Callback Available in SDK Version 3.0.0+
+        OneSignal.setExternalUserId((Auth.auth().currentUser?.email) ?? "undefined", withSuccess: { results in
+            // The results will contain push and email success statuses
+            print("External user id update complete with results: ", results!.description)
+            // Push can be expected in almost every situation with a success status, but
+            // as a pre-caution its good to verify it exists
+            if let pushResults = results!["push"] {
+                print("Set external user id push status: ", pushResults)
+            }
+            if let emailResults = results!["email"] {
+                print("Set external user id email status: ", emailResults)
+            }
+            if let smsResults = results!["sms"] {
+                print("Set external user id sms status: ", smsResults)
+            }
+        }, withFailure: {error in
+            print("Set external user id done with error: " + error.debugDescription)
+        })
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Jost", size: 10)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Jost", size: 10)!], for: .selected)
+        
         return true
     }
 

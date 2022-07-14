@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IGW-dt-H7D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -137,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaH-aK-7xt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="-577"/>
+            <point key="canvasLocation" x="-441" y="-511"/>
         </scene>
         <!--Take your photo-->
         <scene sceneID="i4B-6E-Qs9">
@@ -251,18 +252,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ux2-Qq-xob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="141"/>
+            <point key="canvasLocation" x="-1176" y="207"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Map-->
+        <scene sceneID="3SY-YQ-7m0">
+            <objects>
+                <viewController title="Map" id="uRY-YQ-oAg" customClass="MapViewController" customModule="_Sway" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jSg-Br-6jR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="SB5-2s-ggD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="2Is-1w-6Ii">
+                        <imageReference key="image" image="map" catalog="system" symbolScale="default" renderingMode="template"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ax-WS-awx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1338" y="798"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZTH-wb-KBY">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" id="y89-Ba-VgD" customClass="TabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" alpha="0.98999999999999999" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDi-6I-Mi0">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="lightGrey"/>
+                        <color key="barTintColor" name="lightGrey"/>
+                        <color key="selectedImageTintColor" name="white"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5JG-TI-gr2" kind="relationship" relationship="viewControllers" id="06s-aP-00l"/>
+                        <segue destination="uRY-YQ-oAg" kind="relationship" relationship="viewControllers" id="BWC-5W-QfZ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3c2-Sr-AKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="492"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="acL-8X-eca">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" modalPresentationStyle="fullScreen" id="5JG-TI-gr2" customClass="HomeViewController" customModule="_Sway" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="Home" modalPresentationStyle="fullScreen" id="5JG-TI-gr2" customClass="HomeViewController" customModule="_Sway" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EDc-U8-yLi" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltp-a6-hkm" userLabel="Title View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltp-a6-hkm" userLabel="Title View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, what's poppin'?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="gr3-TI-tg1">
                                         <rect key="frame" x="16" y="15" width="199" height="35"/>
@@ -301,20 +341,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijj-fP-ZkQ" userLabel="Subtitle View">
-                                <rect key="frame" x="0.0" y="70" width="320" height="86"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="41.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-Cu-rfO">
-                                        <rect key="frame" x="16" y="14" width="288" height="58"/>
+                                        <rect key="frame" x="16" y="12" width="288" height="17.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVAILABLE PROMOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfO-9M-4bX">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
-                                                <color key="textColor" name="black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="est-RK-9lF">
-                                                <rect key="frame" x="0.0" y="37.5" width="288" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="JostRoman-Medium" family="Jost" pointSize="14"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="12"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -324,13 +358,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="iEV-Cu-rfO" secondAttribute="trailing" constant="16" id="ApP-wk-3gY"/>
-                                    <constraint firstAttribute="bottom" secondItem="iEV-Cu-rfO" secondAttribute="bottom" constant="14" id="UGQ-bK-MOC"/>
+                                    <constraint firstAttribute="bottom" secondItem="iEV-Cu-rfO" secondAttribute="bottom" constant="12" id="UGQ-bK-MOC"/>
                                     <constraint firstItem="iEV-Cu-rfO" firstAttribute="leading" secondItem="Ijj-fP-ZkQ" secondAttribute="leading" constant="16" id="eOY-YU-hiG"/>
-                                    <constraint firstItem="iEV-Cu-rfO" firstAttribute="top" secondItem="Ijj-fP-ZkQ" secondAttribute="top" constant="14" id="ocG-22-sa5"/>
+                                    <constraint firstItem="iEV-Cu-rfO" firstAttribute="top" secondItem="Ijj-fP-ZkQ" secondAttribute="top" constant="12" id="ocG-22-sa5"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gwO-V4-vHJ">
-                                <rect key="frame" x="0.0" y="156" width="320" height="412"/>
+                                <rect key="frame" x="0.0" y="111.5" width="320" height="456.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -348,10 +382,12 @@
                             <constraint firstItem="Ltp-a6-hkm" firstAttribute="top" secondItem="EDc-U8-yLi" secondAttribute="top" id="gtU-An-UOd"/>
                             <constraint firstItem="Ltp-a6-hkm" firstAttribute="leading" secondItem="AN1-sI-QZp" secondAttribute="leading" id="hMq-S0-JYR"/>
                             <constraint firstAttribute="bottom" secondItem="gwO-V4-vHJ" secondAttribute="bottom" id="izU-jF-3K5"/>
-                            <constraint firstItem="gwO-V4-vHJ" firstAttribute="top" secondItem="Ijj-fP-ZkQ" secondAttribute="bottom" id="qEu-MZ-FhY"/>
                             <constraint firstItem="Ijj-fP-ZkQ" firstAttribute="top" secondItem="Ltp-a6-hkm" secondAttribute="bottom" id="xIz-gl-aZF"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="Qki-Yf-Ezd">
+                        <imageReference key="image" image="list.bullet" catalog="system" symbolScale="default" renderingMode="template"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="V30-cf-Y3v">
                         <barButtonItem key="backBarButtonItem" title=" " id="EIT-rU-ZKu"/>
                     </navigationItem>
@@ -370,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5m-RB-mX9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="822"/>
+            <point key="canvasLocation" x="1337" y="114"/>
         </scene>
         <!--Promo Selection View Controller-->
         <scene sceneID="jrG-Lc-qTO">
@@ -448,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tE-YI-DXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543" y="175"/>
+            <point key="canvasLocation" x="-2593" y="241"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="U53-aG-1EG">
@@ -464,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q99-Ve-FXB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="1962"/>
+            <point key="canvasLocation" x="-621" y="2028"/>
         </scene>
         <!--Privacy View Controller-->
         <scene sceneID="xlB-9l-ElN">
@@ -483,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vi-m5-vw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2128" y="1961"/>
+            <point key="canvasLocation" x="77" y="2027"/>
         </scene>
         <!--Not Verified View Controller-->
         <scene sceneID="ueE-AT-URd">
@@ -695,7 +731,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3od-7t-aSg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="2654"/>
+            <point key="canvasLocation" x="77" y="2720"/>
         </scene>
         <!--Confirm Pic View Controller-->
         <scene sceneID="0Ag-jj-JlV">
@@ -808,7 +844,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfs-nP-esF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-673" y="1145"/>
+            <point key="canvasLocation" x="-2723" y="1211"/>
         </scene>
         <!--Retake Cam View Controller-->
         <scene sceneID="zJ1-Wt-dzb">
@@ -827,7 +863,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vd-R7-Job" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="1146"/>
+            <point key="canvasLocation" x="-1736" y="1212"/>
         </scene>
         <!--Retake Photo View Controller-->
         <scene sceneID="XGe-JD-Jbi">
@@ -910,7 +946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvr-By-fxe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="1146"/>
+            <point key="canvasLocation" x="-947" y="1212"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="nSK-Dh-5pB">
@@ -1277,7 +1313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZh-WW-sej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="1146.7980295566504"/>
+            <point key="canvasLocation" x="-154" y="1213"/>
         </scene>
         <!--My Claimed Promos View Controller-->
         <scene sceneID="3uF-At-4A4">
@@ -1372,7 +1408,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JId-5n-5wJ">
-                                <rect key="frame" x="0.0" y="35" width="320" height="533"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zuU-69-Nyb">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
@@ -1389,7 +1425,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zo-eM-mUX">
-                                <rect key="frame" x="10" y="35" width="50" height="50"/>
+                                <rect key="frame" x="10" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="M76-Ac-SyW"/>
                                     <constraint firstAttribute="height" constant="50" id="Ybd-eM-cnz"/>
@@ -1402,19 +1438,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introducing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vQ-YM-fZ1">
-                                <rect key="frame" x="20" y="260" width="172" height="40.5"/>
+                                <rect key="frame" x="20" y="240" width="165" height="33"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2E-CO-97A">
-                                <rect key="frame" x="20" y="314.5" width="9" height="20.5"/>
+                                <rect key="frame" x="20" y="287" width="8" height="16.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MvR-eo-eow">
-                                <rect key="frame" x="34" y="317.5" width="15" height="15"/>
+                                <rect key="frame" x="33" y="287.5" width="15" height="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Fue-YE-kfQ"/>
@@ -1422,25 +1458,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closes at" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-7x-Qbg">
-                                <rect key="frame" x="54" y="314.5" width="57.5" height="20.5"/>
+                                <rect key="frame" x="53" y="287" width="59" height="16.5"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar, Underground, Live DJs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-fa-a2v">
-                                <rect key="frame" x="20" y="345" width="290" height="23.5"/>
+                                <rect key="frame" x="20" y="313.5" width="290" height="19"/>
                                 <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar, Underground, Live DJs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5K-1F-Shp">
-                                <rect key="frame" x="20" y="378.5" width="290" height="29"/>
+                                <rect key="frame" x="20" y="342.5" width="290" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instaGlyph" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-fq-Rqm">
-                                <rect key="frame" x="20" y="422.5" width="20" height="20"/>
+                                <rect key="frame" x="20" y="381" width="20" height="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="4nU-tg-3ap"/>
@@ -1448,7 +1484,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3N-yT-GI5">
-                                <rect key="frame" x="48" y="413" width="200" height="39"/>
+                                <rect key="frame" x="48" y="374.5" width="213" height="33"/>
                                 <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="See Distrinct on instagram">
@@ -1491,7 +1527,7 @@
                             <constraint firstItem="8Zo-eM-mUX" firstAttribute="leading" secondItem="Rbr-Rc-MzK" secondAttribute="leading" constant="10" id="Egx-GW-G5r"/>
                             <constraint firstItem="Rbr-Rc-MzK" firstAttribute="trailing" secondItem="7Qo-fa-a2v" secondAttribute="trailing" constant="10" id="Gvi-FQ-5uv"/>
                             <constraint firstItem="aHP-fq-Rqm" firstAttribute="leading" secondItem="Rbr-Rc-MzK" secondAttribute="leading" constant="20" id="Hd3-ez-CYR"/>
-                            <constraint firstItem="8Zo-eM-mUX" firstAttribute="top" secondItem="Rbr-Rc-MzK" secondAttribute="top" constant="35" id="IIc-3C-tMl"/>
+                            <constraint firstItem="8Zo-eM-mUX" firstAttribute="top" secondItem="Rbr-Rc-MzK" secondAttribute="top" constant="10" id="IIc-3C-tMl"/>
                             <constraint firstItem="b2E-CO-97A" firstAttribute="leading" secondItem="Rbr-Rc-MzK" secondAttribute="leading" constant="20" id="Iiu-9J-4ve"/>
                             <constraint firstItem="b3N-yT-GI5" firstAttribute="centerY" secondItem="aHP-fq-Rqm" secondAttribute="centerY" id="KDB-9f-Swv"/>
                             <constraint firstItem="JId-5n-5wJ" firstAttribute="bottom" secondItem="Rbr-Rc-MzK" secondAttribute="bottom" id="Lfj-F1-IcL"/>
@@ -1501,11 +1537,11 @@
                             <constraint firstItem="Rbr-Rc-MzK" firstAttribute="bottom" secondItem="oNf-mw-fwT" secondAttribute="bottom" constant="40" id="bkd-16-7Zu"/>
                             <constraint firstItem="oNf-mw-fwT" firstAttribute="leading" secondItem="Rbr-Rc-MzK" secondAttribute="leading" constant="20" id="bmc-Rs-ibm"/>
                             <constraint firstItem="b2E-CO-97A" firstAttribute="top" secondItem="4vQ-YM-fZ1" secondAttribute="bottom" constant="14" id="cVr-oZ-OTF"/>
-                            <constraint firstItem="JId-5n-5wJ" firstAttribute="top" secondItem="bol-q8-lBd" secondAttribute="top" constant="35" id="dre-gh-7bN"/>
+                            <constraint firstItem="JId-5n-5wJ" firstAttribute="top" secondItem="bol-q8-lBd" secondAttribute="top" id="dre-gh-7bN"/>
                             <constraint firstItem="Rbr-Rc-MzK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WSN-7x-Qbg" secondAttribute="trailing" constant="5" id="hyo-dQ-Ath"/>
                             <constraint firstItem="Rbr-Rc-MzK" firstAttribute="trailing" secondItem="JId-5n-5wJ" secondAttribute="trailing" id="iWc-gQ-1hW"/>
                             <constraint firstItem="4vQ-YM-fZ1" firstAttribute="leading" secondItem="Rbr-Rc-MzK" secondAttribute="leading" constant="20" id="lB5-fK-Dhn"/>
-                            <constraint firstItem="4vQ-YM-fZ1" firstAttribute="top" secondItem="bol-q8-lBd" secondAttribute="top" constant="260" id="nd5-pz-yfc"/>
+                            <constraint firstItem="4vQ-YM-fZ1" firstAttribute="top" secondItem="bol-q8-lBd" secondAttribute="top" constant="240" id="nd5-pz-yfc"/>
                             <constraint firstItem="aHP-fq-Rqm" firstAttribute="top" secondItem="l5K-1F-Shp" secondAttribute="bottom" constant="15" id="neZ-BP-DmH"/>
                             <constraint firstItem="MvR-eo-eow" firstAttribute="centerY" secondItem="b2E-CO-97A" secondAttribute="centerY" id="oEC-hx-7iJ"/>
                             <constraint firstItem="l5K-1F-Shp" firstAttribute="top" secondItem="7Qo-fa-a2v" secondAttribute="bottom" constant="10" id="qRm-qI-KAa"/>
@@ -1941,43 +1977,43 @@
                                 <rect key="frame" x="0.0" y="-52" width="600" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-0Z-uTd">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1151.5" height="2353.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iandooleyTLD6iCOlyb0unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="Nyi-Fa-f0Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1151.5" height="863.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Nyi-Fa-f0Q" secondAttribute="height" multiplier="428:321" id="rnT-cl-AWg"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-WN-q7g">
-                                                <rect key="frame" x="0.0" y="240" width="320" height="1490"/>
+                                                <rect key="frame" x="0.0" y="863.5" width="1151.5" height="1490"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Promo Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD0-FD-6vB">
-                                                        <rect key="frame" x="16" y="11" width="304" height="29"/>
+                                                        <rect key="frame" x="16" y="11" width="1135.5" height="29"/>
                                                         <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOQ-E4-TO0">
-                                                        <rect key="frame" x="16" y="44" width="288" height="20.5"/>
+                                                        <rect key="frame" x="16" y="44" width="1119.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="14"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="037-Fx-8pa">
-                                                        <rect key="frame" x="16" y="87" width="288" height="1387"/>
+                                                        <rect key="frame" x="16" y="87" width="1119.5" height="1387"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdH-0B-egd" customClass="RoundedUIView" customModule="_Sway" customModuleProvider="target">
-                                                                <rect key="frame" x="36" y="0.0" width="216" height="216"/>
+                                                                <rect key="frame" x="36" y="0.0" width="1047.5" height="1047.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I've Posted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g09-Jg-lB4">
-                                                                        <rect key="frame" x="58.5" y="93.5" width="99.5" height="29"/>
+                                                                        <rect key="frame" x="474" y="509.5" width="99.5" height="29"/>
                                                                         <fontDescription key="fontDescription" name="JostRoman-SemiBold" family="Jost" pointSize="20"/>
                                                                         <color key="textColor" name="black"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8L-G0-Rge" customClass="RoundedUIView" customModule="_Sway" customModuleProvider="target">
-                                                                        <rect key="frame" x="10" y="10" width="196" height="196"/>
+                                                                        <rect key="frame" x="10" y="10" width="1027.5" height="1027.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
                                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHr-Zd-Lei">
@@ -1990,7 +2026,7 @@
                                                                         </state>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-zb-lBz">
-                                                                        <rect key="frame" x="38" y="108" width="140" height="0.0"/>
+                                                                        <rect key="frame" x="454" y="524" width="140" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="140" id="gx6-iM-fkf"/>
                                                                         </constraints>
@@ -1999,7 +2035,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guh-oO-ZnO">
-                                                                        <rect key="frame" x="-12" y="44" width="240" height="128"/>
+                                                                        <rect key="frame" x="404" y="460" width="240" height="128"/>
                                                                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="128" id="UaK-Yw-h0j"/>
@@ -2027,7 +2063,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLJ-Hu-27h">
-                                                                <rect key="frame" x="0.0" y="240" width="288" height="53"/>
+                                                                <rect key="frame" x="0.0" y="1071.5" width="1119.5" height="53"/>
                                                                 <color key="backgroundColor" name="white"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="53" id="JB0-LD-SCl"/>
@@ -2041,7 +2077,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-8T-O2I">
-                                                                <rect key="frame" x="0.0" y="317" width="288" height="1070"/>
+                                                                <rect key="frame" x="0.0" y="1148.5" width="1119.5" height="238.5"/>
                                                                 <string key="text">Once you have posted an Instagram story at the venue you want a discount at, click the 'I've Posted' button above. Make sure you have included the venue's location tag. If you have any issues, DM @2swayuk on Instagram.</string>
                                                                 <fontDescription key="fontDescription" name="Jost-Regular" family="Jost" pointSize="12"/>
                                                                 <color key="textColor" name="white"/>
@@ -2056,7 +2092,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBj-ol-JV5">
-                                                        <rect key="frame" x="245" y="0.0" width="75" height="50"/>
+                                                        <rect key="frame" x="1076.5" y="0.0" width="75" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="DgM-xr-Szz"/>
@@ -2739,7 +2775,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lW1-dQ-ESJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="-577.09359605911334"/>
+            <point key="canvasLocation" x="-1178" y="-511"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="hHC-6X-DfL">
@@ -2758,7 +2794,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXP-Uh-Nuc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="141"/>
+            <point key="canvasLocation" x="-441" y="207"/>
         </scene>
         <!--Change PasswordVC-->
         <scene sceneID="0pS-C2-SNZ">
@@ -3007,11 +3043,15 @@
             <point key="canvasLocation" x="8558" y="1155"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="EDi-6I-Mi0">
+            <size key="intrinsicContentSize" width="-1" height="49"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Qlc-ui-wt4"/>
         <segue reference="gJh-Uo-ysY"/>
-        <segue reference="lUk-6p-oGH"/>
-        <segue reference="i0H-1V-biN"/>
+        <segue reference="06s-aP-00l"/>
+        <segue reference="TAO-Vo-Yd3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="2SwayClear" width="283" height="323"/>
@@ -3023,6 +3063,8 @@
         <image name="instaGlyph" width="1000" height="1000"/>
         <image name="leftArrowBlack" width="11" height="21"/>
         <image name="leftArrowWhite" width="11" height="21"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="myProfileIcon" width="18" height="21"/>
         <image name="myPromosIcon" width="22" height="22"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
@@ -3036,6 +3078,9 @@
         </namedColor>
         <namedColor name="darkGrey">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGrey">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="offWhite">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

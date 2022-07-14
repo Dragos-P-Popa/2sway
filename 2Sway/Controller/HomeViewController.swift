@@ -94,7 +94,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         appVersionCurent = appVersion!.replacingOccurrences(of: ".", with: "")
         print(appVersion ?? "")
-     
+        
         
         DatabaseManager.shared.db.collection("Businesses").getDocuments() { documents, error in
             if let error = error {
@@ -122,7 +122,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         userLat = locValue.latitude
         userLon = locValue.longitude
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     func checkForAppVersionUpdate(CurentVersion:String,LiveVersion:String) {
