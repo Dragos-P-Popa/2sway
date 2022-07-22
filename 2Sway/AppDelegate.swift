@@ -63,6 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         print(db)
         
+        if #available(iOS 15.0, *) {
+            UITableView.appearance().sectionHeaderTopPadding = 0.0
+        }
+        
         // Setting External User Id with Callback Available in SDK Version 3.0.0+
         OneSignal.setExternalUserId((Auth.auth().currentUser?.email) ?? "undefined", withSuccess: { results in
             // The results will contain push and email success statuses

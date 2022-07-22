@@ -48,6 +48,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var brandTableView: UITableView!
     @IBOutlet weak var myProfileButton: UIButton!
     @IBOutlet weak var myPromosButton: UIButton!
+    @IBOutlet weak var titleView: UIView!
     
     // Builds list of random brands of arbitrary length
   //  var brands: [Brand] {return brandBrain.buildBrandList()}
@@ -61,9 +62,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
                 UIApplication.shared.endBackgroundTask(bgTask)
             })
+        
+        titleView.layer.shadowColor = UIColor.black.cgColor
+        titleView.layer.shadowOpacity = 1
+        titleView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        titleView.layer.shadowRadius = 5
     
         checkAccountStatus()
-
+ 
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
 
@@ -110,6 +116,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                         print("Hello business ", business)
                         self.brandTableView.reloadData()
                     }
+                    
+                    let location = CLLocation(latitude: self.userLat, longitude: self.userLon)
+                    self.businesses.sort(by: { $0.locations[0].distance(to: location) < $1.locations[0].distance(to: location) })
+                    
                     AppData.shared.business = self.businesses
                 } catch {
                     print("Business error  \(error)")
@@ -381,15 +391,27 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    /*func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        businesses.count
+        if section == 0 {
+            return 1
+        } else {
+            return businesses.count
+        }
+    }*/
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return businesses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BrandCell", for: indexPath)
             as! BrandCell
         
-            
         let location: CLLocationCoordinate2D  = CLLocationCoordinate2D(latitude: userLat, longitude: userLon)
         
         cell.configure(with: businesses[indexPath.row], location: location)
@@ -398,7 +420,33 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.width * 203 / 342
+        return tableView.frame.width * 233 / 342
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        
+        let blurView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurView.addSubview(blurEffectView)
+
+        let label = UILabel()
+        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.text = "  Nearby"
+        label.font = UIFont(name:"Jost Regular Bold", size: 22.0)
+        label.textColor = .white
+
+        headerView.addSubview(blurView)
+        headerView.addSubview(label)
+
+        return headerView
     }
 }
 

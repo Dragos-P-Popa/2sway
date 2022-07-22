@@ -28,6 +28,7 @@ class BrandCell: UITableViewCell, CLLocationManagerDelegate {
     @IBOutlet weak var brandButton: UIButton!
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var blurView: UIView!
     
     
     override func awakeFromNib() {
@@ -46,6 +47,19 @@ class BrandCell: UITableViewCell, CLLocationManagerDelegate {
         titleLabel.text = brand.name
         descLabel.text = "Max discount: \(Int(brand.highestDiscount))%"
         tagLabel.text = brand.keywords
+        
+        blurView.subviews.forEach({ $0.removeFromSuperview() })
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurView.addSubview(blurEffectView)
+        
+        blurView.layer.shadowColor = UIColor.black.cgColor
+        blurView.layer.shadowOpacity = 0.6
+        blurView.layer.shadowOffset = CGSize(width: 1, height: -1)
+        blurView.layer.shadowRadius = 10
+        
         
         let locationManager = CLLocationManager()
 

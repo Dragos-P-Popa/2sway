@@ -8,8 +8,9 @@
 import UIKit
 import MBProgressHUD
 import FirebaseAnalytics
+import MapboxStatic
 
-class BusinessDetailsViewController: UIViewController {
+class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate {
     
     var business: Business?
     @IBOutlet weak var imageLogo: UIImageView!
@@ -18,9 +19,17 @@ class BusinessDetailsViewController: UIViewController {
     @IBOutlet weak var lblTags: UILabel!
     @IBOutlet weak var lbldes: UILabel!
     @IBOutlet weak var btnInsta: UIButton!
-    @IBOutlet weak var imgInsta: UIImageView!
     @IBOutlet weak var btnDiscount: UIButton!
     @IBOutlet weak var btnMainBack: UIButton!
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mapImage: UIImageView!
+    
+    
+    let reuseIdentifier = "imageCell"
+
+    
     
 //    let backButton: UIButton = {
 //        let button = UIButton()
@@ -347,21 +356,86 @@ class BusinessDetailsViewController: UIViewController {
     func configureViews() {
         view.backgroundColor = .clear
         
+        mapImage.layer.cornerRadius = 10
+        mapImage.clipsToBounds = true
+        
+        let url = URL(string: "mapbox://styles/dragospop14/cl5a6uj2u000k14ncz9jj8lyk")
+
+        let task = URLSession.shared.dataTask(
+                    with: url!,
+                    completionHandler: { data, response, error in
+                        DispatchQueue.main.async(execute: {
+                            let camera = SnapshotCamera(
+                                lookingAtCenter: CLLocationCoordinate2D(latitude: self.business!.locations[0].latitude, longitude: self.business!.locations[0].longitude),
+                                zoomLevel: 15)
+                            let options = SnapshotOptions(
+                                styleURL: url!,
+                                camera: camera,
+                                size: self.mapImage.frame.size)
+                            let snapshot = Snapshot(
+                                options: options,
+                                accessToken: "pk.eyJ1IjoiZHJhZ29zcG9wMTQiLCJhIjoiY2w1YTRiaTQzMDRwcjNqbnhlMDljbnE0cyJ9.Vo7kwE79C6-S0Uu1ZofkiA")
+                            
+                            snapshot.image { (image, error) in
+                                self.mapImage.image = image
+                            }
+                        })
+                    })
+                task.resume()
+ 
+        gradientView.layer.shadowColor = UIColor.black.cgColor
+        gradientView.layer.shadowOpacity = 1
+        gradientView.layer.shadowOffset = CGSize(width: 1, height: -1)
+        gradientView.layer.shadowRadius = 100
+        
         imageLogo.sd_setImage(with: URL(string: business?.logo ?? ""), completed: nil)
         lblTitle.text = business?.name
         priceLabel.text = business?.pricePoint
         lblClose.text = "Closes at \(business!.closingTime)"
-        lblTags.text = business!.keywords
+        lblTags.text = business!.keywords.replacingOccurrences(of: ",", with: " •")
         lbldes.text = business!.description
 //        closeTimeLabel.text = "Closes at \(business!.closingTime)"
-        imgInsta.image = UIImage(named: K.ImageNames.instaGlyph)?.withRenderingMode(.alwaysTemplate)
         btnDiscount.layer.cornerRadius = 25
         btnInsta.setTitle("See \(business!.name) on Instagram", for: .normal)
        // let image = UIImage(named: "leftArrowWhite")?.withRenderingMode(.alwaysTemplate)
        // btnMainBack.setImage(image, for:.normal)
        // btnMainBack.tintColor = UIColor.gray
     }
+
+    
+    // MARK: - UICollectionViewDataSource protocol
+    
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! InstagramCollectionViewCell
+        
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        cell.instaImage.image = UIImage(named:"2swayBlack")
+        cell.instaImage?.translatesAutoresizingMaskIntoConstraints = false
+        cell.instaImage?.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        cell.instaImage?.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        cell.instaImage?.layer.cornerRadius = 5
+        cell.instaImage?.clipsToBounds = true
+        
+        return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate protocol
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+    }
+    
 }
+
 extension UIDevice {
     /// Returns `true` if the device has a notch
     var hasNotch: Bool {

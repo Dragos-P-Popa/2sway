@@ -53,6 +53,13 @@
 		40ABF6232796F62100335E96 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6222796F62100335E96 /* Business.swift */; };
 		40ABF6252797605C00335E96 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6242797605C00335E96 /* Feedback.swift */; };
 		4BE8C2E53113EF4340386F0E /* Pods_2SwayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */; };
+		5A220CA6288AAF93004E242F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A220CA5288AAF93004E242F /* ErrorViewController.swift */; };
+		5A220CA8288AB1B4004E242F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A220CA7288AB1B4004E242F /* LoadingViewController.swift */; };
+		5A66401928894AD6006A231E /* InstagramCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */; };
+		5A66401B288999C5006A231E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401A288999C5006A231E /* Gradient.swift */; };
+		5A66401D2889DE5B006A231E /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401C2889DE5B006A231E /* OnboardingCard.swift */; };
+		5A66401F2889DF70006A231E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401E2889DF70006A231E /* OnboardingView.swift */; };
+		5A6640212889E1B4006A231E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6640202889E1B4006A231E /* OnboardingViewController.swift */; };
 		5ABBD136286E58E900E814FF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD135286E58E900E814FF /* NotificationService.swift */; };
 		5ABBD13A286E58E900E814FF /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5ABBD141286E59A200E814FF /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD140286E59A200E814FF /* OneSignal */; };
@@ -185,6 +192,13 @@
 		40ABF6242797605C00335E96 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2SwayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555F7F369C635C200936251F /* Pods-2Sway-2SwayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway-2SwayUITests.debug.xcconfig"; path = "Target Support Files/Pods-2Sway-2SwayUITests/Pods-2Sway-2SwayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A220CA5288AAF93004E242F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		5A220CA7288AB1B4004E242F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A66401A288999C5006A231E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		5A66401C2889DE5B006A231E /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
+		5A66401E2889DF70006A231E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5A6640202889E1B4006A231E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABBD135286E58E900E814FF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5ABBD137286E58E900E814FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -357,6 +371,11 @@
 				A7E2E66F280D766D0000CC33 /* ResetPassword.swift */,
 				A7713E6E28115EB4004E7614 /* RulesVC.swift */,
 				5ABBD14928763AEC00E814FF /* MapViewController.swift */,
+				5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */,
+				5A66401A288999C5006A231E /* Gradient.swift */,
+				5A6640202889E1B4006A231E /* OnboardingViewController.swift */,
+				5A220CA5288AAF93004E242F /* ErrorViewController.swift */,
+				5A220CA7288AB1B4004E242F /* LoadingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,6 +393,7 @@
 				40ABF6222796F62100335E96 /* Business.swift */,
 				40ABF6242797605C00335E96 /* Feedback.swift */,
 				4001E07D279F281F00E58D6F /* UserModel.swift */,
+				5A66401C2889DE5B006A231E /* OnboardingCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -388,6 +408,7 @@
 				B2A86F3B26C1C69600E2BA69 /* RoundedUIView.swift */,
 				A7E63B3527BF73F90042F14B /* CheckNetWork.swift */,
 				A7E63B3827BF78DF0042F14B /* Reachbility.swift */,
+				5A66401E2889DF70006A231E /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -847,6 +868,7 @@
 				B2CE9D6B26BF21D700DF7A3B /* Promo.swift in Sources */,
 				0E8748B726AF0A96006C5EE8 /* Brand.swift in Sources */,
 				408B531727861A0B0085882B /* WebViewViewController.swift in Sources */,
+				5A66401B288999C5006A231E /* Gradient.swift in Sources */,
 				408B531A278762690085882B /* APIClient.swift in Sources */,
 				0EB7D41B26A9D62600BE7518 /* AppDelegate.swift in Sources */,
 				0EB620F926C928E6004829F8 /* MyClaimedPromosViewController.swift in Sources */,
@@ -855,6 +877,7 @@
 				0E87F4A026FB1DBC0068DDA5 /* CodableClaimedPromo.swift in Sources */,
 				B2A86F3226C14E4E00E2BA69 /* FurtherInfoDetailCell.swift in Sources */,
 				B2CE9D6626BF1A2E00DF7A3B /* PromoCell.swift in Sources */,
+				5A66401F2889DF70006A231E /* OnboardingView.swift in Sources */,
 				B2A1245126E3C51800333212 /* BrandDescCell.swift in Sources */,
 				0EB7D44E26A9D65300BE7518 /* ProgressBar.swift in Sources */,
 				0EB7D45926AB270E00BE7518 /* User.swift in Sources */,
@@ -885,19 +908,24 @@
 				0EAC166726D005ED00C8FF9B /* SignUpViewController.swift in Sources */,
 				B2FD7C4426E29B5F008447BC /* CustomCamViewController.swift in Sources */,
 				A7E2E66E280D65500000CC33 /* ChangePasswordVC.swift in Sources */,
+				5A220CA6288AAF93004E242F /* ErrorViewController.swift in Sources */,
 				0E7638DE26CBFA56009C6BF2 /* TakePhotoViewController.swift in Sources */,
+				5A66401D2889DE5B006A231E /* OnboardingCard.swift in Sources */,
 				0E8748C026AF19FB006C5EE8 /* BrandCell.swift in Sources */,
 				0EB620FF26C92AF4004829F8 /* RedeemablePromoCell.swift in Sources */,
 				B26B54F626E0D1DA00E2B767 /* IntroViewController.swift in Sources */,
 				B26B54F826E0F1E500E2B767 /* PrivacyViewController.swift in Sources */,
+				5A220CA8288AB1B4004E242F /* LoadingViewController.swift in Sources */,
 				B26B54FC26E1370B00E2B767 /* DeletePopUpViewController.swift in Sources */,
 				0E7638C126CA6B0B009C6BF2 /* Constants.swift in Sources */,
+				5A66401928894AD6006A231E /* InstagramCollectionViewCell.swift in Sources */,
 				0E07474826D533300084B704 /* RedeemPopUpViewController.swift in Sources */,
 				5ABBD14A28763AEC00E814FF /* MapViewController.swift in Sources */,
 				B288E58A26E63F9D00BE0098 /* TimeManager.swift in Sources */,
 				A7E2E670280D766D0000CC33 /* ResetPassword.swift in Sources */,
 				A7E63B3927BF78DF0042F14B /* Reachbility.swift in Sources */,
 				B26B54FA26E10BC700E2B767 /* TermsViewController.swift in Sources */,
+				5A6640212889E1B4006A231E /* OnboardingViewController.swift in Sources */,
 				A7713E6F28115EB4004E7614 /* RulesVC.swift in Sources */,
 				0E2E1F6E26F35ACC0054F1BE /* RetakePhotoViewController.swift in Sources */,
 			);

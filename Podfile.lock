@@ -348,12 +348,15 @@ PODS:
     - MapboxMobileEvents (= 1.0.8)
     - Turf (~> 2.0)
   - MapboxMobileEvents (1.0.8)
+  - MapboxStatic.swift (0.12.0):
+    - Polyline (~> 5.0)
   - MBProgressHUD (1.1.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - Polyline (5.0.2)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.12.2):
     - SDWebImage/Core (= 5.12.2)
@@ -369,6 +372,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseFirestoreSwift
   - MapboxMaps (= 10.6.0)
+  - MapboxStatic.swift (~> 0.12)
   - MBProgressHUD (~> 1.1.0)
   - SDWebImage (~> 5.0)
   - WaveAnimationView
@@ -399,8 +403,10 @@ SPEC REPOS:
     - MapboxCoreMaps
     - MapboxMaps
     - MapboxMobileEvents
+    - MapboxStatic.swift
     - MBProgressHUD
     - nanopb
+    - Polyline
     - PromisesObjC
     - SDWebImage
     - Turf
@@ -431,13 +437,15 @@ SPEC CHECKSUMS:
   MapboxCoreMaps: 2019935caed7e56be1417ff70d3ad0c0cbf0264e
   MapboxMaps: e078cc1343a0513174869a5e16ae9a18d3977252
   MapboxMobileEvents: febdd92835daa258ca1c1faad0821c0b3394ef40
+  MapboxStatic.swift: aa3e4fabb307414bd3a51a2cb83f37a5b07db7f1
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  Polyline: fce41d72e1146c41c6d081f7656827226f643dff
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
   Turf: 60b93cfdc62758526bc7bf1ef191a829aeb9694d
   WaveAnimationView: 1ffdf3184884eb3270f4b19cc2e69893fec16b9d
 
-PODFILE CHECKSUM: d64e027b958c52feea0a1e0daaeb9f43ac66c160
+PODFILE CHECKSUM: 47dcd15f209dec9a4ee96cb914f21f96f90d7f92
 
 COCOAPODS: 1.11.3

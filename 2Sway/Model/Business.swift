@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Business {
     var name: String
@@ -103,6 +104,14 @@ struct Locations {
         case latitude
         case longitude
         case address
+    }
+    
+    var location: CLLocation {
+        return CLLocation(latitude: self.latitude, longitude: self.longitude)
+    }
+
+    func distance(to location: CLLocation) -> CLLocationDistance {
+        return location.distance(from: self.location)
     }
 }
 

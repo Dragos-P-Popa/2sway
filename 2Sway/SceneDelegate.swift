@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             let DiscountCodeController = storyboard.instantiateViewController(withIdentifier: "DiscountCodeController") as! DiscountCodeController
             let signupVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
             let isPhoto = storyboard.instantiateViewController(withIdentifier:"isPhoto") as! TakePhotoViewController
