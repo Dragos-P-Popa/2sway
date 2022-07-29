@@ -66,6 +66,10 @@
 		5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD142286E59A200E814FF /* OneSignalExtension */; };
 		5ABBD14A28763AEC00E814FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD14928763AEC00E814FF /* MapViewController.swift */; };
 		5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41378286BA1DC000603DA /* ImagePickerManager.swift */; };
+		5AC53982288EF2D4007248EF /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53981288EF2D4007248EF /* FacebookBasics */; };
+		5AC53984288EF2D4007248EF /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53983288EF2D4007248EF /* FacebookCore */; };
+		5AC53986288EF2D4007248EF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53985288EF2D4007248EF /* FacebookLogin */; };
+		5AC53988288EF394007248EF /* MetaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC53987288EF394007248EF /* MetaAuthViewController.swift */; };
 		721171400666D0DDA224E392 /* Pods_2Sway_2SwayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36E30DF10F32B139ED0278F /* Pods_2Sway_2SwayUITests.framework */; };
 		A7713E6F28115EB4004E7614 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E6E28115EB4004E7614 /* RulesVC.swift */; };
 		A7713E72281162A2004E7614 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E71281162A2004E7614 /* CollectionViewCell.swift */; };
@@ -206,6 +210,7 @@
 		5ABBD145286E5B0D00E814FF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		5ABBD14928763AEC00E814FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5AC41378286BA1DC000603DA /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		5AC53987288EF394007248EF /* MetaAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaAuthViewController.swift; sourceTree = "<group>"; };
 		9B1561788107C45FB0631675 /* Pods-2Sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway.release.xcconfig"; path = "Target Support Files/Pods-2Sway/Pods-2Sway.release.xcconfig"; sourceTree = "<group>"; };
 		A7713E6E28115EB4004E7614 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
 		A7713E71281162A2004E7614 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -251,6 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE452658C8C3E531AE2EA86D /* Pods_2Sway.framework in Frameworks */,
+				5AC53984288EF2D4007248EF /* FacebookCore in Frameworks */,
+				5AC53986288EF2D4007248EF /* FacebookLogin in Frameworks */,
+				5AC53982288EF2D4007248EF /* FacebookBasics in Frameworks */,
 				5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */,
 				5ABBD141286E59A200E814FF /* OneSignal in Frameworks */,
 			);
@@ -376,6 +384,7 @@
 				5A6640202889E1B4006A231E /* OnboardingViewController.swift */,
 				5A220CA5288AAF93004E242F /* ErrorViewController.swift */,
 				5A220CA7288AB1B4004E242F /* LoadingViewController.swift */,
+				5AC53987288EF394007248EF /* MetaAuthViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -575,6 +584,9 @@
 			packageProductDependencies = (
 				5ABBD140286E59A200E814FF /* OneSignal */,
 				5ABBD142286E59A200E814FF /* OneSignalExtension */,
+				5AC53981288EF2D4007248EF /* FacebookBasics */,
+				5AC53983288EF2D4007248EF /* FacebookCore */,
+				5AC53985288EF2D4007248EF /* FacebookLogin */,
 			);
 			productName = progressBar2;
 			productReference = B25B057626B9814F0090AE0E /* 2Sway.app */;
@@ -672,6 +684,9 @@
 			mainGroup = 0EB7D40E26A9D62600BE7518;
 			packageReferences = (
 				5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				5AC5397E288EF0F0007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				5AC5397F288EF1C1007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 0EB7D40E26A9D62600BE7518;
 			projectDirPath = "";
@@ -875,6 +890,7 @@
 				0E87F49E26F9DA840068DDA5 /* DatabaseManager.swift in Sources */,
 				0E87F4A226FB7F7F0068DDA5 /* PromoInvalidPopUpViewController.swift in Sources */,
 				0E87F4A026FB1DBC0068DDA5 /* CodableClaimedPromo.swift in Sources */,
+				5AC53988288EF394007248EF /* MetaAuthViewController.swift in Sources */,
 				B2A86F3226C14E4E00E2BA69 /* FurtherInfoDetailCell.swift in Sources */,
 				B2CE9D6626BF1A2E00DF7A3B /* PromoCell.swift in Sources */,
 				5A66401F2889DF70006A231E /* OnboardingView.swift in Sources */,
@@ -1369,6 +1385,30 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		5AC5397E288EF0F0007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		5AC5397F288EF1C1007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = releases/v14.1.0;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1381,6 +1421,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignalExtension;
+		};
+		5AC53981288EF2D4007248EF /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		5AC53983288EF2D4007248EF /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		5AC53985288EF2D4007248EF /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
