@@ -9,11 +9,10 @@ import UIKit
 import Firebase
 import SDWebImage
 import MBProgressHUD
+import SwiftUI
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var profilePicButton: UIButton!
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var DMUsText: UILabel!
     var textFieldAlert: UITextField?
@@ -23,11 +22,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shareableString = K.Share.shareString
-        updateDisplayedPic()
-        profilePicButton.addTarget(self, action: #selector(profilePicPressed), for: .touchUpInside)
         NameLabel.text = "\(AppData.shared.user?.name ?? "")"
         DMUsText.attributedText = NSAttributedString(string: "DM us @2SwayUK for help", attributes: [.underlineStyle: 1])
-        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationProgress"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification11(notification:)), name: Notification.Name("NotificationProgress1"), object: nil)
         
 //        if AppData.shared.user?.urlString == "" {
@@ -39,16 +35,13 @@ class ProfileViewController: UIViewController {
 //        }
         
     }
-    @objc func methodOfReceivedNotification(notification: Notification) {
-        self.updateDisplayedPic()
-    }
+
     @objc func methodOfReceivedNotification11(notification: Notification) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
     }
   
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(goToRetake), name: Notification.Name("goToRetake"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedPic), name: Notification.Name("updateDisplayedPic"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,9 +49,6 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("updateDisplayedPic"), object: nil)
     }
     
-    @objc func profilePicPressed() {
-        performSegue(withIdentifier: K.Segues.toRetakePopUp, sender: self)
-    }
     
     func DeletePassword(email:String,pass:String) {
         Auth.auth().signIn(withEmail: email, password: pass) { authResult, error in
@@ -121,10 +111,13 @@ class ProfileViewController: UIViewController {
     
     @IBAction func rulesButtonPressed(_ sender: UIButton) {
      //   let vc = SplashRulesViewController()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier:"RulesVC") as! RulesVC
+     //   let vc = self.storyboard?.instantiateViewController(withIdentifier:"RulesVC") as! RulesVC
      //   vc.backButton.setImage(UIImage(named: K.ImageNames.downArrowWhite), for: .normal)
-        //vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+     //   vc.modalPresentationStyle = .fullScreen
+     //   present(vc, animated: true, completion: nil)
+        
+        let OnboardingView = UIHostingController(rootView: OnboardingViewController(dismissAction: {self.dismiss( animated: true, completion: nil )}))
+        present( OnboardingView, animated: true )
         
     }
     
@@ -279,17 +272,7 @@ class ProfileViewController: UIViewController {
     @objc func goToRetake() {
         performSegue(withIdentifier: K.Segues.toRetakeCam, sender: self)
     }
-    
-    @objc func updateDisplayedPic() {
-        let ProfilePic = AppData.shared.user?.urlString ?? ""
-        if ProfilePic == "" || ProfilePic == nil {
-          print("notFound")
-        } else {
-            MBProgressHUD.hide(for: self.view, animated: true)
-            profileImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            profileImage.sd_setImage(with: URL(string: (AppData.shared.user?.urlString)!), completed: nil)
-        }
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PrivacyViewController {

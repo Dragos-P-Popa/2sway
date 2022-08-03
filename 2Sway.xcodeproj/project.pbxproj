@@ -60,6 +60,8 @@
 		5A66401D2889DE5B006A231E /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401C2889DE5B006A231E /* OnboardingCard.swift */; };
 		5A66401F2889DF70006A231E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401E2889DF70006A231E /* OnboardingView.swift */; };
 		5A6640212889E1B4006A231E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6640202889E1B4006A231E /* OnboardingViewController.swift */; };
+		5A7EEF4C28996F0A005617DD /* AccountManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */; };
+		5A7EEF4E28999581005617DD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EEF4D28999581005617DD /* AccountManager.swift */; };
 		5ABBD136286E58E900E814FF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD135286E58E900E814FF /* NotificationService.swift */; };
 		5ABBD13A286E58E900E814FF /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5ABBD141286E59A200E814FF /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD140286E59A200E814FF /* OneSignal */; };
@@ -70,6 +72,8 @@
 		5AC53984288EF2D4007248EF /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53983288EF2D4007248EF /* FacebookCore */; };
 		5AC53986288EF2D4007248EF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53985288EF2D4007248EF /* FacebookLogin */; };
 		5AC53988288EF394007248EF /* MetaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC53987288EF394007248EF /* MetaAuthViewController.swift */; };
+		5AF24915289743DF0028CAC0 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24914289743DF0028CAC0 /* ValuesView.swift */; };
+		5AF24917289744820028CAC0 /* ValuesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24916289744810028CAC0 /* ValuesCard.swift */; };
 		721171400666D0DDA224E392 /* Pods_2Sway_2SwayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36E30DF10F32B139ED0278F /* Pods_2Sway_2SwayUITests.framework */; };
 		A7713E6F28115EB4004E7614 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E6E28115EB4004E7614 /* RulesVC.swift */; };
 		A7713E72281162A2004E7614 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7713E71281162A2004E7614 /* CollectionViewCell.swift */; };
@@ -203,6 +207,8 @@
 		5A66401C2889DE5B006A231E /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
 		5A66401E2889DF70006A231E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5A6640202889E1B4006A231E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementViewController.swift; sourceTree = "<group>"; };
+		5A7EEF4D28999581005617DD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABBD135286E58E900E814FF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5ABBD137286E58E900E814FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 		5ABBD14928763AEC00E814FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5AC41378286BA1DC000603DA /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		5AC53987288EF394007248EF /* MetaAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaAuthViewController.swift; sourceTree = "<group>"; };
+		5AF24914289743DF0028CAC0 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
+		5AF24916289744810028CAC0 /* ValuesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesCard.swift; sourceTree = "<group>"; };
 		9B1561788107C45FB0631675 /* Pods-2Sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway.release.xcconfig"; path = "Target Support Files/Pods-2Sway/Pods-2Sway.release.xcconfig"; sourceTree = "<group>"; };
 		A7713E6E28115EB4004E7614 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
 		A7713E71281162A2004E7614 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -355,6 +363,7 @@
 		0EB7D45526AB24A200BE7518 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5A6640202889E1B4006A231E /* OnboardingViewController.swift */,
 				408B531627861A0B0085882B /* WebViewViewController.swift */,
 				0E55A81526AB2B7C00738D81 /* LoginViewController.swift */,
 				0EAC166626D005ED00C8FF9B /* SignUpViewController.swift */,
@@ -379,12 +388,11 @@
 				A7E2E66F280D766D0000CC33 /* ResetPassword.swift */,
 				A7713E6E28115EB4004E7614 /* RulesVC.swift */,
 				5ABBD14928763AEC00E814FF /* MapViewController.swift */,
-				5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */,
 				5A66401A288999C5006A231E /* Gradient.swift */,
-				5A6640202889E1B4006A231E /* OnboardingViewController.swift */,
 				5A220CA5288AAF93004E242F /* ErrorViewController.swift */,
 				5A220CA7288AB1B4004E242F /* LoadingViewController.swift */,
 				5AC53987288EF394007248EF /* MetaAuthViewController.swift */,
+				5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 				40ABF6242797605C00335E96 /* Feedback.swift */,
 				4001E07D279F281F00E58D6F /* UserModel.swift */,
 				5A66401C2889DE5B006A231E /* OnboardingCard.swift */,
+				5AF24916289744810028CAC0 /* ValuesCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +427,7 @@
 				A7E63B3527BF73F90042F14B /* CheckNetWork.swift */,
 				A7E63B3827BF78DF0042F14B /* Reachbility.swift */,
 				5A66401E2889DF70006A231E /* OnboardingView.swift */,
+				5AF24914289743DF0028CAC0 /* ValuesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +498,7 @@
 				B2932A5B26B8868D0038D85E /* BrandBrain.swift */,
 				B2CE9D6C26BF25AD00DF7A3B /* PromoBrain.swift */,
 				5AC41378286BA1DC000603DA /* ImagePickerManager.swift */,
+				5A7EEF4D28999581005617DD /* AccountManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -538,6 +549,7 @@
 				B2CE9D6226BF19E200DF7A3B /* BrandCell */,
 				B2A86F3626C1B45F00E2BA69 /* SelectedPromoCell */,
 				B2A86F2B26C142D200E2BA69 /* FurtherInfoCell */,
+				5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -872,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C06C1B226CD3973003AFDD2 /* DiscountCodeController.swift in Sources */,
+				5A7EEF4E28999581005617DD /* AccountManager.swift in Sources */,
 				B2A86F2E26C142FB00E2BA69 /* FurtherInfoCell.swift in Sources */,
 				0E55A81626AB2B7C00738D81 /* LoginViewController.swift in Sources */,
 				0E55A82626AB365C00738D81 /* HomeViewController.swift in Sources */,
@@ -908,8 +921,10 @@
 				0EB7D41D26A9D62600BE7518 /* SceneDelegate.swift in Sources */,
 				0E83123026F4F23800B52050 /* SplashRulesViewController.swift in Sources */,
 				0E2E1F7026F35C520054F1BE /* RetakeCamViewController.swift in Sources */,
+				5A7EEF4C28996F0A005617DD /* AccountManagementViewController.swift in Sources */,
 				4001E07E279F281F00E58D6F /* UserModel.swift in Sources */,
 				B2A86F3C26C1C69600E2BA69 /* RoundedUIView.swift in Sources */,
+				5AF24917289744820028CAC0 /* ValuesCard.swift in Sources */,
 				5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */,
 				B2932A5E26B895080038D85E /* ProfileViewController.swift in Sources */,
 				0E62D61726FC840500767DA9 /* VerifyingPromo.swift in Sources */,
@@ -919,6 +934,7 @@
 				B2CE9D6926BF1F1400DF7A3B /* PromoSelectionViewController.swift in Sources */,
 				A7E63B3627BF73F90042F14B /* CheckNetWork.swift in Sources */,
 				40ABF6252797605C00335E96 /* Feedback.swift in Sources */,
+				5AF24915289743DF0028CAC0 /* ValuesView.swift in Sources */,
 				0E62D61926FC9DB300767DA9 /* BrandStats.swift in Sources */,
 				0E7638D126CBD2B2009C6BF2 /* RulesViewController.swift in Sources */,
 				0EAC166726D005ED00C8FF9B /* SignUpViewController.swift in Sources */,

@@ -126,14 +126,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
-        
-        if K.cookieString?.isEmpty ?? true || K.cookieString == "" {
-            let vc = WebViewViewController()
-            vc.delegate = self
-            vc.modalPresentationStyle = .formSheet
-            self.present(vc, animated: true, completion: nil)
-        }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -340,6 +332,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         MBProgressHUD.hide(for:self.view, animated:true)
            DatabaseManager.shared.getUser { success in
                if success {
@@ -555,28 +549,6 @@ extension HomeViewController: BrandCellDelegate {
                     self.startTimer()
                 }
             }
-        }
-    }
-}
-extension HomeViewController: WebViewCotrollerDelegate {
-    func hideView() {
-//        APIClient().getStoryCount(data: K.cookieString ?? "", userID: K.userID ?? "") { storyCount, storyId in
-//            DispatchQueue.main.async {
-//                K.storyCount = storyCount
-//            }
-//        } fail: { error in
-//            DispatchQueue.main.async {
-//                let vc = WebViewViewController()
-//                vc.delegate = self
-//                vc.modalPresentationStyle = .formSheet
-//                self.present(vc, animated: true, completion: nil)
-//            }
-//        }
-        DispatchQueue.main.async {
-            let vc = WebViewViewController()
-            vc.delegate = self
-            vc.modalPresentationStyle = .formSheet
-            self.present(vc, animated: true, completion: nil)
         }
     }
 }

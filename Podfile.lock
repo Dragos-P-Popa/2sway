@@ -361,6 +361,7 @@ PODS:
   - SDWebImage (5.12.2):
     - SDWebImage/Core (= 5.12.2)
   - SDWebImage/Core (5.12.2)
+  - SkeletonView (1.29.2)
   - Turf (2.4.0)
   - WaveAnimationView (1.0.2)
 
@@ -375,6 +376,7 @@ DEPENDENCIES:
   - MapboxStatic.swift (~> 0.12)
   - MBProgressHUD (~> 1.1.0)
   - SDWebImage (~> 5.0)
+  - SkeletonView
   - WaveAnimationView
 
 SPEC REPOS:
@@ -409,6 +411,7 @@ SPEC REPOS:
     - Polyline
     - PromisesObjC
     - SDWebImage
+    - SkeletonView
     - Turf
     - WaveAnimationView
 
@@ -443,9 +446,10 @@ SPEC CHECKSUMS:
   Polyline: fce41d72e1146c41c6d081f7656827226f643dff
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
   Turf: 60b93cfdc62758526bc7bf1ef191a829aeb9694d
   WaveAnimationView: 1ffdf3184884eb3270f4b19cc2e69893fec16b9d
 
-PODFILE CHECKSUM: 47dcd15f209dec9a4ee96cb914f21f96f90d7f92
+PODFILE CHECKSUM: bbcfb0ec5a75b2a5fbd9fdc7cfecbb68e39a20f9
 
 COCOAPODS: 1.11.3

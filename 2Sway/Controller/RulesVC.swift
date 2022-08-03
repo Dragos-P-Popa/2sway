@@ -77,13 +77,8 @@ class RulesVC: UIViewController {
     //MARK: CustomMethod
     @objc func skipPressed() {
         if isIntro == true {
-            guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {
-                return
-            }
-            let navigationController = UINavigationController(rootViewController: rootVC)
-            navigationController.navigationBar.isHidden = true
-            UIApplication.shared.windows.first?.rootViewController = navigationController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            let obj = storyboard?.instantiateViewController(withIdentifier:"AccountManagementViewController") as! AccountManagementViewController
+            self.navigationController?.pushViewController(obj, animated: true)
         } else {
             self.dismiss(animated:true, completion:nil)
         }

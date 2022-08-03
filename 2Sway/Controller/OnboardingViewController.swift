@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 struct OnboardingViewController: View {
+    var dismissAction: (() -> Void)
     @State var selectedPage:Int = 0
     @State var buttonText = "CONTINUE"
-    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
         @State private var counter = 0
     
     var body: some View {
@@ -46,14 +47,12 @@ struct OnboardingViewController: View {
                                 counter += 1
                             }
             
-            Button(action: {
-                //do something
-                }) {
+            Button(action: dismissAction) {
                     Text(buttonText)
                         .fontWeight(.black)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(.custom("Jost", size: 22))
-                        .padding()
+                        .padding(8)
                         .foregroundColor(.white)
                         .overlay(
                             RoundedRectangle(cornerRadius: 35)
@@ -71,8 +70,10 @@ struct OnboardingViewController: View {
     }
 }
 
-struct OnboardingViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingViewController()
-    }
-}
+/*
+ struct OnboardingViewController_Previews: PreviewProvider {
+ static var previews: some View {
+ OnboardingViewController()
+ }
+ }
+ */

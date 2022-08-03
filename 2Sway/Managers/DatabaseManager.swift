@@ -85,6 +85,7 @@ final class DatabaseManager {
                             var strInsta = ""
                             var isExpire = ""
                             var IntTotleng = 0
+                            var tier = 0
                             var aryStoryIds = [String]()
                             var aryStoryIds1 = [String]()
                             var aryPromoMain = [StudentPromos]()
@@ -116,6 +117,9 @@ final class DatabaseManager {
                                 if let storyID = dictMain.object(forKey:"storyID") as? NSMutableArray {
                                    print(storyID)
                                 }
+                                if let currentTier = dictMain.object(forKey: "tier") as? Int {
+                                    tier = currentTier
+                                }
                                 if let storyIds = dictMain.object(forKey:"storyIds") as? [String] {
                                     for i in storyIds {
                                         aryStoryIds.append(i)
@@ -139,7 +143,7 @@ final class DatabaseManager {
                                             }
                                         }
                                     print(aryPromoMain)
-                                    AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
+                                    AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), tier: tier, totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
                             }
                             //AppData.shared.user = user
                             completion(true)

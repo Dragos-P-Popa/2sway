@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/// TO:DO
+///     - Request bill from 2Sway APIs
+
 struct LoadingViewController: View {
     @State var loadingTitle: String
     @State var loadingDescription: String

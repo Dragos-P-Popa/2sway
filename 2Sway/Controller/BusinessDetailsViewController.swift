@@ -8,7 +8,12 @@
 import UIKit
 import MBProgressHUD
 import FirebaseAnalytics
+import Firebase
+import FirebaseFirestoreSwift
 import MapboxStatic
+import SwiftUI
+import SkeletonView
+import MapKit
 
 class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -19,17 +24,19 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     @IBOutlet weak var lblTags: UILabel!
     @IBOutlet weak var lbldes: UILabel!
     @IBOutlet weak var btnInsta: UIButton!
+    @IBOutlet weak var btnMap: UIButton!
     @IBOutlet weak var btnDiscount: UIButton!
     @IBOutlet weak var btnMainBack: UIButton!
-    @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var btnBackgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapImage: UIImageView!
-    
+    @IBOutlet weak var discountView: UIView!
+    @IBOutlet weak var discountAmmount: UILabel!
+    @IBOutlet weak var discountLabel: UIButton!
     
     let reuseIdentifier = "imageCell"
-
-    
+    let defaults = UserDefaults.standard
     
 //    let backButton: UIButton = {
 //        let button = UIButton()
@@ -164,12 +171,33 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 //        if UIDevice.current.hasNotch == true {
 //            addConstraints2()
 //        } else{
 //            addConstraints()
 //        }
         
+        if defaults.bool(forKey: "tutorialShown") {
+            print("Tutorial has already been shown")
+        } else {
+            defaults.set(true, forKey: "tutorialShown")
+            let OnboardingView = UIHostingController(rootView: OnboardingViewController(dismissAction: {self.dismiss( animated: true, completion: nil )}))
+            present( OnboardingView, animated: true )
+        }
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = btnBackgroundView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        btnBackgroundView.addSubview(blurEffectView)
+        
+        btnBackgroundView.layer.shadowColor = UIColor.black.cgColor
+        btnBackgroundView.layer.shadowOpacity = 0.6
+        btnBackgroundView.layer.shadowOffset = CGSize(width: 1, height: -1)
+        btnBackgroundView.layer.shadowRadius = 10
+    
     }
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 
@@ -198,6 +226,30 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     }
     override func viewWillAppear(_ animated: Bool) {
        // configureViews()
+
+        
+        btnInsta.isSkeletonable = true
+        lblTitle.isSkeletonable = true
+        lblClose.isSkeletonable = true
+        lblTags.isSkeletonable = true
+        lbldes.isSkeletonable = true
+        btnMap.isSkeletonable = true
+        discountView.isSkeletonable = true
+        discountAmmount.isSkeletonable = true
+        discountLabel.isSkeletonable = true
+        
+        btnInsta.showAnimatedGradientSkeleton()
+        lblTitle.showAnimatedGradientSkeleton()
+        lblTags.showAnimatedGradientSkeleton()
+        lblClose.showAnimatedGradientSkeleton()
+        lbldes.showAnimatedGradientSkeleton()
+        btnMap.showAnimatedGradientSkeleton()
+        mapImage.skeletonCornerRadius = 10
+        mapImage.showAnimatedGradientSkeleton()
+        discountView.skeletonCornerRadius = 10
+        discountView.showAnimatedGradientSkeleton()
+        discountAmmount.showAnimatedGradientSkeleton()
+        discountLabel.showAnimatedGradientSkeleton()
     }
     override func viewDidAppear(_ animated: Bool) {
      //   addViews()
@@ -219,19 +271,22 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     }
   
     @objc func backButtonPressed() {
-//        let window = UIWindow(windowScene: windowScene)
-//        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-//        let navigationController = UINavigationController.init(rootViewController: homeVC)
-//        navigationController.setNavigationBarHidden(true, animated: false)
-//        window.rootViewController = navigationController
-      //  self.navigationController?.popViewController(animated: true)
-        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? UIViewController else {
+        /*
+        let homeVC = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        let navigationController = UINavigationController.init(rootViewController: homeVC)
+        navigationController.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.popViewController(animated: true)
+         */
+        
+        
+        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? UIViewController else {
             return
         }
         let navigationController = UINavigationController(rootViewController: rootVC)
         navigationController.navigationBar.isHidden = true
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
+         
     }
     
     @objc func openInstagram() {
@@ -328,21 +383,39 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
                                       getDiscountButton.heightAnchor.constraint(equalToConstant: 50)])
     }
     @IBAction func btnActionBack(_ sender: Any) {
+        
+        let LoadingView = UIHostingController(rootView: LoadingViewController(loadingTitle: "Fetching your bill...", loadingDescription: "2Sway automatically tries to add all the available offers to your bill in order to reach the lowest possible price!", image: "cherry-664"))
+        navigationController?.pushViewController(LoadingView, animated: true)
+        
+        /*
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "promoSelectionVC") as! PromoSelectionViewController
         vc.brand = business
         Analytics.logEvent("get_discount_pressed", parameters: [
             "business" : business?.name ?? "?"
             ])
         self.navigationController?.pushViewController(vc, animated: true)
+         */
+    }
+    @IBAction func openMap(_ sender: Any) {
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake((business?.locations[0].latitude)!, (business?.locations[0].longitude)!)
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = business?.name
+        mapItem.openInMaps(launchOptions: options)
     }
     @IBAction func btnActionBak(_ sender: Any) {
-        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? UIViewController else {
+        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? UIViewController else {
             return
         }
         let navigationController = UINavigationController(rootViewController: rootVC)
         navigationController.navigationBar.isHidden = true
-        UIApplication.shared.windows.first?.rootViewController = navigationController
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnGoInsta(_ sender: Any) {
         guard let url = URL(string: "https://www.instagram.com/\(business!.instagram)") else {
@@ -352,12 +425,20 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
         UIApplication.shared.open(url)
     }
     
+    func imageManager(index: String) {
+        let pathReference = Storage.storage().reference(withPath: "BusinessInstagram/\(business?.instagram)/\(index).jpg")
+        pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if let error = error {
+            // Uh-oh, an error occurred!
+          } else {
+            // Data for "images/island.jpg" is returned
+            let image = UIImage(data: data!)
+          }
+        }
+    }
     
     func configureViews() {
         view.backgroundColor = .clear
-        
-        mapImage.layer.cornerRadius = 10
-        mapImage.clipsToBounds = true
         
         let url = URL(string: "mapbox://styles/dragospop14/cl5a6uj2u000k14ncz9jj8lyk")
 
@@ -378,16 +459,15 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
                             
                             snapshot.image { (image, error) in
                                 self.mapImage.image = image
+                                self.mapImage.hideSkeleton()
+                                self.mapImage.layer.cornerRadius = 10
+                                self.mapImage.clipsToBounds = true
                             }
                         })
                     })
                 task.resume()
- 
-        gradientView.layer.shadowColor = UIColor.black.cgColor
-        gradientView.layer.shadowOpacity = 1
-        gradientView.layer.shadowOffset = CGSize(width: 1, height: -1)
-        gradientView.layer.shadowRadius = 100
         
+        discountView.layer.cornerRadius = 10
         imageLogo.sd_setImage(with: URL(string: business?.logo ?? ""), completed: nil)
         lblTitle.text = business?.name
         priceLabel.text = business?.pricePoint
@@ -396,10 +476,35 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
         lbldes.text = business!.description
 //        closeTimeLabel.text = "Closes at \(business!.closingTime)"
         btnDiscount.layer.cornerRadius = 25
-        btnInsta.setTitle("See \(business!.name) on Instagram", for: .normal)
+        btnInsta.setTitle("View \(business!.name) on Instagram", for: .normal)
+        btnMap.setTitle("Directions to \(business!.name)", for: .normal)
        // let image = UIImage(named: "leftArrowWhite")?.withRenderingMode(.alwaysTemplate)
        // btnMainBack.setImage(image, for:.normal)
        // btnMainBack.tintColor = UIColor.gray
+        
+        switch AppData.shared.user?.tier {
+            case 0:
+                discountAmmount.text = "\((business?.promos[0].lowestDiscount)!)% off"
+            case 1:
+                discountAmmount.text = "\((business?.promos[0].middleDiscount)!)% off"
+            case 2:
+                discountAmmount.text = "\((business?.promos[0].highestDiscount)!)% off"
+            case .none:
+                print("Missing tier")
+            case .some(_):
+                print("Missing tier")
+        }
+        
+        
+        btnInsta.hideSkeleton()
+        lblTitle.hideSkeleton()
+        lblTags.hideSkeleton()
+        lblClose.hideSkeleton()
+        lbldes.hideSkeleton()
+        btnMap.hideSkeleton()
+        discountView.hideSkeleton()
+        discountLabel.hideSkeleton()
+        discountAmmount.hideSkeleton()
     }
 
     
@@ -407,7 +512,7 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     // make a cell for each cell index path
@@ -416,8 +521,18 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! InstagramCollectionViewCell
         
+        let pathReference = Storage.storage().reference(withPath: "BusinessInstagram/\(business!.instagram)/\(indexPath.item+1).jpg")
+        pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if error != nil {
+            print("Storage error")
+            print(error)
+          } else {
+            // Data for "images/island.jpg" is returned
+            cell.instaImage.image = UIImage(data: data!)
+          }
+        }
+        
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.instaImage.image = UIImage(named:"2swayBlack")
         cell.instaImage?.translatesAutoresizingMaskIntoConstraints = false
         cell.instaImage?.heightAnchor.constraint(equalToConstant: 120).isActive = true
         cell.instaImage?.widthAnchor.constraint(equalToConstant: 120).isActive = true

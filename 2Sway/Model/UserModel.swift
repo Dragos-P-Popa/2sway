@@ -18,6 +18,7 @@ struct UserModel {
     var urlString: String?
     var dataThisMonth: DataThisMonth
  //   var totalPromosDone: Int
+    var tier: Int
     var totalEngagements: Int
     var promos: [StudentPromos]
     var instagram: String
@@ -34,6 +35,7 @@ struct UserModel {
         case promos
         case instagram
         case storyIds
+        case tier
      //   case totalPromosDone
     }
         
@@ -107,6 +109,7 @@ extension UserModel: Encodable, Decodable {
         try val.encode(totalEngagements, forKey: .totalEngagements)
         try val.encode(instagram, forKey: .instagram)
         try val.encode(storyIds, forKey: .storyIds)
+        try val.encode(tier, forKey: .tier)
     }
     
     init(from decoder: Decoder) throws {
@@ -122,5 +125,6 @@ extension UserModel: Encodable, Decodable {
         totalEngagements = try value.decode(Int.self, forKey: .totalEngagements)
         instagram = try value.decode(String.self, forKey: .instagram)
         storyIds = try value.decode([String].self, forKey: .storyIds)
+        tier = try value.decode(Int.self, forKey: .tier)
     }
 }
