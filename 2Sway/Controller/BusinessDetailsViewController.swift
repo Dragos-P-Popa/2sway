@@ -172,6 +172,31 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        btnInsta.isSkeletonable = true
+        lblTitle.isSkeletonable = true
+        lblClose.isSkeletonable = true
+        lblTags.isSkeletonable = true
+        lbldes.isSkeletonable = true
+        btnMap.isSkeletonable = true
+        discountView.isSkeletonable = true
+        discountAmmount.isSkeletonable = true
+        discountLabel.isSkeletonable = true
+        
+        btnInsta.showAnimatedGradientSkeleton()
+        lblTitle.showAnimatedGradientSkeleton()
+        lblTags.showAnimatedGradientSkeleton()
+        lblClose.showAnimatedGradientSkeleton()
+        lbldes.showAnimatedGradientSkeleton()
+        btnMap.showAnimatedGradientSkeleton()
+        mapImage.skeletonCornerRadius = 10
+        mapImage.showAnimatedGradientSkeleton()
+        discountView.skeletonCornerRadius = 10
+        discountView.showAnimatedGradientSkeleton()
+        discountAmmount.showAnimatedGradientSkeleton()
+        discountLabel.showAnimatedGradientSkeleton()
+        
+        configureViews()
+        
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 //        if UIDevice.current.hasNotch == true {
 //            addConstraints2()
@@ -224,37 +249,11 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
             }
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-       // configureViews()
 
-        
-        btnInsta.isSkeletonable = true
-        lblTitle.isSkeletonable = true
-        lblClose.isSkeletonable = true
-        lblTags.isSkeletonable = true
-        lbldes.isSkeletonable = true
-        btnMap.isSkeletonable = true
-        discountView.isSkeletonable = true
-        discountAmmount.isSkeletonable = true
-        discountLabel.isSkeletonable = true
-        
-        btnInsta.showAnimatedGradientSkeleton()
-        lblTitle.showAnimatedGradientSkeleton()
-        lblTags.showAnimatedGradientSkeleton()
-        lblClose.showAnimatedGradientSkeleton()
-        lbldes.showAnimatedGradientSkeleton()
-        btnMap.showAnimatedGradientSkeleton()
-        mapImage.skeletonCornerRadius = 10
-        mapImage.showAnimatedGradientSkeleton()
-        discountView.skeletonCornerRadius = 10
-        discountView.showAnimatedGradientSkeleton()
-        discountAmmount.showAnimatedGradientSkeleton()
-        discountLabel.showAnimatedGradientSkeleton()
-    }
     override func viewDidAppear(_ animated: Bool) {
      //   addViews()
      //   addConstraints()
-        configureViews()
+        
         Analytics.logEvent("business_viewed", parameters: [
             "business" : business?.name ?? "?"
             ])
@@ -300,6 +299,7 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     @objc func getDiscountButtonTapped() {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "promoSelectionVC") as! PromoSelectionViewController
         vc.brand = business
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -384,8 +384,11 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
     }
     @IBAction func btnActionBack(_ sender: Any) {
         
-        let LoadingView = UIHostingController(rootView: LoadingViewController(loadingTitle: "Fetching your bill...", loadingDescription: "2Sway automatically tries to add all the available offers to your bill in order to reach the lowest possible price!", image: "cherry-664"))
-        navigationController?.pushViewController(LoadingView, animated: true)
+        //let BillLoadingView = UIHostingController(rootView: BillLoadingViewController())
+        //navigationController?.pushViewController(BillLoadingView, animated: true)
+        
+        let ConfirmView = UIHostingController(rootView: ConfirmViewController(brand: business))
+        navigationController?.pushViewController(ConfirmView, animated: true)
         
         /*
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "promoSelectionVC") as! PromoSelectionViewController

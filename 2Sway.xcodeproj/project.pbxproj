@@ -54,7 +54,8 @@
 		40ABF6252797605C00335E96 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6242797605C00335E96 /* Feedback.swift */; };
 		4BE8C2E53113EF4340386F0E /* Pods_2SwayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */; };
 		5A220CA6288AAF93004E242F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A220CA5288AAF93004E242F /* ErrorViewController.swift */; };
-		5A220CA8288AB1B4004E242F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A220CA7288AB1B4004E242F /* LoadingViewController.swift */; };
+		5A6442B828A035480008BFDC /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6442B728A035480008BFDC /* Bill.swift */; };
+		5A6442BA28A0781F0008BFDC /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6442B928A0781F0008BFDC /* ValuesViewController.swift */; };
 		5A66401928894AD6006A231E /* InstagramCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */; };
 		5A66401B288999C5006A231E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401A288999C5006A231E /* Gradient.swift */; };
 		5A66401D2889DE5B006A231E /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66401C2889DE5B006A231E /* OnboardingCard.swift */; };
@@ -62,16 +63,22 @@
 		5A6640212889E1B4006A231E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6640202889E1B4006A231E /* OnboardingViewController.swift */; };
 		5A7EEF4C28996F0A005617DD /* AccountManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */; };
 		5A7EEF4E28999581005617DD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EEF4D28999581005617DD /* AccountManager.swift */; };
+		5A81A32028AD8935005E2590 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A81A31F28AD8935005E2590 /* ConfirmViewController.swift */; };
+		5A88D51C28AD9A5000D688EF /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A88D51B28AD9A5000D688EF /* RedeemViewController.swift */; };
+		5A88D51F28AD9B6700D688EF /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 5A88D51E28AD9B6700D688EF /* Shiny */; };
 		5ABBD136286E58E900E814FF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD135286E58E900E814FF /* NotificationService.swift */; };
 		5ABBD13A286E58E900E814FF /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5ABBD141286E59A200E814FF /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD140286E59A200E814FF /* OneSignal */; };
 		5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABBD142286E59A200E814FF /* OneSignalExtension */; };
 		5ABBD14A28763AEC00E814FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBD14928763AEC00E814FF /* MapViewController.swift */; };
 		5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41378286BA1DC000603DA /* ImagePickerManager.swift */; };
-		5AC53982288EF2D4007248EF /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53981288EF2D4007248EF /* FacebookBasics */; };
-		5AC53984288EF2D4007248EF /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53983288EF2D4007248EF /* FacebookCore */; };
-		5AC53986288EF2D4007248EF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5AC53985288EF2D4007248EF /* FacebookLogin */; };
-		5AC53988288EF394007248EF /* MetaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC53987288EF394007248EF /* MetaAuthViewController.swift */; };
+		5AC47CD6289D710100AB6AD4 /* OrderPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC47CD5289D710100AB6AD4 /* OrderPreviewViewController.swift */; };
+		5AC47CDA289E8EC300AB6AD4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC47CD9289E8EC300AB6AD4 /* CardView.swift */; };
+		5AC47CDC289F1DEF00AB6AD4 /* DiscountedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC47CDB289F1DEE00AB6AD4 /* DiscountedCardView.swift */; };
+		5AC47CDE289F232900AB6AD4 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC47CDD289F232900AB6AD4 /* OrderViewController.swift */; };
+		5AE2609528AE495800EE9EEE /* Collapsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE2609428AE495800EE9EEE /* Collapsible.swift */; };
+		5AF0D16C289C4F6C00FF3C13 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0D16B289C4F6C00FF3C13 /* CircularProgressView.swift */; };
+		5AF0D16E289C4FD100FF3C13 /* TierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0D16D289C4FD100FF3C13 /* TierViewController.swift */; };
 		5AF24915289743DF0028CAC0 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24914289743DF0028CAC0 /* ValuesView.swift */; };
 		5AF24917289744820028CAC0 /* ValuesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24916289744810028CAC0 /* ValuesCard.swift */; };
 		721171400666D0DDA224E392 /* Pods_2Sway_2SwayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36E30DF10F32B139ED0278F /* Pods_2Sway_2SwayUITests.framework */; };
@@ -201,7 +208,8 @@
 		504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2SwayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555F7F369C635C200936251F /* Pods-2Sway-2SwayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway-2SwayUITests.debug.xcconfig"; path = "Target Support Files/Pods-2Sway-2SwayUITests/Pods-2Sway-2SwayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A220CA5288AAF93004E242F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
-		5A220CA7288AB1B4004E242F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		5A6442B728A035480008BFDC /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		5A6442B928A0781F0008BFDC /* ValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
 		5A66401828894AD6006A231E /* InstagramCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A66401A288999C5006A231E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		5A66401C2889DE5B006A231E /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
@@ -209,6 +217,8 @@
 		5A6640202889E1B4006A231E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementViewController.swift; sourceTree = "<group>"; };
 		5A7EEF4D28999581005617DD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		5A81A31F28AD8935005E2590 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		5A88D51B28AD9A5000D688EF /* RedeemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 		5ABBD133286E58E900E814FF /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABBD135286E58E900E814FF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5ABBD137286E58E900E814FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,7 +226,13 @@
 		5ABBD145286E5B0D00E814FF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		5ABBD14928763AEC00E814FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5AC41378286BA1DC000603DA /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
-		5AC53987288EF394007248EF /* MetaAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaAuthViewController.swift; sourceTree = "<group>"; };
+		5AC47CD5289D710100AB6AD4 /* OrderPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewViewController.swift; sourceTree = "<group>"; };
+		5AC47CD9289E8EC300AB6AD4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5AC47CDB289F1DEE00AB6AD4 /* DiscountedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountedCardView.swift; sourceTree = "<group>"; };
+		5AC47CDD289F232900AB6AD4 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		5AE2609428AE495800EE9EEE /* Collapsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collapsible.swift; sourceTree = "<group>"; };
+		5AF0D16B289C4F6C00FF3C13 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		5AF0D16D289C4FD100FF3C13 /* TierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierViewController.swift; sourceTree = "<group>"; };
 		5AF24914289743DF0028CAC0 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
 		5AF24916289744810028CAC0 /* ValuesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesCard.swift; sourceTree = "<group>"; };
 		9B1561788107C45FB0631675 /* Pods-2Sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway.release.xcconfig"; path = "Target Support Files/Pods-2Sway/Pods-2Sway.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,10 +279,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A88D51F28AD9B6700D688EF /* Shiny in Frameworks */,
 				DE452658C8C3E531AE2EA86D /* Pods_2Sway.framework in Frameworks */,
-				5AC53984288EF2D4007248EF /* FacebookCore in Frameworks */,
-				5AC53986288EF2D4007248EF /* FacebookLogin in Frameworks */,
-				5AC53982288EF2D4007248EF /* FacebookBasics in Frameworks */,
 				5ABBD143286E59A200E814FF /* OneSignalExtension in Frameworks */,
 				5ABBD141286E59A200E814FF /* OneSignal in Frameworks */,
 			);
@@ -390,9 +404,13 @@
 				5ABBD14928763AEC00E814FF /* MapViewController.swift */,
 				5A66401A288999C5006A231E /* Gradient.swift */,
 				5A220CA5288AAF93004E242F /* ErrorViewController.swift */,
-				5A220CA7288AB1B4004E242F /* LoadingViewController.swift */,
-				5AC53987288EF394007248EF /* MetaAuthViewController.swift */,
 				5A7EEF4B28996F0A005617DD /* AccountManagementViewController.swift */,
+				5AF0D16D289C4FD100FF3C13 /* TierViewController.swift */,
+				5AC47CD5289D710100AB6AD4 /* OrderPreviewViewController.swift */,
+				5AC47CDD289F232900AB6AD4 /* OrderViewController.swift */,
+				5A6442B928A0781F0008BFDC /* ValuesViewController.swift */,
+				5A81A31F28AD8935005E2590 /* ConfirmViewController.swift */,
+				5A88D51B28AD9A5000D688EF /* RedeemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -412,6 +430,7 @@
 				4001E07D279F281F00E58D6F /* UserModel.swift */,
 				5A66401C2889DE5B006A231E /* OnboardingCard.swift */,
 				5AF24916289744810028CAC0 /* ValuesCard.swift */,
+				5A6442B728A035480008BFDC /* Bill.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,6 +447,10 @@
 				A7E63B3827BF78DF0042F14B /* Reachbility.swift */,
 				5A66401E2889DF70006A231E /* OnboardingView.swift */,
 				5AF24914289743DF0028CAC0 /* ValuesView.swift */,
+				5AF0D16B289C4F6C00FF3C13 /* CircularProgressView.swift */,
+				5AC47CD9289E8EC300AB6AD4 /* CardView.swift */,
+				5AC47CDB289F1DEE00AB6AD4 /* DiscountedCardView.swift */,
+				5AE2609428AE495800EE9EEE /* Collapsible.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,9 +619,7 @@
 			packageProductDependencies = (
 				5ABBD140286E59A200E814FF /* OneSignal */,
 				5ABBD142286E59A200E814FF /* OneSignalExtension */,
-				5AC53981288EF2D4007248EF /* FacebookBasics */,
-				5AC53983288EF2D4007248EF /* FacebookCore */,
-				5AC53985288EF2D4007248EF /* FacebookLogin */,
+				5A88D51E28AD9B6700D688EF /* Shiny */,
 			);
 			productName = progressBar2;
 			productReference = B25B057626B9814F0090AE0E /* 2Sway.app */;
@@ -696,9 +717,7 @@
 			mainGroup = 0EB7D40E26A9D62600BE7518;
 			packageReferences = (
 				5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
-				5AC5397E288EF0F0007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				5AC5397F288EF1C1007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				5A88D51D28AD9B6700D688EF /* XCRemoteSwiftPackageReference "shiny" */,
 			);
 			productRefGroup = 0EB7D40E26A9D62600BE7518;
 			projectDirPath = "";
@@ -884,26 +903,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C06C1B226CD3973003AFDD2 /* DiscountCodeController.swift in Sources */,
+				5AC47CDA289E8EC300AB6AD4 /* CardView.swift in Sources */,
 				5A7EEF4E28999581005617DD /* AccountManager.swift in Sources */,
 				B2A86F2E26C142FB00E2BA69 /* FurtherInfoCell.swift in Sources */,
+				5A6442B828A035480008BFDC /* Bill.swift in Sources */,
+				5A81A32028AD8935005E2590 /* ConfirmViewController.swift in Sources */,
 				0E55A81626AB2B7C00738D81 /* LoginViewController.swift in Sources */,
 				0E55A82626AB365C00738D81 /* HomeViewController.swift in Sources */,
 				4001E07A279B42BC00E58D6F /* AppData.swift in Sources */,
+				5AC47CDE289F232900AB6AD4 /* OrderViewController.swift in Sources */,
 				B2A86F3926C1B48500E2BA69 /* SelectedPromoCell.swift in Sources */,
 				B2932A5C26B8868D0038D85E /* BrandBrain.swift in Sources */,
+				5AF0D16E289C4FD100FF3C13 /* TierViewController.swift in Sources */,
 				0E7638E626CC01D5009C6BF2 /* ClaimedPromo.swift in Sources */,
 				0E83122E26F4E41100B52050 /* CancelTrackingViewController.swift in Sources */,
 				B2CE9D6B26BF21D700DF7A3B /* Promo.swift in Sources */,
 				0E8748B726AF0A96006C5EE8 /* Brand.swift in Sources */,
+				5AE2609528AE495800EE9EEE /* Collapsible.swift in Sources */,
 				408B531727861A0B0085882B /* WebViewViewController.swift in Sources */,
 				5A66401B288999C5006A231E /* Gradient.swift in Sources */,
 				408B531A278762690085882B /* APIClient.swift in Sources */,
 				0EB7D41B26A9D62600BE7518 /* AppDelegate.swift in Sources */,
+				5A6442BA28A0781F0008BFDC /* ValuesViewController.swift in Sources */,
 				0EB620F926C928E6004829F8 /* MyClaimedPromosViewController.swift in Sources */,
 				0E87F49E26F9DA840068DDA5 /* DatabaseManager.swift in Sources */,
 				0E87F4A226FB7F7F0068DDA5 /* PromoInvalidPopUpViewController.swift in Sources */,
 				0E87F4A026FB1DBC0068DDA5 /* CodableClaimedPromo.swift in Sources */,
-				5AC53988288EF394007248EF /* MetaAuthViewController.swift in Sources */,
 				B2A86F3226C14E4E00E2BA69 /* FurtherInfoDetailCell.swift in Sources */,
 				B2CE9D6626BF1A2E00DF7A3B /* PromoCell.swift in Sources */,
 				5A66401F2889DF70006A231E /* OnboardingView.swift in Sources */,
@@ -914,6 +939,7 @@
 				B2CE9D6D26BF25AD00DF7A3B /* PromoBrain.swift in Sources */,
 				40ABF6212794BA7200335E96 /* FeedbackViewController.swift in Sources */,
 				0EF6D89926F64981007D3FE8 /* ConfirmClaimPopUpViewController.swift in Sources */,
+				5AC47CD6289D710100AB6AD4 /* OrderPreviewViewController.swift in Sources */,
 				0E2E1F7226F36AC80054F1BE /* ConfirmPicViewController.swift in Sources */,
 				0E6F13F72753CBC3003E78D3 /* NotVerifiedViewController.swift in Sources */,
 				0E6E5EF826D5026E00FA365D /* FinishPopUpViewController.swift in Sources */,
@@ -924,12 +950,14 @@
 				5A7EEF4C28996F0A005617DD /* AccountManagementViewController.swift in Sources */,
 				4001E07E279F281F00E58D6F /* UserModel.swift in Sources */,
 				B2A86F3C26C1C69600E2BA69 /* RoundedUIView.swift in Sources */,
+				5A88D51C28AD9A5000D688EF /* RedeemViewController.swift in Sources */,
 				5AF24917289744820028CAC0 /* ValuesCard.swift in Sources */,
 				5AC41379286BA1DC000603DA /* ImagePickerManager.swift in Sources */,
 				B2932A5E26B895080038D85E /* ProfileViewController.swift in Sources */,
 				0E62D61726FC840500767DA9 /* VerifyingPromo.swift in Sources */,
 				A7713E72281162A2004E7614 /* CollectionViewCell.swift in Sources */,
 				B2950F0D26E230B100F51397 /* ScreenBlocker.swift in Sources */,
+				5AC47CDC289F1DEF00AB6AD4 /* DiscountedCardView.swift in Sources */,
 				B2A86F3526C1A87F00E2BA69 /* PromoViewController.swift in Sources */,
 				B2CE9D6926BF1F1400DF7A3B /* PromoSelectionViewController.swift in Sources */,
 				A7E63B3627BF73F90042F14B /* CheckNetWork.swift in Sources */,
@@ -947,7 +975,6 @@
 				0EB620FF26C92AF4004829F8 /* RedeemablePromoCell.swift in Sources */,
 				B26B54F626E0D1DA00E2B767 /* IntroViewController.swift in Sources */,
 				B26B54F826E0F1E500E2B767 /* PrivacyViewController.swift in Sources */,
-				5A220CA8288AB1B4004E242F /* LoadingViewController.swift in Sources */,
 				B26B54FC26E1370B00E2B767 /* DeletePopUpViewController.swift in Sources */,
 				0E7638C126CA6B0B009C6BF2 /* Constants.swift in Sources */,
 				5A66401928894AD6006A231E /* InstagramCollectionViewCell.swift in Sources */,
@@ -959,6 +986,7 @@
 				B26B54FA26E10BC700E2B767 /* TermsViewController.swift in Sources */,
 				5A6640212889E1B4006A231E /* OnboardingViewController.swift in Sources */,
 				A7713E6F28115EB4004E7614 /* RulesVC.swift in Sources */,
+				5AF0D16C289C4F6C00FF3C13 /* CircularProgressView.swift in Sources */,
 				0E2E1F6E26F35ACC0054F1BE /* RetakePhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1392,6 +1420,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5A88D51D28AD9B6700D688EF /* XCRemoteSwiftPackageReference "shiny" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/shiny#basic-usage:~:text=Add%20Package%20Dependency%3A-,https%3A//github.com/maustinstar/shiny,-For%20Swift%20Packages";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -1401,33 +1437,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		5AC5397E288EF0F0007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		5AC5397F288EF1C1007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				branch = releases/v14.1.0;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5A88D51E28AD9B6700D688EF /* Shiny */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A88D51D28AD9B6700D688EF /* XCRemoteSwiftPackageReference "shiny" */;
+			productName = Shiny;
+		};
 		5ABBD140286E59A200E814FF /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
@@ -1437,21 +1454,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5ABBD13F286E59A200E814FF /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignalExtension;
-		};
-		5AC53981288EF2D4007248EF /* FacebookBasics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookBasics;
-		};
-		5AC53983288EF2D4007248EF /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-		5AC53985288EF2D4007248EF /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5AC53980288EF2D4007248EF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

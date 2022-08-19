@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import MBProgressHUD
+import SwiftUI
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,7 +23,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var isPassword = Bool()
     var isTerms = Bool()
-
+    let defaults = UserDefaults.standard
+    
     @IBAction func termsPressed(_ sender: UIButton) {
         GlobalShare.ShareUrl(urlPath:"https://www.2sway.co.uk/termsconditions")
        // present(TermsViewController(), animated: true, completion: nil)
@@ -55,6 +57,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         termsButton.setAttributedTitle(NSAttributedString(string: "Terms of Use", attributes: [.underlineStyle: 1]), for: .normal)
         privacyButton.setAttributedTitle(NSAttributedString(string: "Privacy Policy", attributes: [.underlineStyle: 1]), for: .normal)
+        
+        if defaults.bool(forKey: "tutorialShown") {
+            print("Values has already been shown")
+        } else {
+            let ValuesView = UIHostingController(rootView: ValuesViewController(dismissAction: {self.dismiss( animated: true, completion: nil )}))
+            present( ValuesView, animated: true )
+        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.passwordField.text = ""

@@ -10,10 +10,6 @@ import UIKit
 import Firebase
 
 class AccountManagementViewController: UIViewController {
-    
-    ///TO:DO:
-    ///     -Add "Continue" button to navigate to next view and do other logic such as assigning or checking user tier
-    ///
    
     override func viewDidLoad() {
         super.viewDidLoad()

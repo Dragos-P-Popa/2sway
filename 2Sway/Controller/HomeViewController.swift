@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import MBProgressHUD
 import CoreLocation
+import SwiftUI
 
 class AMSleepTimerUtil: NSObject {
     static let shared = AMSleepTimerUtil()
@@ -332,7 +333,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         MBProgressHUD.hide(for:self.view, animated:true)
            DatabaseManager.shared.getUser { success in
@@ -360,7 +361,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func myPromosIconPressed() {
-        performSegue(withIdentifier: K.Segues.homeToClaimDiscount, sender: self)
+        //performSegue(withIdentifier: K.Segues.homeToClaimDiscount, sender: self)
+        print(String(Double(3 / 10)) + "00000")
+        
+        let TierView = UIHostingController(rootView: TierViewController(dismissAction: {self.dismiss( animated: true, completion: nil )}))
+        present( TierView, animated: true )
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
