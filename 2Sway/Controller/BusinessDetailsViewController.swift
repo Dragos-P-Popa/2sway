@@ -485,19 +485,7 @@ class BusinessDetailsViewController: UIViewController,  UICollectionViewDataSour
        // btnMainBack.setImage(image, for:.normal)
        // btnMainBack.tintColor = UIColor.gray
         
-        switch AppData.shared.user?.tier {
-            case 0:
-                discountAmmount.text = "\((business?.promos[0].lowestDiscount)!)% off"
-            case 1:
-                discountAmmount.text = "\((business?.promos[0].middleDiscount)!)% off"
-            case 2:
-                discountAmmount.text = "\((business?.promos[0].highestDiscount)!)% off"
-            case .none:
-                print("Missing tier")
-            case .some(_):
-                print("Missing tier")
-        }
-        
+        discountAmmount.text = "\((business?.discounts[AppData.shared.user!.tier - 1])!)% off"
         
         btnInsta.hideSkeleton()
         lblTitle.hideSkeleton()

@@ -11,9 +11,6 @@ import CoreLocation
 struct Business {
     var name: String
     var logo: String
-    var highestDiscount: Int
-    var middleDiscount: Int
-    var lowestDiscount: Int
     var numberOfDiscountsClaimedAtLowestLevel: Int
     var numberOfDiscountsClaimedAtMidLevel: Int
     var numberOfDiscountsClaimedAtHighestLevel: Int
@@ -21,6 +18,7 @@ struct Business {
     var totalEngagements: Int
     var promos: [Promos]
     var locations: [Locations]
+    var discounts: [Int]
     var description: String
     var pricePoint: String
     var keywords: String
@@ -30,11 +28,9 @@ struct Business {
     enum CodingKeys: String, CodingKey {
         case name
         case logo
-        case highestDiscount
-        case middleDiscount
-        case lowestDiscount
         case promos
         case locations
+        case discounts
         case numberOfDiscountsClaimedAtLowestLevel
         case numberOfDiscountsClaimedAtMidLevel
         case numberOfDiscountsClaimedAtHighestLevel
@@ -53,10 +49,8 @@ extension Business: Decodable, Encodable {
         var val = encoder.container(keyedBy: CodingKeys.self)
         try val.encode(name, forKey: .name)
         try val.encode(logo, forKey: .logo)
-        try val.encode(highestDiscount, forKey: .highestDiscount)
-        try val.encode(middleDiscount, forKey: .middleDiscount)
-        try val.encode(lowestDiscount, forKey: .lowestDiscount)
         try val.encode(locations, forKey: .locations)
+        try val.encode(discounts, forKey: .discounts)
         try val.encode(promos, forKey: .promos)
         try val.encode(numberOfDiscountsClaimedAtLowestLevel, forKey: .numberOfDiscountsClaimedAtLowestLevel)
         try val.encode(numberOfDiscountsClaimedAtMidLevel, forKey: .numberOfDiscountsClaimedAtMidLevel)
@@ -75,11 +69,9 @@ extension Business: Decodable, Encodable {
         
         name = try values.decode(String.self, forKey: .name)
         logo = try values.decode(String.self, forKey: .logo)
-        highestDiscount = try values.decode(Int.self, forKey: .highestDiscount)
-        middleDiscount = try values.decode(Int.self, forKey: .middleDiscount)
-        lowestDiscount = try values.decode(Int.self, forKey: .lowestDiscount)
         promos = try values.decode([Promos].self, forKey: .promos)
         locations = try values.decode([Locations].self, forKey: .locations)
+        discounts = try values.decode([Int].self, forKey: .discounts)
         numberOfDiscountsClaimedAtLowestLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtLowestLevel)
         numberOfDiscountsClaimedAtMidLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtMidLevel)
         numberOfDiscountsClaimedAtHighestLevel = try values.decode(Int.self, forKey: .numberOfDiscountsClaimedAtHighestLevel)

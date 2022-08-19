@@ -54,7 +54,7 @@ struct RedeemView: View {
                     Spacer()
                         .frame(height: 50)
                     VStack {
-                        Text("\(business!.highestDiscount)%")
+                        Text("\(business!.discounts[Int(AppData.shared.user!.tier)-1])%")
                             .font(.custom("Jost", size: 52))
                             .fontWeight(.heavy).shiny(.iridescent)
                             

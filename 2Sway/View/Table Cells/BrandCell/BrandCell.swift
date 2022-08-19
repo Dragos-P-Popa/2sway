@@ -45,7 +45,7 @@ class BrandCell: UITableViewCell, CLLocationManagerDelegate {
         self.brand = brand
         brandImage.sd_setImage(with: URL(string: brand.logo), completed: nil)
         titleLabel.text = brand.name
-        descLabel.text = "Max discount: \(Int(brand.highestDiscount))%"
+        descLabel.text = "Max discount: \(Int(brand.discounts[9]))%"
         tagLabel.text = brand.keywords
         
         blurView.subviews.forEach({ $0.removeFromSuperview() })
