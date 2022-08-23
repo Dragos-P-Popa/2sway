@@ -6,6 +6,9 @@ target '2Sway' do
   use_frameworks!
 
   # Pods for 2Sway
+  pod 'SkeletonView'
+  pod 'MapboxStatic.swift', '~> 0.12'
+  pod 'MapboxMaps', '10.6.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'

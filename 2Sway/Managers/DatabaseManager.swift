@@ -14,10 +14,16 @@ final class DatabaseManager {
     
     static let shared = DatabaseManager()
     
+    ///Instance of Firebase Firestore.
     let db = Firestore.firestore()
+    ///Instance of Firestore Storage.
     let storage = Storage.storage().reference()
     
-    // Upload User's details to database
+    /**
+     Upload user's details to database.
+     
+     - parameter user: UserModel which holds current users details.
+     */
     func uploadUser(user: UserModel) {
         print("uploading user")
         
@@ -48,8 +54,14 @@ final class DatabaseManager {
         }
     }
     
-    // getUser
-    
+    /**
+     Gets current users' Firesore data.  Uses Firebase Auth to get the current users' email address. Using this it fetched the users record from the Firestore "Students" collection.
+     
+     - returns: UserModel of fetched user.
+     
+     # Notes: #
+     1. Uses Firebase Auth to get the current users' email address. Using this it fetched the users record from the Firestore "Students" collection.
+     */
     func getUser(completion: @escaping(Bool) -> Void) {
         db.collection("Students").getDocuments() { documents, error in
             if let error = error {
@@ -73,6 +85,7 @@ final class DatabaseManager {
                             var strInsta = ""
                             var isExpire = ""
                             var IntTotleng = 0
+                            var tier = 0
                             var aryStoryIds = [String]()
                             var aryStoryIds1 = [String]()
                             var aryPromoMain = [StudentPromos]()
@@ -104,6 +117,9 @@ final class DatabaseManager {
                                 if let storyID = dictMain.object(forKey:"storyID") as? NSMutableArray {
                                    print(storyID)
                                 }
+                                if let currentTier = dictMain.object(forKey: "tier") as? Int {
+                                    tier = currentTier
+                                }
                                 if let storyIds = dictMain.object(forKey:"storyIds") as? [String] {
                                     for i in storyIds {
                                         aryStoryIds.append(i)
@@ -127,7 +143,7 @@ final class DatabaseManager {
                                             }
                                         }
                                     print(aryPromoMain)
-                                    AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
+                                    AppData.shared.user = UserModel(accountStatus:accountStatus, email:strEmail, name:strname, isExpire:isExpire, urlString:strProfileUrl, dataThisMonth:DataThisMonth(), tier: tier, totalEngagements:IntTotleng, promos:aryPromoMain, instagram:strInsta, storyIds:aryStoryIds)
                             }
                             //AppData.shared.user = user
                             completion(true)
@@ -142,6 +158,12 @@ final class DatabaseManager {
         }
     }
     
+    /**
+     Updates business record in Firebase Firestore.
+     
+     - parameter business: BusinessModel.
+     
+     */
     func updateBusiness(businessID: String, business: Business) {
         do {
             try db.collection("Businesses").document(businessID).setData(from: business)
@@ -150,68 +172,8 @@ final class DatabaseManager {
         }
     }
     
-    func uploadVerifyingPromo(verifyingPromo: VerifyingPromo) {
-        
-        print("uploading verifying promo")
-        guard let email = Auth.auth().currentUser?.email else {
-            print("User ID could not be found1.1")
-            return
-        }
-        
-        do {
-            try self.db.collection(email).document("verifyingPromo").setData(from: verifyingPromo)
-        } catch let error {
-            print("Error writing promo to firestore: \(error)")
-        }
-    }
     
-    func checkVerifyingPromo(completion: @escaping (Bool?) -> Void) {
-        
-        print("checking verifying promo")
-        guard let email = Auth.auth().currentUser?.email else {
-            print("User ID could not be found1.2")
-            return
-        }
-        
-        self.db.collection(email).document("verifyingPromo").getDocument { document, error in
-            
-            let result = Result {
-                try document?.data(as: VerifyingPromo.self)
-            }
-            switch result {
-            case .success(let verifyingPromo):
-                if let verifyingPromo = verifyingPromo {
-                    // A `verifyingPromo` value was successfully initialized from the DocumentSnapshot.
-                    if verifyingPromo.isOkay {
-                        completion(true)
-                    } else {
-                        completion(false)
-                    }
-                    
-                } else {
-                    // a nil value was successfully initialised from the snapshot
-                    // or the snapshot was nil
-                    print("verifyingPromo document doesn't Exist")
-                    completion(nil)
-                }
-            case .failure(let error):
-                // A CodableClaimedPromo could not be initialised from the snapshot
-                print("Error decoding verifyingPromo: \(error)")
-                completion(nil)
-            }
-        }
-    }
-    
-    func deleteVerifyingPromo() {
-        
-        guard let email = Auth.auth().currentUser?.email else {
-            print("User ID could not be found2")
-            return
-        }
-        
-        self.db.collection(email).document("verifyingPromo").delete()
-    }
-
+    ///Updates local claimed promos.
     func uploadLocalClaimedPromos() {
         
         var promos: [ClaimedPromo] = []
@@ -223,6 +185,11 @@ final class DatabaseManager {
         self.uploadClaimedPromos(with: promos)
     }
     
+    /**
+     Updates promos. Syncs local promos with Firebase Firestore stored promos.
+     
+     - parameter claimedPromos: ClaimedPromo.
+     */
     func uploadClaimedPromos(with claimedPromos: [ClaimedPromo]) {
         print("Synchronising")
         guard let email = Auth.auth().currentUser?.email else {
@@ -302,6 +269,11 @@ final class DatabaseManager {
         }
     }
     
+    /**
+     Removes a claimed promo from Firebase Firestore.
+     
+     - parameter id: Promo ID as String.
+     */
     func removeClaimedPromo(with id: String) {
         guard let email = Auth.auth().currentUser?.email else {
             print("User ID could not be found2.1")
@@ -518,6 +490,33 @@ final class DatabaseManager {
         } catch(let error) {
             print(error.localizedDescription)
             completion(false)
+        }
+    }
+    
+    func claimExpired(user: UserModel){
+        do {
+            var userCopy = user
+            
+            let date = Date()
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let expireDate = df.date(from: user.isExpire ?? "2222-01-01 00:00:00")
+            
+            if date > expireDate ?? df.date(from: "2222-01-01 00:00:00")!{
+                userCopy.promos[userCopy.promos.count - 1].isClaimed = true
+                userCopy.isExpire = ""
+                try db.collection(K.Database.collections.students).document(user.email!).setData(from: userCopy) { error in
+                    if let e = error {
+                        print("Issue saving data: \(e)")
+                    } else {
+                        
+                        print("Successfully saved data")
+                    }
+                }
+            }
+        }catch(let error) {
+                print("Catch error", error)
         }
     }
 }

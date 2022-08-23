@@ -24,6 +24,8 @@ struct User {
     var totalEngagements: Int
     var promos: [StudentPromos]
     
+    var tier: Int
+    
     init() {
         self.accountStatus = 0
         self.myPromos = []
@@ -31,6 +33,7 @@ struct User {
         self.totalEngagements = 0
         dataThisMonth = DataThisMonth()
         self.promos = []
+        self.tier = 1
     }
     
     enum CodingKeys: String, CodingKey {
@@ -42,6 +45,7 @@ struct User {
         case totalEngagements
         case promos
         case totalPromosDone
+        case tier
     }
         
     /**
@@ -221,6 +225,7 @@ extension User: Encodable, Decodable {
         try val.encode(email, forKey: .email)
         try val.encode(dataThisMonth, forKey: .dataThisMonth)
         try val.encode(promos, forKey: .promos)
+        try val.encode(tier, forKey: .tier)
     }
     
     init(from decoder: Decoder) throws {
@@ -233,6 +238,7 @@ extension User: Encodable, Decodable {
         promos = try value.decode([StudentPromos].self, forKey: .promos)
         totalPromosDone = try value.decode(Int.self, forKey: .totalPromosDone)
         totalEngagements = try value.decode(Int.self, forKey: .totalEngagements)
+        tier = try value.decode(Int.self, forKey: .tier)
         myPromos = []
         profilePhoto = nil
         password = ""

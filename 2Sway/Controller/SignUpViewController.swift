@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import MBProgressHUD
+import SwiftUI
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,7 +23,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var isPassword = Bool()
     var isTerms = Bool()
-
+    let defaults = UserDefaults.standard
+    
     @IBAction func termsPressed(_ sender: UIButton) {
         GlobalShare.ShareUrl(urlPath:"https://www.2sway.co.uk/termsconditions")
        // present(TermsViewController(), animated: true, completion: nil)
@@ -55,6 +57,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         termsButton.setAttributedTitle(NSAttributedString(string: "Terms of Use", attributes: [.underlineStyle: 1]), for: .normal)
         privacyButton.setAttributedTitle(NSAttributedString(string: "Privacy Policy", attributes: [.underlineStyle: 1]), for: .normal)
+        
+        if defaults.bool(forKey: "tutorialShown") {
+            print("Values has already been shown")
+        } else {
+            let ValuesView = UIHostingController(rootView: ValuesViewController(dismissAction: {self.dismiss( animated: true, completion: nil )}))
+            present( ValuesView, animated: true )
+        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.passwordField.text = ""
@@ -160,10 +170,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         UserDefaults.standard.set(email, forKey:K.udefalt.EmailCurrent)
                         self.sendVerification()
                         print(DataThisMonth())
-                        AppData.shared.user = UserModel(accountStatus: 0, email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: [])
-                        DatabaseManager.shared.uploadUser(user:UserModel(accountStatus: 0, email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), totalEngagements: 0, promos: [], instagram: "", storyIds: []))
+                        AppData.shared.user = UserModel(accountStatus: 0, email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 4, totalEngagements: 0, promos: [], instagram: "", storyIds: [])
+                        DatabaseManager.shared.uploadUser(user:UserModel(accountStatus: 0, email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 4, totalEngagements: 0, promos: [], instagram: "", storyIds: []))
                         UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
-                        self.performSegue(withIdentifier: K.Segues.toTakePhoto, sender: self)
+
+                        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AccountManagementViewController") as! AccountManagementViewController
+                        self.navigationController?.pushViewController(loginVC, animated: true)
+                        
+                       // self.performSegue(withIdentifier: K.Segues.toTakePhoto, sender: self)
 //                        let vc = WebViewViewController()
 //                        vc.delegate = self
 //                        vc.modalPresentationStyle = .formSheet

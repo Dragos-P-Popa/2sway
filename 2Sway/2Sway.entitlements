@@ -8,5 +8,9 @@
 	<array>
 		<string>group.com.mvplaunch.2sway.onesignal</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.mvplaunch.2sway</string>
+	</array>
 </dict>
 </plist>

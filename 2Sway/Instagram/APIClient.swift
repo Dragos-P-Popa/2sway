@@ -33,8 +33,10 @@ class APIClient {
             print(String(describing: error))
             return
           }
+            
             // print("API call data ", String(data: data, encoding: .utf8)!)
             do {
+                print(data)
                 let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
                 let message = json["msg"] as? String
                 if message == "success" {
@@ -53,21 +55,27 @@ class APIClient {
                     // aryStoryDiscount = "60"
                     if aryCheck.count == 0 {
                         success(aryStoryCount,aryStoryDiscount,aryInstaId,true)
+                        print(success)
                     } else {
                         if aryStoryCount != "0" {
                            // success(totalSum,aryStoryIdCout.last ?? "")
                             success(aryStoryCount,aryStoryDiscount,aryInstaId,false)
+                            print(success)
                         } else {
                             success("0", "0",aryInstaId,false)
+                            print(success)
                         }
                     }
                 } else {
+                    print(message)
                     success("-2",message ?? "",["1"],false)
                 }
-            } catch(_) {
+            } catch let error {
+                print(error)
                 success("-1", "0",[],false)
             }
         }
         task.resume()
     }
+    
 }
