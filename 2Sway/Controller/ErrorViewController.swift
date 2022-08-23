@@ -53,23 +53,23 @@ struct ErrorViewController: View {
                                 counter += 1
                             }
             
-            Button(action: {
-                //do something
-                }) {
-                    Text(buttonText)
+           /* NavigationLink(destination: RedeemViewController(business: brand).navigationBarBackButtonHidden(true), tag: 1, selection: $selection) { */
+                Button(action: {/*self.selection = 1*/}) {
+                    Text("I'VE POSTED")
                         .fontWeight(.black)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(.custom("Jost", size: 22))
-                        .padding()
+                        .padding(8)
                         .foregroundColor(.white)
                         .overlay(
                             RoundedRectangle(cornerRadius: 35)
                                 .stroke(Color.white, lineWidth: 4)
-                    )
+                        )
                 }
                 .padding()
                 .background(Color.black)
                 .cornerRadius(35)
+           // }
                 
         }.background(
             Color.black

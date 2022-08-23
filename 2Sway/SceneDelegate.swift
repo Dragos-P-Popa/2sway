@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -25,10 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appVersionCurent = appVersion!.replacingOccurrences(of: ".", with: "")
         if let windowScene = scene as? UIWindowScene {
             
-//            ActiveUser.activeUser.signOut()
+            //            ActiveUser.activeUser.signOut()
             
             let window = UIWindow(windowScene: windowScene)
-
+            
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let homeVC = storyboard.instantiateViewController(withIdentifier: "AccountManagementViewController") as! AccountManagementViewController
             let DiscountCodeController = storyboard.instantiateViewController(withIdentifier: "DiscountCodeController") as! DiscountCodeController
@@ -36,42 +35,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let isPhoto = storyboard.instantiateViewController(withIdentifier:"isPhoto") as! TakePhotoViewController
             let Login = storyboard.instantiateViewController(withIdentifier:"Login") as! LoginViewController
             //let Test = storyboard.instantiateViewController(withIdentifier:"test") as! UIViewController
-//            let navigationController = UINavigationController.init(rootViewController: Test)
-//                                   navigationController.setNavigationBarHidden(true, animated: false)
-//                                  window.rootViewController = navigationController
-//
-            if let isCheckPhoto = UserDefaults.standard.object(forKey:K.udefalt.IsPhoto) as? Bool {
-                if isCheckPhoto  {
-                    var isExistingUser: Bool
-                    if Auth.auth().currentUser != nil {
-                        isExistingUser = true
-                    } else {
-                        isExistingUser = false
-                    }
-                    if isExistingUser {
-                        let navigationController = UINavigationController.init(rootViewController: homeVC)
-                        navigationController.setNavigationBarHidden(true, animated: false)
-                        window.rootViewController = navigationController
-                        DatabaseManager.shared.updateLocalDetails()
-                    } else {
-                        let navigationController = UINavigationController.init(rootViewController: signupVC)
-                        navigationController.setNavigationBarHidden(true, animated: false)
-                        window.rootViewController = navigationController
-                    }
-                } else {
-                    let navigationController = UINavigationController.init(rootViewController: isPhoto)
-                    navigationController.setNavigationBarHidden(true, animated: false)
-                    window.rootViewController = navigationController
-                }
-            }  else {
-                let navigationController = UINavigationController.init(rootViewController: isPhoto)
+            //            let navigationController = UINavigationController.init(rootViewController: Test)
+            //                                   navigationController.setNavigationBarHidden(true, animated: false)
+            //                                  window.rootViewController = navigationController
+            //
+            
+            var isExistingUser: Bool
+            if Auth.auth().currentUser != nil {
+                isExistingUser = true
+            } else {
+                isExistingUser = false
+            }
+            if isExistingUser {
+                let navigationController = UINavigationController.init(rootViewController: homeVC)
+                navigationController.setNavigationBarHidden(true, animated: false)
+                window.rootViewController = navigationController
+                DatabaseManager.shared.updateLocalDetails()
+            } else {
+                let navigationController = UINavigationController.init(rootViewController: signupVC)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 window.rootViewController = navigationController
             }
+        
+
             self.window = window
             window.makeKeyAndVisible()
             
-            var isExistingUser: Bool
+
             if Auth.auth().currentUser != nil {
                 isExistingUser = true
             } else {
@@ -240,12 +230,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else {
             return
         }
-
-        ApplicationDelegate.shared.application(
-            UIApplication.shared,
-            open: url,
-            sourceApplication: nil,
-            annotation: [UIApplication.OpenURLOptionsKey.annotation]
-        )
     }
 }

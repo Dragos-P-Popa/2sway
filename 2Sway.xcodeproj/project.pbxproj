@@ -53,6 +53,7 @@
 		40ABF6232796F62100335E96 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6222796F62100335E96 /* Business.swift */; };
 		40ABF6252797605C00335E96 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABF6242797605C00335E96 /* Feedback.swift */; };
 		4BE8C2E53113EF4340386F0E /* Pods_2SwayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */; };
+		5A13769E28B0440800996CF3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13769D28B0440800996CF3 /* NetworkMonitor.swift */; };
 		5A220CA6288AAF93004E242F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A220CA5288AAF93004E242F /* ErrorViewController.swift */; };
 		5A6442B828A035480008BFDC /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6442B728A035480008BFDC /* Bill.swift */; };
 		5A6442BA28A0781F0008BFDC /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6442B928A0781F0008BFDC /* ValuesViewController.swift */; };
@@ -207,6 +208,7 @@
 		40ABF6242797605C00335E96 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		504506A88215AF3DCBB58477 /* Pods_2SwayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2SwayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555F7F369C635C200936251F /* Pods-2Sway-2SwayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2Sway-2SwayUITests.debug.xcconfig"; path = "Target Support Files/Pods-2Sway-2SwayUITests/Pods-2Sway-2SwayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A13769D28B0440800996CF3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		5A220CA5288AAF93004E242F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		5A6442B728A035480008BFDC /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		5A6442B928A0781F0008BFDC /* ValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				B2CE9D6C26BF25AD00DF7A3B /* PromoBrain.swift */,
 				5AC41378286BA1DC000603DA /* ImagePickerManager.swift */,
 				5A7EEF4D28999581005617DD /* AccountManager.swift */,
+				5A13769D28B0440800996CF3 /* NetworkMonitor.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				0E6E5EF826D5026E00FA365D /* FinishPopUpViewController.swift in Sources */,
 				40ABF6232796F62100335E96 /* Business.swift in Sources */,
 				0EB7D41D26A9D62600BE7518 /* SceneDelegate.swift in Sources */,
+				5A13769E28B0440800996CF3 /* NetworkMonitor.swift in Sources */,
 				0E83123026F4F23800B52050 /* SplashRulesViewController.swift in Sources */,
 				0E2E1F7026F35C520054F1BE /* RetakeCamViewController.swift in Sources */,
 				5A7EEF4C28996F0A005617DD /* AccountManagementViewController.swift in Sources */,
@@ -1171,7 +1175,7 @@
 				CODE_SIGN_ENTITLEMENTS = 2Sway/2Sway.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = 2Sway/Info.plist;
@@ -1179,7 +1183,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1199,14 +1203,14 @@
 				CODE_SIGN_ENTITLEMENTS = 2Sway/2Sway.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = L8726YDCU5;
 				INFOPLIST_FILE = 2Sway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvplaunch.2sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

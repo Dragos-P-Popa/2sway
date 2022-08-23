@@ -170,10 +170,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         UserDefaults.standard.set(email, forKey:K.udefalt.EmailCurrent)
                         self.sendVerification()
                         print(DataThisMonth())
-                        AppData.shared.user = UserModel(accountStatus: 0, email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 1, totalEngagements: 0, promos: [], instagram: "", storyIds: [])
-                        DatabaseManager.shared.uploadUser(user:UserModel(accountStatus: 0, email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 1, totalEngagements: 0, promos: [], instagram: "", storyIds: []))
+                        AppData.shared.user = UserModel(accountStatus: 0, email: email, name: name , isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 4, totalEngagements: 0, promos: [], instagram: "", storyIds: [])
+                        DatabaseManager.shared.uploadUser(user:UserModel(accountStatus: 0, email: email, name: name ,isExpire:"", urlString: "", dataThisMonth: DataThisMonth(), tier: 4, totalEngagements: 0, promos: [], instagram: "", storyIds: []))
                         UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
-                        self.performSegue(withIdentifier: K.Segues.toTakePhoto, sender: self)
+
+                        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AccountManagementViewController") as! AccountManagementViewController
+                        self.navigationController?.pushViewController(loginVC, animated: true)
+                        
+                       // self.performSegue(withIdentifier: K.Segues.toTakePhoto, sender: self)
 //                        let vc = WebViewViewController()
 //                        vc.delegate = self
 //                        vc.modalPresentationStyle = .formSheet

@@ -492,5 +492,32 @@ final class DatabaseManager {
             completion(false)
         }
     }
+    
+    func claimExpired(user: UserModel){
+        do {
+            var userCopy = user
+            
+            let date = Date()
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let expireDate = df.date(from: user.isExpire ?? "2222-01-01 00:00:00")
+            
+            if date > expireDate ?? df.date(from: "2222-01-01 00:00:00")!{
+                userCopy.promos[userCopy.promos.count - 1].isClaimed = true
+                userCopy.isExpire = ""
+                try db.collection(K.Database.collections.students).document(user.email!).setData(from: userCopy) { error in
+                    if let e = error {
+                        print("Issue saving data: \(e)")
+                    } else {
+                        
+                        print("Successfully saved data")
+                    }
+                }
+            }
+        }catch(let error) {
+                print("Catch error", error)
+        }
+    }
 }
 

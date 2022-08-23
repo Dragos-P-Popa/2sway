@@ -14,7 +14,7 @@ struct OrderViewController: View {
     var body: some View {
         Group {
             if showSplash {
-                StoryLoadingView()
+                //StoryLoadingView()
             } else {
                 OrderView(table: "Table 12", restaurant: "Rola Wala", discount: "―£10.99", purchaseBreakdown: [["Item 1", "£10.99"],["Item 2", "2 X £12.95"],["Item 3", "4 X £4.95"],["Item 4", "£10.95"]])
             }
@@ -70,41 +70,10 @@ struct OrderView: View {
     }
 }
 
-struct StoryLoadingView: View {
-    
-    var body: some View {
-        VStack{
-            Spacer()
-                .frame(height: 80)
-                .frame(maxWidth: .infinity)
-            Text("Checking your story...")
-                .fontWeight(.black)
-                .foregroundColor(.white)
-                .font(.custom("Jost", size: 32))
-                .multilineTextAlignment(.center)
-            Spacer()
-            Image("cherry-search")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 300, height: 300, alignment: .center)
-            Text("Ensure you’ve included the restaurant’s location tag on your story")
-                .fontWeight(.medium)
-                .foregroundColor(.white)
-                .font(.custom("Jost", size: 22))
-                .padding()
-                .multilineTextAlignment(.center)
-            Spacer()
-        }.background(
-            Color.black
-                .edgesIgnoringSafeArea(.all)
-        )
-    }
-}
 
 
  struct OrderViewController_Previews: PreviewProvider {
      static var previews: some View {
-         StoryLoadingView()
          OrderView(table: "Table 12", restaurant: "Rola Wala", discount: "―£10.99", purchaseBreakdown: [["Item 1", "£10.99"],["Item 2", "2 X £12.95"],["Item 3", "4 X £4.95"],["Item 4", "£10.95"]])
          // ―
      }

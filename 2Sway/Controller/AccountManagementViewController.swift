@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class AccountManagementViewController: UIViewController {
+    let db = DatabaseManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()

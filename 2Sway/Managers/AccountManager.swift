@@ -9,6 +9,7 @@ import Foundation
 
 final class AccountManager {
     
+    //func assignInitialTier
     
-    
+    //func checkExpired(){ }
 }

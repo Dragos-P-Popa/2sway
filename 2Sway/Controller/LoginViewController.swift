@@ -240,7 +240,7 @@ class LoginViewController: UIViewController {
                             }
                         }
                     }
-                    if self.strProfileUrl == "" {
+                    /*if self.strProfileUrl == "" {
                         guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "isPhoto") as? TakePhotoViewController else {
                             return
                         }
@@ -251,11 +251,14 @@ class LoginViewController: UIViewController {
                         UserDefaults.standard.set(true, forKey:K.udefalt.IsRegister)
                         UIApplication.shared.windows.first?.rootViewController = navigationController
                         UIApplication.shared.windows.first?.makeKeyAndVisible()
-                    } else {
+                    } else { */
                         UserDefaults.standard.set(true, forKey:K.udefalt.isLogin)
                         MBProgressHUD.hide(for: self.view, animated: true)
-                        self.performSegue(withIdentifier: K.Segues.logInToHome, sender: self)
-                    }
+                        
+                        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AccountManagementViewController") as! AccountManagementViewController
+                        self.navigationController?.pushViewController(loginVC, animated: true)
+                    
+                    //}
                     AppData.shared.user = UserModel(accountStatus:self.accountStatus, email:self.strEmail, name:self.strname, isExpire:self.isExpire, urlString:self.strProfileUrl, dataThisMonth:DataThisMonth(), tier: self.tier, totalEngagements:self.IntTotleng, promos:self.aryPromoMain, instagram:self.strInsta, storyIds:self.aryStoryIds)
                     DatabaseManager.shared.uploadUser(user: AppData.shared.user!)
                     DatabaseManager.shared.getUser(completion: { success in

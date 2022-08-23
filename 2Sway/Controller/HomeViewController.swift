@@ -333,13 +333,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         MBProgressHUD.hide(for:self.view, animated:true)
            DatabaseManager.shared.getUser { success in
                if success {
+                   DatabaseManager.shared.claimExpired(user: AppData.shared.user!)
                    if AppData.shared.user!.promos.count ?? 0 > 0 {
-                       self.myPromosButton.setImage(UIImage(named: K.ImageNames.myPromosWithNotif), for: .normal)
+                       self.myPromosButton.setImage(UIImage(named: K.ImageNames.myPromosIcon), for: .normal)
                        self.CheckActivePromo()
                    } else {
                        self.myPromosButton.setImage(UIImage(named: K.ImageNames.myPromosIcon), for: .normal)
@@ -512,41 +513,19 @@ extension HomeViewController: BrandCellDelegate {
                         let obj = self.storyboard?.instantiateViewController(withIdentifier:"BusinessDetailsViewController") as! BusinessDetailsViewController
                         //  let promo = AppData.shared.user?.promos
                         
-                        if ((AppData.shared.user?.promos.isEmpty) != nil) {
-                            for claimedPromo in AppData.shared.user!.promos {
-                                if claimedPromo.businessID == brand.name {
-                                    self.invalidBrandImage = URL(string: brand.logo)
-                                    self.performSegue(withIdentifier: K.Segues.toPromoInvalidPopUp, sender: self)
-                                    return
-                                }
-                            }
-                        }
-                        if AppData.shared.user?.promos.count ?? 0 > 0 && self.isAnyActive == false {
-                            Analytics.logEvent("duplicatePromotions", parameters: [
-                                "Description": "You already have one active promotions.You must cancel that promotion before you can do another one." as NSObject
-                            ])
-                            GlobalAlert.showAlertMessage(vc:self, titleStr:K.appName, messageStr:"You already have one active promotions.You must cancel that promotion before you can do another one.")
-                        } else {
-                          //  MBProgressHUD.showAdded(to: self.view, animated: true)
+                       
                             obj.business = brand
                             self.navigationController?.pushViewController(obj, animated: true)
-                        }
+                        
                     } else {
-                        if ((AppData.shared.user?.promos.isEmpty) != nil) {
-                            for claimedPromo in AppData.shared.user!.promos {
-                                if claimedPromo.businessID == brand.name {
-                                    self.invalidBrandImage = URL(string: brand.logo)
-                                    self.performSegue(withIdentifier: K.Segues.toPromoInvalidPopUp, sender: self)
-                                    return
-                                }
-                            }
-                        }
+                        
                         self.brandSelected = brand
                      //   let vc = BusinessDetailsViewController()
                         let obj = self.storyboard?.instantiateViewController(withIdentifier:"BusinessDetailsViewController") as! BusinessDetailsViewController
                         obj.business = brand
                         self.navigationController?.pushViewController(obj, animated: true)
                     }
+                    
                 } else {
                     let loadingNotification = MBProgressHUD.showAdded(to:self.view, animated: true)
                     loadingNotification.mode = MBProgressHUDMode.indeterminate

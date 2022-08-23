@@ -29,16 +29,24 @@ struct ConfirmViewController: View {
                     .font(.custom("Jost", size: 38))
             }.frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
-                Image("cherry-story")
+                Image("cherry-food")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300, alignment: .center)
-                Text("Post a photo on your story, including the restaurants location tag")
-                    .fontWeight(.black)
-                    .font(.custom("Jost", size: 26))
+                Text("Capture the moment, make sure you post a photo on your Instagram story and include the restaurant location tag")
+                    .fontWeight(.bold)
+                    .font(.custom("Jost", size: 22))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
+                    .padding()
                 Spacer()
+            HStack{
+                Image(systemName: "info.circle.fill")
+                Text("Deleting your story early will result in a penalty to your tier.")
+                    .fontWeight(.regular)
+                    .foregroundColor(.white)
+                    .font(.custom("Jost", size: 10))
+            }
             NavigationLink(destination: RedeemViewController(business: brand).navigationBarBackButtonHidden(true), tag: 1, selection: $selection) {
                 Button(action: {self.selection = 1}) {
                     Text("I'VE POSTED")
